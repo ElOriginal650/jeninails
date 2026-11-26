@@ -114,7 +114,7 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { 950: "#08060B", 900: "#100D16", 850: "#171320", 800: "#211B2E" },
+                        dark: { 950: "#07050A", 900: "#100D16", 850: "#171320", 800: "#211B2E" },
                         ivory: "#FAF6F0",
                         champagne: { light: "#F2E6D6", DEFAULT: "#E2CEB2", dark: "#B79F81" },
                         gold: { DEFAULT: "#D5B173", light: "#E7CA99", dark: "#AA8547" }
@@ -130,91 +130,99 @@
     <style>
         :root {
             --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-silk: cubic-bezier(0.45, 0.05, 0.55, 0.95);
             color-scheme: dark;
         }
 
         html, body {
             overflow-x: clip;
-            background-color: #060409;
+            background-color: #07050A;
             color: #FAF6F0;
             -webkit-tap-highlight-color: transparent;
         }
 
         /* ==============================================================
-           FONDO AURORA MESH + OJO DE GATO EN TODA LA PÁGINA (ULTRA-LIGERO)
-           Mismos colores vibrantes de ayer sin filter:blur(80px), 100% GPU
+           FONDO HAUTE-COUTURE 2026: SEDA LÍQUIDA & OJO DE GATO CHAMPAGNE
+           Paleta cálida (Obsidiana, Vino Borgoña, Oro Champaña, Perla)
+           100% GPU (cero blur()), grano fino terciopelo, 0 KB descarga
            ============================================================== */
-        .aurora-bg {
+        .silk-bg {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
             overflow: hidden;
             contain: strict;
-            background-color: #060409;
+            background-color: #07050A;
         }
-        .aurora-orb {
+        .silk-veil {
             position: absolute;
             border-radius: 50%;
             will-change: transform;
         }
-        .aurora-1 {
-            top: -16%;
+        /* Seda 1: Vino Borgoña Ahumado (ritmo asimétrico 19s) */
+        .silk-1 {
+            top: -22%;
             left: -18%;
-            width: 85vmax;
-            height: 85vmax;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.42) 0%, rgba(75, 0, 130, 0.20) 38%, transparent 70%);
-            animation: floatAurora1 16s ease-in-out infinite alternate;
-        }
-        .aurora-2 {
-            top: 22%;
-            right: -22%;
-            width: 82vmax;
+            width: 92vmax;
             height: 82vmax;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.34) 0%, rgba(140, 29, 64, 0.16) 40%, transparent 70%);
-            animation: floatAurora2 20s ease-in-out infinite alternate;
+            background: radial-gradient(ellipse 68% 58% at 50% 50%, rgba(136, 46, 74, 0.36) 0%, rgba(92, 28, 52, 0.16) 44%, transparent 72%);
+            animation: silkDriftA 19s var(--ease-silk) infinite alternate;
         }
-        .aurora-3 {
-            bottom: -20%;
-            left: 5%;
-            width: 88vmax;
-            height: 88vmax;
-            background: radial-gradient(circle, rgba(216, 180, 120, 0.34) 0%, rgba(184, 143, 72, 0.14) 40%, transparent 70%);
-            animation: floatAurora3 18s ease-in-out infinite alternate;
+        /* Seda 2: Oro Champaña Líquido (ritmo asimétrico 25s) */
+        .silk-2 {
+            top: 16%;
+            right: -24%;
+            width: 90vmax;
+            height: 84vmax;
+            background: radial-gradient(ellipse 64% 56% at 50% 50%, rgba(224, 188, 126, 0.30) 0%, rgba(182, 138, 76, 0.12) 44%, transparent 72%);
+            animation: silkDriftB 25s var(--ease-silk) infinite alternate;
         }
-        .aurora-4 {
-            bottom: 30%;
-            left: -18%;
-            width: 68vmax;
-            height: 68vmax;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(79, 172, 254, 0.10) 38%, transparent 68%);
-            animation: floatAurora1 14s ease-in-out infinite alternate-reverse;
+        /* Seda 3: Perla Rosada Cálida (ritmo asimétrico 31s) */
+        .silk-3 {
+            bottom: -24%;
+            left: -4%;
+            width: 94vmax;
+            height: 80vmax;
+            background: radial-gradient(ellipse 62% 54% at 50% 50%, rgba(206, 152, 146, 0.24) 0%, rgba(146, 86, 102, 0.10) 44%, transparent 70%);
+            animation: silkDriftC 31s var(--ease-silk) infinite alternate;
         }
-        .cateye-beam {
+        /* Haz Specular Ojo de Gato Champagne (reflejo magnético de estudio) */
+        .cateye-silk-sheen {
             position: absolute;
-            inset: -25%;
-            background: linear-gradient(118deg, transparent 34%, rgba(255, 0, 127, 0.10) 45%, rgba(216, 180, 120, 0.13) 50%, rgba(138, 43, 226, 0.10) 55%, transparent 66%);
+            inset: -28%;
+            background: linear-gradient(116deg, transparent 35%, rgba(235, 206, 158, 0.10) 47%, rgba(250, 240, 224, 0.065) 50%, rgba(196, 132, 142, 0.07) 53%, transparent 65%);
             will-change: transform;
-            animation: catEyeSweep 14s ease-in-out infinite alternate;
+            animation: catEyeSheen 17s var(--ease-silk) infinite alternate;
         }
-        @keyframes floatAurora1 {
-            0%   { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(14vw, 10vh, 0) scale(1.12); }
-        }
-        @keyframes floatAurora2 {
-            0%   { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(-14vw, -9vh, 0) scale(1.14); }
-        }
-        @keyframes floatAurora3 {
-            0%   { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(10vw, -12vh, 0) scale(1.08); }
-        }
-        @keyframes catEyeSweep {
-            0%   { transform: translate3d(-14%, -5%, 0); }
-            100% { transform: translate3d(14%, 5%, 0); }
+        /* Grano fino editorial de terciopelo mate (~280 bytes SVG inline, elimina bandeado) */
+        .velvet-grain {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 160px 160px;
         }
 
-        /* Capa 2: Micro-glitter flotante Ojo de Gato (ligero, 24FPS, cero shadowBlur) */
+        @keyframes silkDriftA {
+            0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate3d(13vw, 11vh, 0) rotate(12deg) scale(1.1); }
+        }
+        @keyframes silkDriftB {
+            0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate3d(-14vw, -9vh, 0) rotate(-10deg) scale(1.12); }
+        }
+        @keyframes silkDriftC {
+            0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate3d(11vw, -12vh, 0) rotate(8deg) scale(1.08); }
+        }
+        @keyframes catEyeSheen {
+            0%   { transform: translate3d(-15%, -5%, 0); }
+            100% { transform: translate3d(15%, 5%, 0); }
+        }
+
+        /* Capa 2: Polvo de oro champaña y perla flotando suave (~24FPS, cero shadowBlur) */
         #catEyeCanvas {
             position: fixed;
             inset: 0;
@@ -226,7 +234,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .aurora-1, .aurora-2, .aurora-3, .aurora-4, .cateye-beam {
+            .silk-1, .silk-2, .silk-3, .cateye-silk-sheen {
                 animation: none;
             }
             #catEyeCanvas {
@@ -235,7 +243,7 @@
         }
 
         .editorial-surface {
-            background-color: rgba(16, 13, 22, 0.78);
+            background-color: rgba(14, 11, 20, 0.78);
             border: 1px solid rgba(226, 206, 178, 0.16);
         }
 
@@ -280,7 +288,7 @@
             height: 16px;
             border-radius: 5px;
             border: 1px solid rgba(226, 206, 178, 0.35);
-            background-color: #08060B;
+            background-color: #07050A;
             display: inline-grid;
             place-content: center;
             flex-shrink: 0;
@@ -292,7 +300,7 @@
             height: 9px;
             transform: scale(0);
             transition: transform 140ms var(--ease-out);
-            background-color: #08060B;
+            background-color: #07050A;
             clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
         }
         .custom-check:checked {
@@ -317,20 +325,20 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #08060B; }
+        ::-webkit-scrollbar-track { background: #07050A; }
         ::-webkit-scrollbar-thumb { background: #261F34; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #D5B173; }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
 
-    <!-- Fondo animado visible en toda la página: Aurora Mesh GPU + Micro-glitter ligero -->
-    <div class="aurora-bg" aria-hidden="true">
-        <span class="aurora-orb aurora-1"></span>
-        <span class="aurora-orb aurora-2"></span>
-        <span class="aurora-orb aurora-3"></span>
-        <span class="aurora-orb aurora-4"></span>
-        <span class="cateye-beam"></span>
+    <!-- Fondo Haute-Couture 2026: Seda Líquida & Ojo de Gato Champagne + Grano Terciopelo -->
+    <div class="silk-bg" aria-hidden="true">
+        <span class="silk-veil silk-1"></span>
+        <span class="silk-veil silk-2"></span>
+        <span class="silk-veil silk-3"></span>
+        <span class="cateye-silk-sheen"></span>
+        <span class="velvet-grain"></span>
     </div>
     <canvas id="catEyeCanvas" aria-hidden="true"></canvas>
 
@@ -434,7 +442,7 @@
     </section>
 
     <!-- 2. MENÚ EDITORIAL DE TRATAMIENTOS -->
-    <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-950/35 border-t border-champagne/12 relative z-10">
+    <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-950/30 border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
@@ -643,7 +651,7 @@
     </section>
 
     <!-- 4. RESERVA EN 3 TOQUES DIRECTO AL WHATSAPP (Ultra fácil para cualquiera) -->
-    <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-950/35 border-t border-champagne/12 relative z-10">
+    <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-950/30 border-t border-champagne/12 relative z-10">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
                 <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold mb-2">Tu Cita en 3 Toques</p>
@@ -872,7 +880,7 @@
     </section>
 
     <!-- 6. PREGUNTAS FRECUENTES (Acordeón compacto, cero muros de texto) -->
-    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-950/35 border-t border-champagne/12 relative z-10">
+    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-950/30 border-t border-champagne/12 relative z-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="mb-8">
                 <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Información Útil</p>
@@ -1258,8 +1266,8 @@
             window.open(url, "_blank");
         }
 
-        // Micro-glitter Ojo de Gato ultra-ligero (activo en móvil y desktop, ~24FPS, cero shadowBlur)
-        function initCatEyeGlitterLite() {
+        // Polvo de oro champaña y perla flotando lento (~24FPS, cero shadowBlur, gama baja friendly)
+        function initChampagneDustEngine() {
             if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
             const canvas = document.getElementById("catEyeCanvas");
             if (!canvas) return;
@@ -1268,9 +1276,9 @@
 
             let w = 0, h = 0, lastFrame = 0, tick = 0;
             const isMobile = window.innerWidth < 768;
-            const count = isMobile ? 22 : 38;
-            const palette = ["#D8B478", "#E7CA99", "#FF007F", "#8A2BE2", "#FAF6F0"];
-            const particles = [];
+            const count = isMobile ? 20 : 34;
+            const palette = ["#E7CA99", "#D5B173", "#FAF6F0", "#E2CEB2", "#C9929A"];
+            const motes = [];
 
             function resize() {
                 w = canvas.width = window.innerWidth;
@@ -1280,12 +1288,12 @@
             window.addEventListener("resize", resize, { passive: true });
 
             for (let i = 0; i < count; i++) {
-                particles.push({
+                motes.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    r: Math.random() * 1.6 + 0.7,
-                    vy: Math.random() * 0.35 + 0.14,
-                    vx: (Math.random() - 0.5) * 0.16,
+                    r: Math.random() * 1.45 + 0.55,
+                    vy: Math.random() * 0.28 + 0.10,
+                    vx: (Math.random() - 0.5) * 0.14,
                     phase: Math.random() * Math.PI * 2,
                     color: palette[i % palette.length]
                 });
@@ -1293,23 +1301,23 @@
 
             function frame(now) {
                 requestAnimationFrame(frame);
-                if (document.hidden || now - lastFrame < 40) return; // ~25 FPS, pausa en segundo plano
+                if (document.hidden || now - lastFrame < 42) return; // ~24 FPS, pausa en segundo plano
                 lastFrame = now;
-                tick += 0.08;
+                tick += 0.055;
                 ctx.clearRect(0, 0, w, h);
 
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    p.y -= p.vy;
-                    p.x += p.vx;
-                    if (p.y < -6) { p.y = h + 6; p.x = Math.random() * w; }
-                    if (p.x < -6) p.x = w + 6;
-                    if (p.x > w + 6) p.x = -6;
+                for (let i = 0; i < motes.length; i++) {
+                    const m = motes[i];
+                    m.y -= m.vy;
+                    m.x += m.vx + Math.sin(tick * 0.5 + m.phase) * 0.08;
+                    if (m.y < -6) { m.y = h + 6; m.x = Math.random() * w; }
+                    if (m.x < -6) m.x = w + 6;
+                    if (m.x > w + 6) m.x = -6;
 
-                    ctx.globalAlpha = 0.28 + 0.52 * (0.5 + 0.5 * Math.sin(tick + p.phase));
-                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = 0.20 + 0.50 * (0.5 + 0.5 * Math.sin(tick + m.phase));
+                    ctx.fillStyle = m.color;
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, 6.283);
+                    ctx.arc(m.x, m.y, m.r, 0, 6.283);
                     ctx.fill();
                 }
                 ctx.globalAlpha = 1;
@@ -1344,7 +1352,7 @@
                 text: "https://jeninails.vercel.app/?ref=qr",
                 width: 176,
                 height: 176,
-                colorDark: "#08060B",
+                colorDark: "#07050A",
                 colorLight: "#FAF6F0",
                 correctLevel: QRCode.CorrectLevel.H
             });
@@ -1389,7 +1397,7 @@
             renderizarGaleria("todos");
             renderWeekendPills();
             calcularTotal();
-            initCatEyeGlitterLite();
+            initChampagneDustEngine();
 
             const yearEl = document.getElementById("currentYear");
             if (yearEl) yearEl.innerText = new Date().getFullYear();
