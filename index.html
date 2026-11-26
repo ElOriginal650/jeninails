@@ -341,7 +341,7 @@
         </div>
     </section>
 
-    <!-- 2. MENÚ EDITORIAL DE TRATAMIENTOS (Adiós tarjetas genéricas, bienvenido menú de atelier) -->
+    <!-- 2. MENÚ EDITORIAL DE TRATAMIENTOS -->
     <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-900/60 border-t border-champagne/10 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -496,7 +496,7 @@
         </div>
     </section>
 
-    <!-- 3. PORTAFOLIO REAL (Fotografía 100% limpia sin stickers encima) -->
+    <!-- 3. PORTAFOLIO REAL (15 fotos verificadas, 2 nuevos modelos al frente) -->
     <section id="galeria" class="lazy-section py-16 sm:py-24 bg-dark-950 border-t border-champagne/10 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
@@ -507,7 +507,7 @@
                 </div>
 
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="filtrarGaleria('todos', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-gold text-dark-950 font-semibold">Todos (13)</button>
+                    <button onclick="filtrarGaleria('todos', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-gold text-dark-950 font-semibold">Todos (15)</button>
                     <button onclick="filtrarGaleria('rubber', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Rubber & Spa</button>
                     <button onclick="filtrarGaleria('extensiones', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Polygel</button>
                     <button onclick="filtrarGaleria('nailart', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Nail Art</button>
@@ -530,7 +530,7 @@
         </div>
     </section>
 
-    <!-- 4. RESERVA EN 3 TOQUES DIRECTO AL WHATSAPP (Ultra fácil para cualquiera) -->
+    <!-- 4. RESERVA EN 3 TOQUES DIRECTO AL WHATSAPP -->
     <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-900/60 border-t border-champagne/10 relative z-10">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
@@ -574,7 +574,6 @@
                                 <span class="block text-gold font-semibold mt-1">$11 · Ahorra $1</span>
                             </button>
                         </div>
-                        <!-- Select oculto sincronizado para compatibilidad total -->
                         <select id="servicioSelect" onchange="calcularTotal()" class="sr-only" aria-hidden="true" tabindex="-1">
                             <option value="6" data-name="Manicura Semipermanente">Manicura Semipermanente</option>
                             <option value="6" data-name="Pedicura Spa en Cualquier Color">Pedicura Spa en Cualquier Color</option>
@@ -585,7 +584,7 @@
                         </select>
                     </div>
 
-                    <!-- PASO 2: Día (Botones directos del próximo Viernes, Sábado y Domingo) -->
+                    <!-- PASO 2: Día (Solo Viernes, Sábado y Domingo) -->
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold uppercase tracking-[0.16em] text-gold">2. ¿Qué día vienes?</span>
@@ -626,7 +625,6 @@
                             <input type="text" id="nombreCliente" placeholder="Tu nombre (Ej: María Pérez)" required class="w-full bg-dark-950 border border-champagne/18 rounded-xl px-4 py-3 text-sm text-ivory placeholder-champagne/40 focus:outline-none focus:border-gold">
                         </div>
 
-                        <!-- Extras y nota de diseño plegables para cero ruido visual -->
                         <details id="extrasDetails" class="rounded-2xl bg-dark-950 border border-champagne/12 px-4 py-3">
                             <summary class="cursor-pointer flex items-center justify-between text-xs text-champagne/85 font-medium select-none">
                                 <span>Agregar diseño o extras opcionales (+$1 / +$2)</span>
@@ -678,12 +676,11 @@
         </div>
     </section>
 
-    <!-- 5. SOBRE JENI + CÓDIGO QR EN UN SOLO SPREAD EDITORIAL -->
+    <!-- 5. SOBRE JENI + CÓDIGO QR -->
     <section id="sobre-jeni" class="lazy-section py-16 sm:py-24 bg-dark-950 border-t border-champagne/10 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-                <!-- Sobre Jennifer -->
                 <div class="lg:col-span-7 editorial-surface rounded-3xl p-6 sm:p-9 flex flex-col justify-between">
                     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                         <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-b from-gold/70 to-transparent shrink-0">
@@ -713,7 +710,6 @@
                     </div>
                 </div>
 
-                <!-- Código QR Oficial -->
                 <div id="qr-code" class="lg:col-span-5 editorial-surface rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-between text-center">
                     <div>
                         <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">Código QR Oficial</p>
@@ -744,7 +740,7 @@
         </div>
     </section>
 
-    <!-- 6. PREGUNTAS FRECUENTES (Acordeón compacto, cero muros de texto) -->
+    <!-- 6. PREGUNTAS FRECUENTES -->
     <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-900/60 border-t border-champagne/10 relative z-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="mb-8">
@@ -819,6 +815,8 @@
     <!-- JAVASCRIPT -->
     <script>
         const fotosReales = [
+            { id: "1UyRNy-9zb44b0Sq_Ujn_cyWL07IhsbZ7", title: "Francesa Polka Dots Cherry", cat: "nailart", precio: "$9", val: "9", serv: "Jelly Tip (Soft Gel)", nuevo: true },
+            { id: "1PfNUFy6nB_EvBiSp7ro8ahGb6wyK-Z1W", title: "Joya Ojo de Gato & Marco de Oro", cat: "nailart", precio: "$8", val: "8", serv: "Nivelación con Base Rubber", nuevo: true },
             { id: "16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7", title: "Micro-French & Brillo Perla", cat: "rubber", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
             { id: "1P5ZMeNmExLewJvmbASlAB9GFYzci-ke8", title: "Francesa con Marco de Oro", cat: "nailart", precio: "$9", val: "9", serv: "Jelly Tip (Soft Gel)" },
             { id: "1IHKec73cHVDag6k9oF1dpi9NbN5D9TWM", title: "Francés Amarillo & Flor", cat: "nailart", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
@@ -862,10 +860,14 @@
                 card.className = "photo-card pressable group cursor-pointer flex flex-col";
                 card.onclick = () => seleccionarModelo(f.title, f.serv, f.val);
 
+                const imgSrc = f.src ? f.src : `https://lh3.googleusercontent.com/d/${f.id}=w${imgW}`;
+                const imgFallback = f.src ? "" : `onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${f.id}&sz=w${imgW}';"`;
+                const nuevoTag = f.nuevo ? '<span class="text-[10px] uppercase tracking-[0.16em] text-gold font-semibold mr-1.5">Nuevo ·</span>' : '';
+
                 card.innerHTML = `
                     <div class="aspect-square rounded-2xl overflow-hidden bg-dark-900 border border-champagne/10">
-                        <img src="https://lh3.googleusercontent.com/d/${f.id}=w${imgW}"
-                             onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${f.id}&sz=w${imgW}';"
+                        <img src="${imgSrc}"
+                             ${imgFallback}
                              alt="${f.title} por JeniNails"
                              width="320" height="320"
                              loading="lazy" decoding="async"
@@ -875,7 +877,7 @@
                         <h4 class="font-display text-sm sm:text-base font-medium text-ivory group-hover:text-gold transition-colors leading-snug">${f.title}</h4>
                         <span class="font-display text-sm sm:text-base text-gold tabular-nums shrink-0">${f.precio}</span>
                     </div>
-                    <p class="text-[11px] text-champagne/60 mt-0.5 truncate">${f.serv}</p>
+                    <p class="text-[11px] text-champagne/60 mt-0.5 truncate">${nuevoTag}${f.serv}</p>
                 `;
                 frag.appendChild(card);
             });
@@ -909,7 +911,6 @@
             renderizarGaleria(cat);
         }
 
-        // Helpers de horario: SOLO Viernes (5), Sábado (6) y Domingo (0)
         const DIAS_ES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
         const MESES_CORTO = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
