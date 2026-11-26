@@ -135,70 +135,108 @@
 
         html, body {
             overflow-x: clip;
-            background-color: #08060B;
+            background-color: #060409;
             color: #FAF6F0;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Fondo editorial con movimiento Cat-Eye & Aurora 100% GPU (cero blur(), cero Canvas JS, 60FPS en gama baja) */
-        .atelier-bg {
+        /* ==============================================================
+           FONDO AURORA MESH + OJO DE GATO EN TODA LA PÁGINA (ULTRA-LIGERO)
+           Mismos colores vibrantes de ayer sin filter:blur(80px), 100% GPU
+           ============================================================== */
+        .aurora-bg {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
             overflow: hidden;
             contain: strict;
-            background-color: #08060B;
+            background-color: #060409;
         }
-        .atelier-orb {
+        .aurora-orb {
             position: absolute;
             border-radius: 50%;
             will-change: transform;
         }
-        .atelier-orb-1 {
-            top: -18%;
-            left: -15%;
-            width: 78vmax;
-            height: 78vmax;
-            background: radial-gradient(circle, rgba(164, 96, 144, 0.22) 0%, rgba(132, 82, 118, 0.08) 42%, transparent 70%);
-            animation: orbFloatA 18s ease-in-out infinite alternate;
+        .aurora-1 {
+            top: -16%;
+            left: -18%;
+            width: 85vmax;
+            height: 85vmax;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.42) 0%, rgba(75, 0, 130, 0.20) 38%, transparent 70%);
+            animation: floatAurora1 16s ease-in-out infinite alternate;
         }
-        .atelier-orb-2 {
-            bottom: -22%;
-            right: -18%;
-            width: 74vmax;
-            height: 74vmax;
-            background: radial-gradient(circle, rgba(213, 177, 115, 0.17) 0%, rgba(196, 134, 152, 0.06) 45%, transparent 70%);
-            animation: orbFloatB 22s ease-in-out infinite alternate;
+        .aurora-2 {
+            top: 22%;
+            right: -22%;
+            width: 82vmax;
+            height: 82vmax;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.34) 0%, rgba(140, 29, 64, 0.16) 40%, transparent 70%);
+            animation: floatAurora2 20s ease-in-out infinite alternate;
         }
-        .atelier-cateye-beam {
+        .aurora-3 {
+            bottom: -20%;
+            left: 5%;
+            width: 88vmax;
+            height: 88vmax;
+            background: radial-gradient(circle, rgba(216, 180, 120, 0.34) 0%, rgba(184, 143, 72, 0.14) 40%, transparent 70%);
+            animation: floatAurora3 18s ease-in-out infinite alternate;
+        }
+        .aurora-4 {
+            bottom: 30%;
+            left: -18%;
+            width: 68vmax;
+            height: 68vmax;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(79, 172, 254, 0.10) 38%, transparent 68%);
+            animation: floatAurora1 14s ease-in-out infinite alternate-reverse;
+        }
+        .cateye-beam {
             position: absolute;
             inset: -25%;
-            background: linear-gradient(118deg, transparent 36%, rgba(231, 202, 153, 0.065) 48%, rgba(201, 141, 147, 0.05) 52%, transparent 64%);
+            background: linear-gradient(118deg, transparent 34%, rgba(255, 0, 127, 0.10) 45%, rgba(216, 180, 120, 0.13) 50%, rgba(138, 43, 226, 0.10) 55%, transparent 66%);
             will-change: transform;
-            animation: catEyeSweep 16s ease-in-out infinite alternate;
+            animation: catEyeSweep 14s ease-in-out infinite alternate;
         }
-        @keyframes orbFloatA {
+        @keyframes floatAurora1 {
             0%   { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(12vw, 9vh, 0) scale(1.08); }
+            100% { transform: translate3d(14vw, 10vh, 0) scale(1.12); }
         }
-        @keyframes orbFloatB {
+        @keyframes floatAurora2 {
             0%   { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(-11vw, -8vh, 0) scale(1.06); }
+            100% { transform: translate3d(-14vw, -9vh, 0) scale(1.14); }
+        }
+        @keyframes floatAurora3 {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(10vw, -12vh, 0) scale(1.08); }
         }
         @keyframes catEyeSweep {
-            0%   { transform: translate3d(-12%, -4%, 0); }
-            100% { transform: translate3d(12%, 4%, 0); }
+            0%   { transform: translate3d(-14%, -5%, 0); }
+            100% { transform: translate3d(14%, 5%, 0); }
         }
+
+        /* Capa 2: Micro-glitter flotante Ojo de Gato (ligero, 24FPS, cero shadowBlur) */
+        #catEyeCanvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .atelier-orb-1, .atelier-orb-2, .atelier-cateye-beam {
+            .aurora-1, .aurora-2, .aurora-3, .aurora-4, .cateye-beam {
                 animation: none;
+            }
+            #catEyeCanvas {
+                display: none;
             }
         }
 
         .editorial-surface {
-            background-color: #100D16;
-            border: 1px solid rgba(226, 206, 178, 0.13);
+            background-color: rgba(16, 13, 22, 0.78);
+            border: 1px solid rgba(226, 206, 178, 0.16);
         }
 
         .pressable {
@@ -213,7 +251,7 @@
         }
         @media (min-width: 768px) {
             .menu-row:hover {
-                background-color: rgba(213, 177, 115, 0.05);
+                background-color: rgba(213, 177, 115, 0.08);
             }
         }
 
@@ -286,14 +324,18 @@
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
 
-    <div class="atelier-bg" aria-hidden="true">
-        <span class="atelier-orb atelier-orb-1"></span>
-        <span class="atelier-orb atelier-orb-2"></span>
-        <span class="atelier-cateye-beam"></span>
+    <!-- Fondo animado visible en toda la página: Aurora Mesh GPU + Micro-glitter ligero -->
+    <div class="aurora-bg" aria-hidden="true">
+        <span class="aurora-orb aurora-1"></span>
+        <span class="aurora-orb aurora-2"></span>
+        <span class="aurora-orb aurora-3"></span>
+        <span class="aurora-orb aurora-4"></span>
+        <span class="cateye-beam"></span>
     </div>
+    <canvas id="catEyeCanvas" aria-hidden="true"></canvas>
 
     <!-- Franja de horario discreta -->
-    <div class="relative z-30 bg-dark-950 border-b border-champagne/10 text-champagne/80 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide">
+    <div class="relative z-30 bg-dark-950/85 border-b border-champagne/10 text-champagne/80 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide">
         <span class="text-ivory font-medium">Barquisimeto Centro</span>
         <span class="mx-2 text-champagne/30">·</span>
         <span class="text-gold font-semibold">Atención solo Viernes, Sábado y Domingo</span>
@@ -301,8 +343,8 @@
         <span class="hidden sm:inline">Previa cita por WhatsApp</span>
     </div>
 
-    <!-- Header sólido editorial -->
-    <header class="sticky top-0 z-40 bg-dark-950 border-b border-champagne/12">
+    <!-- Header editorial semitransparente -->
+    <header class="sticky top-0 z-40 bg-dark-950/85 border-b border-champagne/12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 pressable">
                 <img src="jeni-avatar.svg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7=w160';" alt="JeniNails" width="40" height="40" decoding="async" class="w-10 h-10 rounded-full object-cover border border-gold/55 bg-dark-900">
@@ -392,14 +434,14 @@
     </section>
 
     <!-- 2. MENÚ EDITORIAL DE TRATAMIENTOS -->
-    <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-900/60 border-t border-champagne/10 relative z-10">
+    <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-950/35 border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
                     <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold mb-2">Menú de Estudio · 2026</p>
                     <h2 class="font-display text-3xl sm:text-4xl font-medium text-ivory">Servicios & Tarifas</h2>
                 </div>
-                <p class="text-champagne/70 text-xs sm:text-sm max-w-sm leading-relaxed">
+                <p class="text-champagne/75 text-xs sm:text-sm max-w-sm leading-relaxed">
                     Precios claros sin sorpresas. Toca cualquier servicio para apartar tu hora directo por WhatsApp.
                 </p>
             </div>
@@ -415,8 +457,8 @@
                             <span class="font-display italic text-sm text-gold/80 pt-1 shrink-0">01</span>
                             <div>
                                 <h3 class="font-display text-lg sm:text-xl font-medium text-ivory group-hover:text-gold transition-colors">Manicura Semipermanente</h3>
-                                <p class="text-xs text-champagne/70 mt-1 leading-relaxed max-w-md">Limpieza profunda de cutículas, preparación de uña natural y esmaltado en gel con brillo espejo.</p>
-                                <p class="text-[11px] text-champagne/50 mt-2">~1h 15m · Dura 15 a 21 días</p>
+                                <p class="text-xs text-champagne/75 mt-1 leading-relaxed max-w-md">Limpieza profunda de cutículas, preparación de uña natural y esmaltado en gel con brillo espejo.</p>
+                                <p class="text-[11px] text-champagne/55 mt-2">~1h 15m · Dura 15 a 21 días</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0 flex flex-col items-end gap-2">
@@ -434,8 +476,8 @@
                                     <h3 class="font-display text-lg sm:text-xl font-medium text-ivory group-hover:text-gold transition-colors">Pedicura Spa</h3>
                                     <span class="text-[10px] uppercase tracking-wider text-gold border border-gold/35 px-2 py-0.5 rounded-full">Cualquier color</span>
                                 </div>
-                                <p class="text-xs text-champagne/70 mt-1 leading-relaxed max-w-md">Baño de sales, exfoliación, retiro de asperezas, hidratación y esmaltado en el tono que elijas.</p>
-                                <p class="text-[11px] text-champagne/50 mt-2">~1h 30m · Pies suaves e impecables</p>
+                                <p class="text-xs text-champagne/75 mt-1 leading-relaxed max-w-md">Baño de sales, exfoliación, retiro de asperezas, hidratación y esmaltado en el tono que elijas.</p>
+                                <p class="text-[11px] text-champagne/55 mt-2">~1h 30m · Pies suaves e impecables</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0 flex flex-col items-end gap-2">
@@ -453,8 +495,8 @@
                                     <h3 class="font-display text-lg sm:text-xl font-medium text-ivory group-hover:text-gold transition-colors">Nivelación (Base Rubber)</h3>
                                     <span class="text-[10px] uppercase tracking-wider text-champagne/80 border border-champagne/20 px-2 py-0.5 rounded-full">Más pedida</span>
                                 </div>
-                                <p class="text-xs text-champagne/70 mt-1 leading-relaxed max-w-md">Refuerzo elástico sobre uña natural con curvatura C perfecta. Ideal si tus uñas se quiebran.</p>
-                                <p class="text-[11px] text-champagne/50 mt-2">~1h 30m · Dura 21 a 28 días</p>
+                                <p class="text-xs text-champagne/75 mt-1 leading-relaxed max-w-md">Refuerzo elástico sobre uña natural con curvatura C perfecta. Ideal si tus uñas se quiebran.</p>
+                                <p class="text-[11px] text-champagne/55 mt-2">~1h 30m · Dura 21 a 28 días</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0 flex flex-col items-end gap-2">
@@ -469,8 +511,8 @@
                             <span class="font-display italic text-sm text-gold/80 pt-1 shrink-0">04</span>
                             <div>
                                 <h3 class="font-display text-lg sm:text-xl font-medium text-ivory group-hover:text-gold transition-colors">Jelly Tip (Soft Gel)</h3>
-                                <p class="text-xs text-champagne/70 mt-1 leading-relaxed max-w-md">Extensiones en gel flexible ultrafino. Cero daño a tu uña natural, livianas y sin olor fuerte.</p>
-                                <p class="text-[11px] text-champagne/50 mt-2">~1h 45m · Largo y forma a tu gusto</p>
+                                <p class="text-xs text-champagne/75 mt-1 leading-relaxed max-w-md">Extensiones en gel flexible ultrafino. Cero daño a tu uña natural, livianas y sin olor fuerte.</p>
+                                <p class="text-[11px] text-champagne/55 mt-2">~1h 45m · Largo y forma a tu gusto</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0 flex flex-col items-end gap-2">
@@ -485,8 +527,8 @@
                             <span class="font-display italic text-sm text-gold/80 pt-1 shrink-0">05</span>
                             <div>
                                 <h3 class="font-display text-lg sm:text-xl font-medium text-ivory group-hover:text-gold transition-colors">Polygel (Esculpido o Tips)</h3>
-                                <p class="text-xs text-champagne/70 mt-1 leading-relaxed max-w-md">La fuerza del acrílico con la ligereza del gel. Máxima resistencia y acabado limpio.</p>
-                                <p class="text-[11px] text-champagne/50 mt-2">~2h · Máxima durabilidad</p>
+                                <p class="text-xs text-champagne/75 mt-1 leading-relaxed max-w-md">La fuerza del acrílico con la ligereza del gel. Máxima resistencia y acabado limpio.</p>
+                                <p class="text-[11px] text-champagne/55 mt-2">~2h · Máxima durabilidad</p>
                             </div>
                         </div>
                         <div class="text-right shrink-0 flex flex-col items-end gap-2">
@@ -499,7 +541,7 @@
 
                 <!-- Columna Derecha: Escalera Editorial de 3 Combos Dúo (sin tarjetas anidadas) -->
                 <div class="lg:col-span-5">
-                    <div class="editorial-surface rounded-3xl p-6 sm:p-8 border-gold/35 bg-gradient-to-b from-gold/[0.07] to-dark-900">
+                    <div class="editorial-surface rounded-3xl p-6 sm:p-8 border-gold/35">
                         <div class="flex items-center justify-between gap-2 mb-4">
                             <span class="text-xs font-medium text-gold">Combos Manos + Pies</span>
                             <span class="text-[11px] bg-gold text-dark-950 font-semibold px-2.5 py-0.5 rounded-full">Ahorra $2</span>
@@ -567,24 +609,24 @@
     </section>
 
     <!-- 3. PORTAFOLIO REAL (Fotografía 100% limpia sin stickers encima) -->
-    <section id="galeria" class="lazy-section py-16 sm:py-24 bg-dark-950 border-t border-champagne/10 relative z-10">
+    <section id="galeria" class="lazy-section py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
                 <div>
                     <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold mb-2">Portafolio Real</p>
                     <h2 class="font-display text-3xl sm:text-4xl font-medium text-ivory">Trabajos en Mesa</h2>
-                    <p class="text-champagne/70 text-xs sm:text-sm mt-1.5">Toca cualquier foto para elegir ese modelo y llevarlo directo a tu cita.</p>
+                    <p class="text-champagne/75 text-xs sm:text-sm mt-1.5">Toca cualquier foto para elegir ese modelo y llevarlo directo a tu cita.</p>
                 </div>
 
                 <div class="flex flex-wrap gap-2 text-xs">
                     <button onclick="filtrarGaleria('todos', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-gold text-dark-950 font-semibold">Todos (15)</button>
-                    <button onclick="filtrarGaleria('rubber', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Rubber & Spa</button>
-                    <button onclick="filtrarGaleria('extensiones', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Polygel</button>
-                    <button onclick="filtrarGaleria('nailart', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50">Nail Art</button>
+                    <button onclick="filtrarGaleria('rubber', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900/80 text-champagne/85 border border-champagne/15 hover:border-gold/50">Rubber & Spa</button>
+                    <button onclick="filtrarGaleria('extensiones', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900/80 text-champagne/85 border border-champagne/15 hover:border-gold/50">Polygel</button>
+                    <button onclick="filtrarGaleria('nailart', this)" class="filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900/80 text-champagne/85 border border-champagne/15 hover:border-gold/50">Nail Art</button>
                 </div>
             </div>
 
-            <div id="selectionToast" class="hidden mb-6 p-4 rounded-2xl bg-gold/12 border border-gold/35 text-champagne text-xs flex items-center justify-between gap-3">
+            <div id="selectionToast" class="hidden mb-6 p-4 rounded-2xl bg-gold/15 border border-gold/40 text-champagne text-xs flex items-center justify-between gap-3">
                 <span>Modelo elegido: <strong id="toastDesignName" class="text-ivory"></strong>. Ya quedó cargado en tu cita.</span>
                 <button type="button" class="text-gold font-semibold underline shrink-0" onclick="document.getElementById('selectionToast').classList.add('hidden')">Cerrar</button>
             </div>
@@ -593,7 +635,7 @@
             <div id="galeriaGrid" class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-9"></div>
 
             <div id="verMasContainer" class="mt-10 text-center hidden">
-                <button id="btnVerMas" onclick="mostrarTodasLasFotos()" class="pressable px-7 py-3 rounded-full bg-dark-900 hover:bg-dark-850 text-gold border border-gold/35 text-xs font-semibold tracking-wide">
+                <button id="btnVerMas" onclick="mostrarTodasLasFotos()" class="pressable px-7 py-3 rounded-full bg-dark-900/85 hover:bg-dark-850 text-gold border border-gold/35 text-xs font-semibold tracking-wide">
                     Ver más modelos
                 </button>
             </div>
@@ -601,7 +643,7 @@
     </section>
 
     <!-- 4. RESERVA EN 3 TOQUES DIRECTO AL WHATSAPP (Ultra fácil para cualquiera) -->
-    <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-900/60 border-t border-champagne/10 relative z-10">
+    <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-950/35 border-t border-champagne/12 relative z-10">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
                 <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold mb-2">Tu Cita en 3 Toques</p>
@@ -620,11 +662,11 @@
                         </div>
                         <div id="servicioPills" class="space-y-3">
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                                <button type="button" data-serv="Manicura Semipermanente" data-val="6" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs">
+                                <button type="button" data-serv="Manicura Semipermanente" data-val="6" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Manicura</span>
                                     <span class="block text-gold font-semibold mt-1">$6</span>
                                 </button>
-                                <button type="button" data-serv="Pedicura Spa en Cualquier Color" data-val="6" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs">
+                                <button type="button" data-serv="Pedicura Spa en Cualquier Color" data-val="6" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Pedicura Spa</span>
                                     <span class="block text-gold font-semibold mt-1">$6</span>
                                 </button>
@@ -632,26 +674,26 @@
                                     <span class="block text-ivory font-semibold leading-tight">Nivelación Rubber</span>
                                     <span class="block text-gold font-semibold mt-1">$8</span>
                                 </button>
-                                <button type="button" data-serv="Jelly Tip (Soft Gel)" data-val="9" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs">
+                                <button type="button" data-serv="Jelly Tip (Soft Gel)" data-val="9" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Jelly Tip</span>
                                     <span class="block text-gold font-semibold mt-1">$9</span>
                                 </button>
-                                <button type="button" data-serv="Polygel Esculpido o Tips" data-val="11" data-span="col-span-2 sm:col-span-2" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs col-span-2 sm:col-span-2">
+                                <button type="button" data-serv="Polygel Esculpido o Tips" data-val="11" data-span="col-span-2 sm:col-span-2" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs col-span-2 sm:col-span-2">
                                     <span class="block text-ivory font-medium leading-tight">Polygel Esculpido o Tips</span>
                                     <span class="block text-gold font-semibold mt-1">$11</span>
                                 </button>
                             </div>
                             <p class="text-xs text-champagne/75 font-medium pt-1">Combos Manos + Pies (Ahorra $2)</p>
                             <div class="grid grid-cols-3 gap-2">
-                                <button type="button" data-serv="Combo Dúo Clásico (Manos + Pies)" data-val="10" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs">
+                                <button type="button" data-serv="Combo Dúo Clásico (Manos + Pies)" data-val="10" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Dúo Clásico</span>
                                     <span class="block text-gold font-semibold mt-1">$10</span>
                                 </button>
-                                <button type="button" data-serv="Combo Dúo Rubber + Pedi Spa" data-val="12" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-gold/40 text-xs">
+                                <button type="button" data-serv="Combo Dúo Rubber + Pedi Spa" data-val="12" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-gold/40 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Dúo Rubber</span>
                                     <span class="block text-gold font-semibold mt-1">$12</span>
                                 </button>
-                                <button type="button" data-serv="Combo Dúo Jelly Tip + Pedi Spa" data-val="13" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs">
+                                <button type="button" data-serv="Combo Dúo Jelly Tip + Pedi Spa" data-val="13" onclick="elegirServicioPill(this)" class="serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs">
                                     <span class="block text-ivory font-medium leading-tight">Dúo Jelly</span>
                                     <span class="block text-gold font-semibold mt-1">$13</span>
                                 </button>
@@ -699,7 +741,7 @@
                                 <span class="block text-ivory font-semibold">Mañana</span>
                                 <span class="block text-[11px] text-champagne/75 mt-0.5">9:00 AM – 1:00 PM</span>
                             </button>
-                            <button type="button" data-turno="Tarde (2:00 PM - 6:00 PM)" onclick="elegirTurnoPill(this)" class="turno-pill pressable py-3 px-3.5 rounded-xl bg-dark-950 border border-champagne/15 text-center text-xs">
+                            <button type="button" data-turno="Tarde (2:00 PM - 6:00 PM)" onclick="elegirTurnoPill(this)" class="turno-pill pressable py-3 px-3.5 rounded-xl bg-dark-950/85 border border-champagne/15 text-center text-xs">
                                 <span class="block text-ivory font-medium">Tarde</span>
                                 <span class="block text-[11px] text-champagne/65 mt-0.5">2:00 PM – 6:00 PM</span>
                             </button>
@@ -708,11 +750,11 @@
 
                         <div>
                             <label for="nombreCliente" class="sr-only">Tu nombre</label>
-                            <input type="text" id="nombreCliente" placeholder="Tu nombre (Ej: María Pérez)" required class="w-full bg-dark-950 border border-champagne/18 rounded-xl px-4 py-3 text-sm text-ivory placeholder-champagne/40 focus:outline-none focus:border-gold">
+                            <input type="text" id="nombreCliente" placeholder="Tu nombre (Ej: María Pérez)" required class="w-full bg-dark-950/90 border border-champagne/18 rounded-xl px-4 py-3 text-sm text-ivory placeholder-champagne/40 focus:outline-none focus:border-gold">
                         </div>
 
                         <!-- Extras y nota de diseño plegables para cero ruido visual -->
-                        <details id="extrasDetails" class="rounded-2xl bg-dark-950 border border-champagne/12 px-4 py-3">
+                        <details id="extrasDetails" class="rounded-2xl bg-dark-950/85 border border-champagne/12 px-4 py-3">
                             <summary class="cursor-pointer flex items-center justify-between text-xs text-champagne/85 font-medium select-none">
                                 <span>Agregar diseño o extras opcionales (+$1 / +$2)</span>
                                 <span class="faq-plus text-gold text-base leading-none">+</span>
@@ -764,7 +806,7 @@
     </section>
 
     <!-- 5. SOBRE JENI + CÓDIGO QR EN UN SOLO SPREAD EDITORIAL -->
-    <section id="sobre-jeni" class="lazy-section py-16 sm:py-24 bg-dark-950 border-t border-champagne/10 relative z-10">
+    <section id="sobre-jeni" class="lazy-section py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
@@ -830,7 +872,7 @@
     </section>
 
     <!-- 6. PREGUNTAS FRECUENTES (Acordeón compacto, cero muros de texto) -->
-    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-900/60 border-t border-champagne/10 relative z-10">
+    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-950/35 border-t border-champagne/12 relative z-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="mb-8">
                 <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Información Útil</p>
@@ -882,7 +924,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-10 bg-dark-950 border-t border-champagne/10 text-champagne/60 text-xs text-center relative z-10">
+    <footer class="py-10 bg-dark-950/60 border-t border-champagne/12 text-champagne/65 text-xs text-center relative z-10">
         <div class="max-w-5xl mx-auto px-4 space-y-2">
             <p class="font-display text-lg font-medium text-ivory">JeniNails</p>
             <p class="text-champagne/80">Viernes, Sábado y Domingo · Barquisimeto Centro, Venezuela</p>
@@ -891,7 +933,7 @@
     </footer>
 
     <!-- BARRA MÓVIL FIJA LIMPIA -->
-    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-dark-950 border-t border-champagne/15 px-4 py-3 safe-bottom flex items-center justify-between gap-3">
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-dark-950/92 border-t border-champagne/15 px-4 py-3 safe-bottom flex items-center justify-between gap-3">
         <div>
             <div class="text-[10px] uppercase tracking-wider text-gold font-semibold">Viernes, Sábado y Domingo</div>
             <div class="text-xs font-medium text-ivory mt-0.5">Citas desde $6 · Combos desde $10</div>
@@ -966,7 +1008,7 @@
                         <h4 class="font-display text-sm sm:text-base font-medium text-ivory group-hover:text-gold transition-colors leading-snug">${f.title}</h4>
                         <span class="font-display text-sm sm:text-base text-gold tabular-nums shrink-0">${f.precio}</span>
                     </div>
-                    <p class="text-[11px] text-champagne/60 mt-0.5 truncate">${nuevoTag}${f.serv}</p>
+                    <p class="text-[11px] text-champagne/65 mt-0.5 truncate">${nuevoTag}${f.serv}</p>
                 `;
                 frag.appendChild(card);
             });
@@ -992,7 +1034,7 @@
 
         function filtrarGaleria(cat, btnEl) {
             document.querySelectorAll(".filter-btn").forEach(b => {
-                b.className = "filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900 text-champagne/80 border border-champagne/15 hover:border-gold/50";
+                b.className = "filter-btn pressable px-3.5 py-2 rounded-full bg-dark-900/80 text-champagne/85 border border-champagne/15 hover:border-gold/50";
             });
             if (btnEl) {
                 btnEl.className = "filter-btn pressable px-3.5 py-2 rounded-full bg-gold text-dark-950 font-semibold";
@@ -1060,7 +1102,7 @@
                 btn.onclick = () => elegirWeekendPill(btn);
                 btn.className = idx === 0
                     ? "wk-pill pressable py-3 px-2 rounded-xl bg-gold/15 border border-gold text-center"
-                    : "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950 border border-champagne/15 text-center";
+                    : "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950/85 border border-champagne/15 text-center";
                 btn.innerHTML = `
                     <span class="block text-xs font-semibold text-ivory">${DIAS_ES[d.getDay()]}</span>
                     <span class="block text-[11px] text-champagne/75 mt-0.5">${d.getDate()} ${MESES_CORTO[d.getMonth()]}</span>
@@ -1076,7 +1118,7 @@
 
         function elegirWeekendPill(btnEl) {
             document.querySelectorAll(".wk-pill").forEach(b => {
-                b.className = "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950 border border-champagne/15 text-center";
+                b.className = "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950/85 border border-champagne/15 text-center";
             });
             btnEl.className = "wk-pill pressable py-3 px-2 rounded-xl bg-gold/15 border border-gold text-center";
             const fechaInput = document.getElementById("fechaCita");
@@ -1112,7 +1154,7 @@
                 const active = b.dataset.iso === inputEl.value;
                 b.className = active
                     ? "wk-pill pressable py-3 px-2 rounded-xl bg-gold/15 border border-gold text-center"
-                    : "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950 border border-champagne/15 text-center";
+                    : "wk-pill pressable py-3 px-2 rounded-xl bg-dark-950/85 border border-champagne/15 text-center";
             });
             return true;
         }
@@ -1131,7 +1173,7 @@
                 const span = p.dataset.span ? " " + p.dataset.span : "";
                 p.className = (match
                     ? "serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-gold/15 border border-gold text-xs"
-                    : "serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950 border border-champagne/15 text-xs") + span;
+                    : "serv-pill pressable text-left p-2.5 sm:p-3 rounded-xl bg-dark-950/85 border border-champagne/15 text-xs") + span;
             });
             calcularTotal();
         }
@@ -1142,7 +1184,7 @@
 
         function elegirTurnoPill(btnEl) {
             document.querySelectorAll(".turno-pill").forEach(b => {
-                b.className = "turno-pill pressable py-3 px-3.5 rounded-xl bg-dark-950 border border-champagne/15 text-center text-xs";
+                b.className = "turno-pill pressable py-3 px-3.5 rounded-xl bg-dark-950/85 border border-champagne/15 text-center text-xs";
             });
             btnEl.className = "turno-pill pressable py-3 px-3.5 rounded-xl bg-gold/15 border border-gold text-center text-xs";
             const input = document.getElementById("horaCita");
@@ -1214,6 +1256,65 @@
             const mensaje = `¡Hola Jeni!\nMi nombre es *${nombre}*.\nQuisiera agendar una cita en tu estudio en Barquisimeto:\n\n• *Servicio:* ${servicioNombre}\n• *Diseño o idea:* ${diseno}${extrasTexto}\n• *Fecha estimada:* ${fechaTexto}\n• *Turno:* ${turno}\n• *Total estimado:* ${total}\n\n¿Tienes disponibilidad para ese día? ¡Muchas gracias!`;
             const url = `https://wa.me/584245766425?text=${encodeURIComponent(mensaje)}`;
             window.open(url, "_blank");
+        }
+
+        // Micro-glitter Ojo de Gato ultra-ligero (activo en móvil y desktop, ~24FPS, cero shadowBlur)
+        function initCatEyeGlitterLite() {
+            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const canvas = document.getElementById("catEyeCanvas");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d", { alpha: true });
+            if (!ctx) return;
+
+            let w = 0, h = 0, lastFrame = 0, tick = 0;
+            const isMobile = window.innerWidth < 768;
+            const count = isMobile ? 22 : 38;
+            const palette = ["#D8B478", "#E7CA99", "#FF007F", "#8A2BE2", "#FAF6F0"];
+            const particles = [];
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener("resize", resize, { passive: true });
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: Math.random() * 1.6 + 0.7,
+                    vy: Math.random() * 0.35 + 0.14,
+                    vx: (Math.random() - 0.5) * 0.16,
+                    phase: Math.random() * Math.PI * 2,
+                    color: palette[i % palette.length]
+                });
+            }
+
+            function frame(now) {
+                requestAnimationFrame(frame);
+                if (document.hidden || now - lastFrame < 40) return; // ~25 FPS, pausa en segundo plano
+                lastFrame = now;
+                tick += 0.08;
+                ctx.clearRect(0, 0, w, h);
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.y -= p.vy;
+                    p.x += p.vx;
+                    if (p.y < -6) { p.y = h + 6; p.x = Math.random() * w; }
+                    if (p.x < -6) p.x = w + 6;
+                    if (p.x > w + 6) p.x = -6;
+
+                    ctx.globalAlpha = 0.28 + 0.52 * (0.5 + 0.5 * Math.sin(tick + p.phase));
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, 6.283);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+            requestAnimationFrame(frame);
         }
 
         let qrCargado = false;
@@ -1288,6 +1389,7 @@
             renderizarGaleria("todos");
             renderWeekendPills();
             calcularTotal();
+            initCatEyeGlitterLite();
 
             const yearEl = document.getElementById("currentYear");
             if (yearEl) yearEl.innerText = new Date().getFullYear();
