@@ -4,6 +4,7 @@
  * - Physically removes legacy .galaxy-stage & #catEyeCanvas so zero old loops burn mobile CPU/GPU
  * - Bulletproof 60 FPS GPU Dual-Comet Orbit Border on "Pedir cita" & WhatsApp CTAs
  *   (real DOM layers z-index 0/1/2, immune to Android prefers-reduced-motion & ::before clipping)
+ * - Clean luminous sapphire-pearl rotating halo frame AROUND Jennifer's portrait in #sobre-jeni (never covers face)
  * - Larger, crisp Jennifer portrait + 60 FPS native WebGL 1.0 (0 KB external JS libraries)
  */
 (function () {
@@ -164,6 +165,42 @@
     '  }',
     '}',
     '',
+    /* Clean Rotating Sapphire-Pearl Halo Frame AROUND Jennifer Portrait in #sobre-jeni (NEVER covers face!) */
+    '#sobre-jeni .rounded-full[class*="from-gold"] {',
+    '  position: relative !important;',
+    '  overflow: hidden !important;',
+    '  isolation: isolate !important;',
+    '  padding: 3px !important;',
+    '  background: #041026 !important;',
+    '  box-shadow: 0 0 0 1px rgba(116, 210, 255, 0.34), 0 0 26px rgba(43, 184, 255, 0.42), 0 0 16px rgba(246, 198, 234, 0.24) !important;',
+    '}',
+    '#sobre-jeni .rounded-full[class*="from-gold"]::before {',
+    '  content: "" !important;',
+    '  position: absolute !important;',
+    '  top: 50% !important;',
+    '  left: 50% !important;',
+    '  width: 220px !important;',
+    '  height: 220px !important;',
+    '  z-index: 0 !important;',
+    '  background: conic-gradient(from 0deg, transparent 0deg, #168CFF 35deg, #7CE2FF 70deg, #FFFFFF 90deg, #F6C6EA 112deg, transparent 148deg, transparent 180deg, #168CFF 215deg, #7CE2FF 250deg, #FFFFFF 270deg, #F6C6EA 292deg, transparent 328deg, transparent 360deg) !important;',
+    '  -webkit-animation: jnOrbitSpin 3.4s linear infinite !important;',
+    '  animation: jnOrbitSpin 3.4s linear infinite !important;',
+    '  will-change: transform !important;',
+    '  pointer-events: none !important;',
+    '}',
+    '#sobre-jeni .rounded-full[class*="from-gold"] img {',
+    '  position: relative !important;',
+    '  z-index: 2 !important;',
+    '  display: block !important;',
+    '  width: 100% !important;',
+    '  height: 100% !important;',
+    '  border-radius: 9999px !important;',
+    '  border: 2px solid #02050E !important;',
+    '  object-fit: cover !important;',
+    '  object-position: center 18% !important;',
+    '  background-color: #02050E !important;',
+    '}',
+    '',
     /* Continuous 4D Flow between sections */
     'section, section#servicios, section#galeria, section#agendar, section#sobre-jeni, section#faq {',
     '  background-color: transparent !important;',
@@ -242,9 +279,7 @@
     '',
     /* =========================================================================
        2027 BULLETPROOF 60 FPS DUAL-COMET ORBIT BORDER FOR "PEDIR CITA" & CTAs
-       Uses real GPU-composited DOM layers (z-index 0 / 1 / 2) — NO negative
-       z-index ::before hacks that clip or freeze in Chrome Android!
-       Immune to MIUI/HyperOS prefers-reduced-motion throttling.
+       Scoped strictly to buttons & links (never matches portrait wrapper divs!)
        ========================================================================= */
     '@-webkit-keyframes jnOrbitSpin {',
     '  0%   { -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg); transform: translate3d(-50%, -50%, 0) rotate(0deg); }',
@@ -254,7 +289,7 @@
     '  0%   { -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg); transform: translate3d(-50%, -50%, 0) rotate(0deg); }',
     '  100% { -webkit-transform: translate3d(-50%, -50%, 0) rotate(360deg); transform: translate3d(-50%, -50%, 0) rotate(360deg); }',
     '}',
-    'button.bg-gold, a.bg-gold, .bg-gold, [class*="bg-gold/90"], [class*="from-gold"], .jn-orbit-cta {',
+    'button.bg-gold, a.bg-gold, button[class*="bg-gold/90"], a[class*="bg-gold/90"], button[class*="from-gold"], a[class*="from-gold"], .jn-orbit-cta {',
     '  position: relative !important;',
     '  overflow: hidden !important;',
     '  isolation: isolate !important;',
@@ -267,13 +302,11 @@
     '  box-shadow: 0 0 0 1px rgba(116, 210, 255, 0.28), 0 10px 28px rgba(43, 184, 255, 0.36), 0 0 18px rgba(246, 198, 234, 0.22) !important;',
     '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
     '}',
-    /* Disable legacy pseudo-elements once real DOM orbit layers are mounted */
     '.jn-orbit-cta::before, .jn-orbit-cta::after {',
     '  content: none !important;',
     '  display: none !important;',
     '}',
-    /* Pure-CSS fallback before DOMContentLoaded finishes (zero flicker) */
-    'button.bg-gold:not(.jn-orbit-cta)::before, a.bg-gold:not(.jn-orbit-cta)::before, .bg-gold:not(.jn-orbit-cta)::before, [class*="bg-gold/90"]:not(.jn-orbit-cta)::before, [class*="from-gold"]:not(.jn-orbit-cta)::before {',
+    'button.bg-gold:not(.jn-orbit-cta)::before, a.bg-gold:not(.jn-orbit-cta)::before, button[class*="bg-gold/90"]:not(.jn-orbit-cta)::before, a[class*="bg-gold/90"]:not(.jn-orbit-cta)::before {',
     '  content: "" !important;',
     '  position: absolute !important;',
     '  top: 50% !important;',
@@ -287,7 +320,6 @@
     '  will-change: transform !important;',
     '  pointer-events: none !important;',
     '}',
-    /* Real DOM GPU Spinner (z-index: 0) — dual opposing luminous comets (0deg & 180deg) */
     '.jn-orbit-beam {',
     '  position: absolute !important;',
     '  top: 50% !important;',
@@ -302,7 +334,6 @@
     '  will-change: transform !important;',
     '  pointer-events: none !important;',
     '}',
-    /* Real DOM Inner Velvet Jewel Cap (z-index: 1) — leaves crisp 2px moving luminous border */
     '.jn-orbit-inner {',
     '  position: absolute !important;',
     '  inset: 2px !important;',
@@ -312,7 +343,6 @@
     '  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;',
     '  pointer-events: none !important;',
     '}',
-    /* Real DOM Foreground Label (z-index: 2) — crisp text & icons above the glowing rim */
     '.jn-orbit-label {',
     '  position: relative !important;',
     '  z-index: 2 !important;',
@@ -324,7 +354,7 @@
     '  color: #FFFFFF !important;',
     '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
     '}',
-    'button.bg-gold *, a.bg-gold *, .bg-gold *, .jn-orbit-cta * {',
+    'button.bg-gold *, a.bg-gold *, .jn-orbit-cta * {',
     '  color: #FFFFFF !important;',
     '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
     '}',
@@ -406,9 +436,8 @@
     '}',
     '::-webkit-scrollbar-track { background: #000103 !important; }',
     '::-webkit-scrollbar-thumb { background: rgba(116, 210, 255, 0.36) !important; }',
-    /* Respect reduced-motion on hover/layout transitions, but keep signature CTA orbit gently alive on Android */
     '@media (prefers-reduced-motion: reduce) {',
-    '  .jn-orbit-beam {',
+    '  .jn-orbit-beam, #sobre-jeni .rounded-full[class*="from-gold"]::before {',
     '    -webkit-animation-duration: 3.8s !important;',
     '    animation-duration: 3.8s !important;',
     '  }',
@@ -436,6 +465,7 @@
       var isBookingCta =
         txt.indexOf('pedir cita') !== -1 ||
         txt.indexOf('agendar cita') !== -1 ||
+        txt.indexOf('confirmar cita') !== -1 ||
         txt.indexOf('confirmar y enviar al whatsapp') !== -1 ||
         txt.indexOf('escribirme al whatsapp') !== -1 ||
         onclickAttr.indexOf('enviarwhatsapp') !== -1;
@@ -445,7 +475,6 @@
 
       el.classList.add('jn-orbit-cta');
 
-      // Wrap existing child nodes in foreground label (z-index: 2) without breaking event listeners
       var label = document.createElement('span');
       label.className = 'jn-orbit-label';
       while (el.firstChild) {
