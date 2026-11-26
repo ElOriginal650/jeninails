@@ -15,7 +15,7 @@
     <meta name="geo.position" content="10.0678;-69.3474">
     <meta name="ICBM" content="10.0678, -69.3474">
 
-    <!-- Open Graph & WhatsApp Preview Ultra-Compatible -->
+    <!-- Open Graph & WhatsApp Preview -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_VE">
     <meta property="og:site_name" content="JeniNails Studio">
@@ -27,7 +27,7 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
-    <meta property="og:image:alt" content="💅 JeniNails Studio - Uñas y Manicura en Barquisimeto Centro">
+    <meta property="og:image:alt" content="JeniNails Studio - Uñas y Manicura en Barquisimeto Centro">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JeniNails | Uñas con Jeni en Barquisimeto Centro">
     <meta name="twitter:description" content="Estudio en casa (Viernes, Sábado y Domingo previa cita): Manicura ($6), Pedicura ($6), Nivelación ($8), Jelly Tip ($9) y Polygel ($11).">
@@ -99,11 +99,11 @@
     }
     </script>
 
-    <!-- Fuentes optimizadas: solo pesos esenciales y carga no bloqueante -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fuentes editoriales: pesos esenciales, carga no bloqueante -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -112,11 +112,10 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { 950: "#060409", 900: "#0D0914", 850: "#140F1E", 800: "#1C152B" },
-                        champagne: { light: "#FAF4ED", DEFAULT: "#EAD7BF", dark: "#CDB08E" },
-                        gold: { DEFAULT: "#D8B478", light: "#EAD1A6", dark: "#B88F48" },
-                        rose: { soft: "#E8B8BE", muted: "#C8959C", deep: "#8C1D40" },
-                        cateye: { violet: "#8A2BE2", magenta: "#FF007F", cyan: "#00F2FE", amber: "#FFB300" }
+                        dark: { 950: "#07050A", 900: "#0F0C15", 850: "#171220", 800: "#20192C" },
+                        ivory: "#FAF7F2",
+                        champagne: { light: "#F5EBDD", DEFAULT: "#E6D3B8", dark: "#C5AD8C" },
+                        gold: { DEFAULT: "#D6B274", light: "#E8CCA0", dark: "#B08A4B" }
                     },
                     fontFamily: {
                         display: ["Playfair Display", "Georgia", "serif"],
@@ -127,108 +126,105 @@
         }
     </script>
     <style>
-        /* ==============================================================
-           MODO ULTRA-LIGERO (GAMA BAJA + INTERNET LENTA VENEZUELA)
-           Cero blur(80px) en loop, cero repaint constante, scroll 60FPS
-           ============================================================== */
-        html, body {
-            overflow-x: clip;
-            background-color: #060409;
+        :root {
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            color-scheme: dark;
         }
 
-        /* Fondo estático de alta elegancia sin sobreconsumo de GPU */
-        .aurora-bg {
+        html, body {
+            overflow-x: clip;
+            background-color: #07050A;
+            color: #FAF7F2;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Fondo editorial estático ultraligero (cero blur animado, cero lag en gama baja) */
+        .atelier-bg {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            background-color: #060409;
+            background-color: #07050A;
             background-image:
-                radial-gradient(circle at 12% 10%, rgba(138, 43, 226, 0.22) 0%, transparent 45%),
-                radial-gradient(circle at 88% 35%, rgba(255, 0, 127, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 20% 88%, rgba(216, 180, 120, 0.16) 0%, transparent 50%);
+                radial-gradient(ellipse 60% 45% at 15% 0%, rgba(140, 88, 128, 0.16) 0%, transparent 65%),
+                radial-gradient(ellipse 55% 45% at 88% 20%, rgba(214, 178, 116, 0.10) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 45% at 50% 100%, rgba(110, 62, 102, 0.12) 0%, transparent 65%);
         }
 
-        /* Canvas desactivado en móvil por defecto; solo activo en pantallas grandes con buena CPU */
-        #catEyeCanvas {
-            display: none;
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            mix-blend-mode: screen;
-            opacity: 0.75;
+        .editorial-panel {
+            background: #100C17;
+            border: 1px solid rgba(230, 211, 184, 0.14);
+            box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.85);
         }
 
-        /* Paneles y tarjetas rápidas: sin backdrop-filter pesado en móviles de gama baja */
-        .glass-panel {
-            background: rgba(18, 14, 26, 0.94);
-            border: 1px solid rgba(234, 215, 191, 0.16);
-            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.65);
-        }
-
-        .glass-card {
-            background: rgba(20, 15, 29, 0.90);
-            border: 1px solid rgba(234, 215, 191, 0.14);
-            transition: border-color 0.2s ease, transform 0.2s ease;
+        .editorial-card {
+            background: #120E1A;
+            border: 1px solid rgba(230, 211, 184, 0.12);
+            transition: transform 180ms var(--ease-out), border-color 180ms ease;
         }
 
         @media (min-width: 768px) {
-            .glass-panel {
-                background: rgba(18, 14, 26, 0.78);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-            }
-            .glass-card {
-                background: rgba(20, 15, 29, 0.72);
-            }
-            .glass-card:hover {
-                border-color: rgba(216, 180, 120, 0.5);
-                transform: translateY(-3px);
-                box-shadow: 0 16px 32px -10px rgba(216, 180, 120, 0.22);
+            .editorial-card:hover {
+                border-color: rgba(214, 178, 116, 0.42);
+                transform: translateY(-2px);
             }
         }
 
+        .pressable {
+            transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+        }
+        .pressable:active {
+            transform: scale(0.97);
+        }
+
         .luxury-gradient-text {
-            background: linear-gradient(135deg, #FFFFFF 15%, #FAF4ED 45%, #EAD7BF 70%, #D8B478 95%);
+            background: linear-gradient(135deg, #FAF7F2 10%, #E6D3B8 55%, #D6B274 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .badge-luxury {
-            background: rgba(234, 215, 191, 0.10);
-            border: 1px solid rgba(234, 215, 191, 0.28);
-            color: #EAD7BF;
-        }
-
-        /* Renderizado diferido de secciones fuera de pantalla (acelera apertura en gama baja) */
         .lazy-section {
             content-visibility: auto;
-            contain-intrinsic-size: 1px 650px;
+            contain-intrinsic-size: 1px 640px;
         }
 
-        /* Stickers suaves solo en desktop; estáticos en móvil para cero lag */
-        .nail-glow-card {
-            box-shadow: 0 0 24px rgba(216, 180, 120, 0.22);
+        /* Controles de formulario en modo oscuro impecable */
+        input[type="date"] {
+            color-scheme: dark;
         }
 
-        @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-            @keyframes floatSlow1 {
-                0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
-                50% { transform: translateY(-6px) rotate(1.5deg); }
-            }
-            @keyframes floatSlow2 {
-                0%, 100% { transform: translateY(0px) rotate(1.5deg); }
-                50% { transform: translateY(-7px) rotate(-1.5deg); }
-            }
-            .nail-sticker-1 { animation: floatSlow1 5s ease-in-out infinite; }
-            .nail-sticker-2 { animation: floatSlow2 5.8s ease-in-out infinite; }
+        .custom-check {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 5px;
+            border: 1px solid rgba(230, 211, 184, 0.35);
+            background-color: #0F0C15;
+            display: inline-grid;
+            place-content: center;
+            flex-shrink: 0;
+            transition: background-color 150ms ease, border-color 150ms ease;
+        }
+        .custom-check::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            transform: scale(0);
+            transition: transform 140ms var(--ease-out);
+            background-color: #07050A;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        .custom-check:checked {
+            background-color: #D6B274;
+            border-color: #D6B274;
+        }
+        .custom-check:checked::before {
+            transform: scale(1);
         }
 
         #selectionToast {
-            transition: opacity 0.25s ease;
+            transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
         }
 
         .safe-bottom {
@@ -236,158 +232,119 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #060409; }
-        ::-webkit-scrollbar-thumb { background: #261D33; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D8B478; }
+        ::-webkit-scrollbar-track { background: #07050A; }
+        ::-webkit-scrollbar-thumb { background: #261E34; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D6B274; }
     </style>
 </head>
-<body class="text-stone-100 font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
+<body class="font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
 
-    <!-- Fondo ligero en CSS + Canvas condicional solo desktop -->
-    <div class="aurora-bg" aria-hidden="true"></div>
-    <canvas id="catEyeCanvas" aria-hidden="true"></canvas>
+    <div class="atelier-bg" aria-hidden="true"></div>
 
-    <!-- NOTIFICACIÓN SUPERIOR DE ESTADO Y HORARIO -->
-    <div class="relative z-20 bg-dark-950/95 border-b border-champagne/15 text-stone-300 text-[11px] sm:text-xs py-2 px-3 text-center tracking-wide flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-        <span class="font-semibold text-white">Barquisimeto Centro</span>
-        <span class="text-champagne/40">•</span>
-        <span class="text-gold font-bold">Solo Viernes, Sábado y Domingo</span>
-        <span class="hidden sm:inline text-champagne/40">|</span>
-        <span class="hidden sm:inline text-champagne">💅 Previa Cita por WhatsApp</span>
+    <!-- Barra superior editorial -->
+    <div class="relative z-30 bg-dark-950 border-b border-champagne/10 text-champagne/85 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold"></span>
+        <span class="text-ivory font-medium">Barquisimeto Centro</span>
+        <span class="text-champagne/30">·</span>
+        <span class="text-gold font-semibold">Solo Viernes, Sábado y Domingo</span>
+        <span class="hidden sm:inline text-champagne/30">·</span>
+        <span class="hidden sm:inline text-champagne/80">Atención 1 a 1 previa cita</span>
     </div>
 
-    <!-- CABECERA -->
-    <header class="sticky top-0 z-40 bg-dark-950/95 border-b border-champagne/15">
+    <!-- Encabezado sólido (cero transparencia que mezcle textos al scrollear) -->
+    <header class="sticky top-0 z-40 bg-dark-950 border-b border-champagne/12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="relative">
-                    <img src="jeni-avatar.svg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1oozpKgmkCNvNud0hyYZq4tLm01SmMPrz=w160';" alt="Jeni Avatar" width="44" height="44" decoding="async" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-gold/70 shadow-md">
-                    <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-dark-950 border border-gold flex items-center justify-center text-[10px] shadow" title="Nail Tech">💅</span>
-                </div>
+            <a href="#" class="flex items-center gap-3 group pressable">
+                <img src="jeni-avatar.svg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7=w160';" alt="JeniNails - Jennifer Álvarez" width="42" height="42" decoding="async" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-gold/60 bg-dark-900">
                 <div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-display text-xl sm:text-2xl font-bold tracking-tight text-white block leading-tight">JeniNails</span>
-                        <span class="text-xs text-gold">✨</span>
-                    </div>
-                    <span class="text-[9px] tracking-[0.22em] uppercase text-champagne/90 font-medium block">Jennifer Álvarez</span>
+                    <span class="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ivory block leading-none">JeniNails</span>
+                    <span class="text-[10px] tracking-[0.22em] uppercase text-champagne/75 font-medium block mt-1">Jennifer Álvarez</span>
                 </div>
             </a>
 
-            <nav class="hidden md:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold text-stone-300">
-                <a href="#servicios" class="hover:text-champagne transition">Servicios</a>
-                <a href="#galeria" class="hover:text-champagne transition">Fotos Reales</a>
-                <a href="#sobre-jeni" class="hover:text-champagne transition">Sobre Jeni</a>
-                <a href="#faq" class="hover:text-champagne transition">Dudas</a>
-                <a href="#qr-code" class="text-gold font-bold hover:text-champagne transition flex items-center gap-1">
-                    <span>💅 Código QR</span>
-                </a>
+            <nav class="hidden md:flex items-center gap-7 text-xs tracking-wider uppercase font-medium text-champagne/75">
+                <a href="#servicios" class="hover:text-ivory transition-colors">Servicios</a>
+                <a href="#galeria" class="hover:text-ivory transition-colors">Portafolio</a>
+                <a href="#sobre-jeni" class="hover:text-ivory transition-colors">Sobre Jeni</a>
+                <a href="#faq" class="hover:text-ivory transition-colors">Preguntas</a>
+                <a href="#qr-code" class="text-gold hover:text-gold-light transition-colors">Código QR</a>
             </nav>
 
-            <a href="#agendar" class="bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 text-xs sm:text-sm font-bold py-2 px-4 sm:py-2.5 sm:px-5 rounded-full shadow-md transition active:scale-95 flex items-center gap-1.5">
-                <span>Pedir Cita</span>
-                <span>→</span>
+            <a href="#agendar" class="pressable bg-gold hover:bg-gold-light text-dark-950 text-xs sm:text-sm font-semibold py-2 px-4 sm:py-2.5 sm:px-5 rounded-full flex items-center gap-1.5">
+                <span>Pedir cita</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
     </header>
 
-    <!-- HERO SECTION: PORTADA DE AUTOR -->
-    <section class="relative z-10 pt-8 pb-14 md:pt-14 md:pb-20 overflow-hidden">
+    <!-- HERO EDITORIAL -->
+    <section class="relative z-10 pt-10 pb-16 md:pt-16 md:pb-24">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
                 <!-- Columna Texto -->
-                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-luxury text-xs font-semibold uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-gold"></span>
-                        <span>Home Studio • Viernes, Sábado y Domingo</span>
-                    </div>
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold">
+                        Estudio Privado en Casa · Viernes, Sábado y Domingo
+                    </p>
 
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12]">
-                        Uñas bonitas, duraderas <br>
-                        <span class="luxury-gradient-text">y a precio justo.</span>
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight leading-[1.08] text-ivory">
+                        Uñas finas, duraderas y a precio justo.
                     </h1>
 
-                    <p class="text-stone-300 text-sm sm:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed font-normal">
-                        Hola, soy <strong class="text-white">Jeni</strong>. Hago uñas con calma y detalle desde mi estudio en casa en el centro de Barquisimeto. Atiendo <strong class="text-gold">Viernes, Sábado y Domingo</strong> previa cita con <strong class="text-white">Polygel</strong>, <strong class="text-white">Jelly Tip</strong>, <strong class="text-white">Nivelación Rubber</strong> y <strong class="text-white">Pedicura Spa</strong>.
+                    <p class="text-champagne/80 text-sm sm:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Hola, soy <strong class="text-ivory font-semibold">Jennifer</strong>. Te atiendo 1 a 1 con calma y detalle en mi estudio en casa en Barquisimeto Centro. Trabajo Polygel, Jelly Tip, Nivelación Rubber y Pedicura Spa los <strong class="text-gold font-semibold">viernes, sábados y domingos</strong> previa cita.
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
-                        <a href="#agendar" class="w-full sm:w-auto bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 text-sm font-extrabold py-3.5 px-7 rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2.5">
+                        <a href="#agendar" class="pressable w-full sm:w-auto bg-gold hover:bg-gold-light text-dark-950 text-sm font-semibold py-3.5 px-7 rounded-xl flex items-center justify-center gap-2.5">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
-                            <span>Escribirme al WhatsApp</span>
+                            <span>Agendar por WhatsApp</span>
                         </a>
-                        <a href="#servicios" class="w-full sm:w-auto bg-dark-850 hover:bg-dark-800 text-stone-200 text-sm font-semibold py-3.5 px-6 rounded-xl border border-champagne/20 transition flex items-center justify-center gap-2">
-                            <span>Ver los 5 Servicios y Precios</span>
+                        <a href="#servicios" class="pressable w-full sm:w-auto bg-dark-850 hover:bg-dark-800 text-ivory text-sm font-medium py-3.5 px-6 rounded-xl border border-champagne/18 flex items-center justify-center gap-2">
+                            <span>Ver servicios y precios</span>
                         </a>
                     </div>
 
-                    <!-- Métodos de pago aceptados -->
-                    <div class="pt-4 border-t border-champagne/10 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-stone-400">
-                        <span class="font-bold text-stone-200">Formas de pago:</span>
-                        <span class="bg-dark-850 px-2.5 py-1 rounded-md border border-champagne/15 text-stone-300">💵 Efectivo $</span>
-                        <span class="bg-dark-850 px-2.5 py-1 rounded-md border border-champagne/15 text-stone-300">📲 Pago Móvil (BCV)</span>
-                        <span class="bg-dark-850 px-2.5 py-1 rounded-md border border-champagne/15 text-stone-300">🟡 Binance</span>
+                    <!-- Métodos de pago limpios -->
+                    <div class="pt-5 border-t border-champagne/12 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs text-champagne/75">
+                        <span class="text-ivory font-medium">Formas de pago:</span>
+                        <span class="inline-flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+                            Efectivo USD
+                        </span>
+                        <span class="inline-flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                            Pago Móvil (BCV)
+                        </span>
+                        <span class="inline-flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="12 2 22 12 12 22 2 12 12 2"/></svg>
+                            Binance Pay
+                        </span>
                     </div>
                 </div>
 
-                <!-- Columna Portada -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-xs sm:max-w-sm rounded-3xl p-2 bg-gradient-to-b from-champagne/35 via-gold/20 to-transparent shadow-2xl nail-glow-card">
-
-                        <!-- Stickers -->
-                        <div class="absolute -top-3.5 -left-2 sm:-left-4 z-30 nail-sticker-1">
-                            <div class="glass-panel px-3 py-1.5 rounded-full border border-gold/60 shadow-lg flex items-center gap-1.5 text-xs font-bold text-white bg-dark-900">
-                                <span>💅</span>
-                                <span class="text-gold">Cat Eye Velvet</span>
-                                <span class="text-[10px] bg-rose-deep px-1.5 py-0.5 rounded text-white font-extrabold">2026</span>
-                            </div>
-                        </div>
-
-                        <div class="absolute -bottom-3 -right-2 sm:-right-3 z-30 nail-sticker-2">
-                            <div class="glass-panel px-3.5 py-1.5 rounded-2xl border border-champagne/40 shadow-lg flex items-center gap-2 text-xs font-semibold text-white bg-dark-950">
-                                <span class="text-base">✨</span>
-                                <div class="text-left">
-                                    <div class="text-[10px] text-stone-400 leading-tight">Garantía Jeni</div>
-                                    <div class="text-xs font-bold text-champagne">21+ Días Intactas</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute top-1/2 -right-5 z-30 hidden sm:block nail-sticker-1">
-                            <div class="w-10 h-10 rounded-full glass-panel border border-gold/50 flex items-center justify-center text-lg shadow-lg" title="Esmalte Profesional">
-                                🧴
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta de la Portada -->
-                        <div class="rounded-2xl overflow-hidden bg-dark-900 relative group">
+                <!-- Columna Portada Limpia (cero stickers tapando el botón) -->
+                <div class="lg:col-span-5">
+                    <div class="mx-auto max-w-sm rounded-3xl overflow-hidden editorial-panel border-champagne/20">
+                        <div class="relative aspect-[4/5] bg-dark-900 overflow-hidden">
                             <img src="https://lh3.googleusercontent.com/d/16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7=w720"
                                  onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7&sz=w720';"
-                                 alt="Uñas hechas por Jeni en Barquisimeto"
-                                 width="400" height="420" fetchpriority="high" decoding="async"
-                                 class="w-full h-[380px] sm:h-[420px] object-cover object-center">
+                                 alt="Micro-French y Brillo Perla por JeniNails en Barquisimeto"
+                                 width="400" height="500" fetchpriority="high" decoding="async"
+                                 class="w-full h-full object-cover object-center">
 
-                            <div class="absolute top-3 left-3 badge-luxury text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow flex items-center gap-1.5 bg-dark-950/80">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                                <span>✦ Trabajo Real de Jeni</span>
+                            <div class="absolute top-4 left-4 bg-dark-950/85 border border-champagne/25 text-champagne text-[10px] font-medium uppercase tracking-[0.18em] px-3 py-1 rounded-full">
+                                Trabajo real · Barquisimeto
                             </div>
 
-                            <div class="absolute top-3 right-3 bg-dark-950/85 px-2 py-1 rounded-lg border border-gold/40 text-[10px] font-bold text-gold flex items-center gap-1">
-                                <span>💎</span>
-                                <span>Soft Gel & Rubber</span>
-                            </div>
-
-                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark-950 via-dark-950/90 to-transparent p-5 pt-14">
-                                <div class="flex items-center gap-1.5 mb-1">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-champagne">Acabado Limpio & Femenino</span>
-                                    <span class="text-[10px] text-gold">✦</span>
-                                </div>
-                                <h2 class="font-display text-xl font-bold text-white">Micro-French & Brillo Perla</h2>
-                                <p class="text-xs text-stone-300 mt-0.5 mb-3">Línea delgada, cutícula sellada con técnica rusa y cero grosor exagerado.</p>
-                                <button onclick="seleccionarModelo('Micro-French & Brillo Perla', 'Nivelación con Base Rubber', '8')" class="w-full py-2.5 px-3 rounded-lg bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 font-bold text-xs uppercase tracking-wider shadow flex items-center justify-center gap-1.5 transition active:scale-95">
-                                    <span>Pedir Cita con este Modelo</span>
-                                    <span>→</span>
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark-950 via-dark-950/90 to-transparent p-5 pt-16">
+                                <p class="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold mb-1">Nivelación Base Rubber · $8</p>
+                                <h2 class="font-display text-xl font-semibold text-ivory">Micro-French & Brillo Perla</h2>
+                                <p class="text-xs text-champagne/75 mt-1 mb-4 leading-relaxed">Línea ultrafina, cutícula sellada con técnica combinada y acabado ligero.</p>
+                                <button onclick="seleccionarModelo('Micro-French & Brillo Perla', 'Nivelación con Base Rubber', '8')" class="pressable w-full py-2.5 px-4 rounded-xl bg-gold hover:bg-gold-light text-dark-950 font-semibold text-xs tracking-wide flex items-center justify-center gap-2">
+                                    <span>Pedir cita con este modelo</span>
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                                 </button>
                             </div>
                         </div>
@@ -398,141 +355,145 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE LOS 5 SERVICIOS EXACTOS DEL FLYER -->
-    <section id="servicios" class="lazy-section py-14 sm:py-16 bg-dark-900/75 border-t border-champagne/10 relative z-10">
+    <!-- SERVICIOS Y TARIFAS -->
+    <section id="servicios" class="lazy-section py-16 sm:py-20 bg-dark-900/70 border-t border-champagne/10 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-luxury text-[10px] font-bold uppercase tracking-wider mb-2.5">
-                    <span>💅 Lista Oficial de Precios</span>
-                </div>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Servicios & Tarifas Claras</h2>
-                <p class="text-stone-300 text-xs sm:text-sm mt-2">Los 5 servicios que ofrezco en mi estudio en casa (Viernes, Sábado y Domingo). Sin cargos ocultos ni sorpresas.</p>
+            <div class="max-w-xl mb-10 sm:mb-12">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Lista Oficial de Precios</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory">Servicios & Tarifas Claras</h2>
+                <p class="text-champagne/75 text-sm mt-2 leading-relaxed">5 servicios esenciales y 1 combo dúo en estudio privado (Viernes, Sábado y Domingo). Sin cargos ocultos.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
                 <!-- 1. Manicura Semipermanente -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group">
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">🌸</span>
-                            <span class="text-2xl font-display font-bold text-gold">$6</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-dark-850 border border-champagne/15 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$6</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Manicura Semipermanente</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">Limpieza profunda de cutículas con técnica combinada, preparación de uña natural y esmaltado en gel de alta fijación con brillo espejo.</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~1h 15m</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Dura 15-21 días</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Manicura Semipermanente</h3>
+                        <p class="text-champagne/75 text-xs mt-2 leading-relaxed">Limpieza profunda de cutículas con técnica combinada, preparación de uña natural y esmaltado en gel con brillo espejo.</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center justify-between text-[11px] text-champagne/65">
+                            <span>Duración ~1h 15m</span>
+                            <span class="text-champagne">15 a 21 días</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Manicura Semipermanente', '6')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-dark-800 hover:bg-gold hover:text-dark-950 text-stone-200 border border-champagne/20 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Manicura Semipermanente', '6')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-dark-850 hover:bg-gold hover:text-dark-950 text-ivory border border-champagne/18 font-semibold text-xs">
                         Elegir Manicura ($6)
                     </button>
                 </div>
 
                 <!-- 2. Pedicura Spa -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group border-gold/30">
-                    <div class="absolute -top-2.5 right-4 bg-gold text-dark-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded shadow">
-                        Cualquier Color
-                    </div>
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between border-gold/30 relative">
+                    <span class="absolute -top-2.5 right-5 bg-dark-950 border border-gold/60 text-gold text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+                        Cualquier color
+                    </span>
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">🦶</span>
-                            <span class="text-2xl font-display font-bold text-gold">$6</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-dark-850 border border-champagne/15 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$6</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Pedicura Spa</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">Baño relajante de sales, exfoliación, retiro de asperezas, hidratación profunda y esmaltado en <strong class="text-white">cualquier tono que elijas</strong> (blanco lechoso, francesa, rojo o nude).</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~1h 30m</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Pies suaves y limpios</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Pedicura Spa</h3>
+                        <p class="text-champagne/75 text-xs mt-2 leading-relaxed">Baño relajante de sales, exfoliación, retiro de asperezas, hidratación profunda y esmaltado en <strong class="text-ivory font-medium">cualquier tono</strong> (blanco lechoso, francesa, rojo o nude).</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center justify-between text-[11px] text-champagne/65">
+                            <span>Duración ~1h 30m</span>
+                            <span class="text-champagne">Pies suaves y limpios</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Pedicura Spa en Cualquier Color', '6')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-dark-800 hover:bg-gold hover:text-dark-950 text-stone-200 border border-champagne/20 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Pedicura Spa en Cualquier Color', '6')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-dark-850 hover:bg-gold hover:text-dark-950 text-ivory border border-champagne/18 font-semibold text-xs">
                         Elegir Pedicura Spa ($6)
                     </button>
                 </div>
 
                 <!-- 3. Nivelación con Base Rubber -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group">
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">🛡️</span>
-                            <span class="text-2xl font-display font-bold text-gold">$8</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-dark-850 border border-champagne/15 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$8</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Nivelación (Base Rubber)</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">Ideal para uñas quebradizas o con estrías. Refuerzo elástico que crea el arco o curvatura C perfecta, aportando grosor natural y resistencia máxima.</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~1h 30m</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Dura 21 a 28 días</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Nivelación (Base Rubber)</h3>
+                        <p class="text-champagne/75 text-xs mt-2 leading-relaxed">Ideal para uñas quebradizas o con estrías. Refuerzo elástico con curvatura C natural para mayor grosor estético y resistencia.</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center justify-between text-[11px] text-champagne/65">
+                            <span>Duración ~1h 30m</span>
+                            <span class="text-champagne">21 a 28 días</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Nivelación con Base Rubber', '8')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-dark-800 hover:bg-gold hover:text-dark-950 text-stone-200 border border-champagne/20 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Nivelación con Base Rubber', '8')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-dark-850 hover:bg-gold hover:text-dark-950 text-ivory border border-champagne/18 font-semibold text-xs">
                         Elegir Nivelación ($8)
                     </button>
                 </div>
 
                 <!-- 4. Jelly Tip (Soft Gel) -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group">
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">✨</span>
-                            <span class="text-2xl font-display font-bold text-gold">$9</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-dark-850 border border-champagne/15 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$9</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Jelly Tip (Soft Gel)</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">Extensiones completas moldeadas en gel flexible de última generación. Cero daño a tu uña natural, acabado ultrafino, ligero y sin químicos agresivos.</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~1h 45m</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Largo y forma deseada</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Jelly Tip (Soft Gel)</h3>
+                        <p class="text-champagne/75 text-xs mt-2 leading-relaxed">Extensiones completas moldeadas en gel flexible. Cero daño a tu uña natural, acabado ultrafino, ligero y sin químicos agresivos.</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center justify-between text-[11px] text-champagne/65">
+                            <span>Duración ~1h 45m</span>
+                            <span class="text-champagne">Largo y forma a gusto</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Jelly Tip (Soft Gel)', '9')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-dark-800 hover:bg-gold hover:text-dark-950 text-stone-200 border border-champagne/20 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Jelly Tip (Soft Gel)', '9')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-dark-850 hover:bg-gold hover:text-dark-950 text-ivory border border-champagne/18 font-semibold text-xs">
                         Elegir Jelly Tip ($9)
                     </button>
                 </div>
 
-                <!-- 5. Polygel Esculpido o Tips -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group">
+                <!-- 5. Polygel -->
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">💎</span>
-                            <span class="text-2xl font-display font-bold text-gold">$11</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-dark-850 border border-champagne/15 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$11</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Polygel (Esculpido o Tips)</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">La combinación perfecta entre la fuerza del acrílico y la ligereza del gel. Estructura duradera y resistente, sin olor fuerte a monómero.</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~2h</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Máxima resistencia</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Polygel (Esculpido o Tips)</h3>
+                        <p class="text-champagne/75 text-xs mt-2 leading-relaxed">Combina la resistencia del acrílico con la ligereza del gel. Estructura duradera, elegante y sin olor fuerte a monómero.</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center justify-between text-[11px] text-champagne/65">
+                            <span>Duración ~2h</span>
+                            <span class="text-champagne">Máxima resistencia</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Polygel Esculpido o Tips', '11')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-dark-800 hover:bg-gold hover:text-dark-950 text-stone-200 border border-champagne/20 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Polygel Esculpido o Tips', '11')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-dark-850 hover:bg-gold hover:text-dark-950 text-ivory border border-champagne/18 font-semibold text-xs">
                         Elegir Polygel ($11)
                     </button>
                 </div>
 
-                <!-- Combo Especial Manos + Pies -->
-                <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between group bg-gradient-to-br from-gold/15 to-transparent border-gold/40">
-                    <div class="absolute -top-2.5 right-4 bg-emerald-500 text-dark-950 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded shadow">
+                <!-- 6. Combo Dúo -->
+                <div class="editorial-card rounded-2xl p-6 flex flex-col justify-between border-gold/45 bg-gradient-to-b from-gold/10 to-dark-900 relative">
+                    <span class="absolute -top-2.5 right-5 bg-gold text-dark-950 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
                         Ahorra $1
-                    </div>
+                    </span>
                     <div>
-                        <div class="flex items-start justify-between mb-3">
-                            <span class="text-2xl p-2.5 rounded-xl bg-dark-850 border border-champagne/20">🎁</span>
-                            <span class="text-2xl font-display font-bold text-gold">$11</span>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/></svg>
+                            </span>
+                            <span class="text-2xl font-display font-semibold text-gold">$11</span>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-gold transition">Combo Dúo Manos + Pies</h3>
-                        <p class="text-stone-300 text-xs mt-2 leading-relaxed">Manicura Semipermanente ($6) + Pedicura Spa Completa ($6) en la misma sesión. Sal con manos y pies listos al mejor precio.</p>
-                        <div class="mt-4 pt-3 border-t border-champagne/10 flex items-center gap-2 text-[11px] text-stone-400">
-                            <span>⏱ ~2h 30m</span>
-                            <span>•</span>
-                            <span class="text-emerald-400">Sesión integral 1 a 1</span>
+                        <h3 class="font-display text-lg font-semibold text-ivory">Combo Dúo Manos + Pies</h3>
+                        <p class="text-champagne/80 text-xs mt-2 leading-relaxed">Manicura Semipermanente ($6) + Pedicura Spa Completa ($6) en la misma sesión. Sal con manos y pies impecables.</p>
+                        <div class="mt-4 pt-3 border-t border-champagne/12 flex items-center justify-between text-[11px] text-champagne/70">
+                            <span>Duración ~2h 30m</span>
+                            <span class="text-gold font-medium">Sesión integral 1 a 1</span>
                         </div>
                     </div>
-                    <button onclick="seleccionarServicioDirecto('Combo Dúo Manos + Pies', '11')" class="mt-5 w-full py-2.5 px-3 rounded-lg bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 font-bold text-xs transition active:scale-95">
+                    <button onclick="seleccionarServicioDirecto('Combo Dúo Manos + Pies', '11')" class="pressable mt-5 w-full py-2.5 px-3 rounded-xl bg-gold hover:bg-gold-light text-dark-950 font-semibold text-xs">
                         Elegir Combo Completo ($11)
                     </button>
                 </div>
@@ -541,84 +502,84 @@
         </div>
     </section>
 
-    <!-- GALERÍA DE 16 FOTOS REALES VERIFICADAS (Carga progresiva para datos lentos) -->
-    <section id="galeria" class="lazy-section py-14 sm:py-16 bg-dark-950/90 border-t border-champagne/10 relative z-10">
+    <!-- PORTAFOLIO REAL (13 fotos verificadas, grilla simétrica 2 cols móvil / 3 cols desktop) -->
+    <section id="galeria" class="lazy-section py-16 sm:py-20 bg-dark-950 border-t border-champagne/10 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
                 <div>
-                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-luxury text-[10px] font-bold uppercase tracking-wider mb-2">
-                        <span>📷 Portafolio Real</span>
-                    </div>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Fotos de Clientes Atendidas</h2>
-                    <p class="text-stone-300 text-xs mt-1">Todas son fotos tomadas en mi mesa de trabajo con luz real. Toca cualquier modelo para reservarlo.</p>
+                    <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Portafolio Real</p>
+                    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory">Fotos de Clientas Atendidas</h2>
+                    <p class="text-champagne/75 text-xs sm:text-sm mt-1.5">Fotos tomadas en mi mesa con luz real. Toca cualquier diseño para reservarlo directo.</p>
                 </div>
 
-                <!-- Filtros rápidos de galería -->
+                <!-- Filtros -->
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="filtrarGaleria('todos', this)" class="filter-btn active px-3 py-1.5 rounded-lg bg-gold text-dark-950 font-bold transition">Todos (16)</button>
-                    <button onclick="filtrarGaleria('rubber', this)" class="filter-btn px-3 py-1.5 rounded-lg bg-dark-850 text-stone-300 border border-champagne/15 hover:border-gold transition">Nivelación Rubber</button>
-                    <button onclick="filtrarGaleria('extensiones', this)" class="filter-btn px-3 py-1.5 rounded-lg bg-dark-850 text-stone-300 border border-champagne/15 hover:border-gold transition">Jelly Tip & Polygel</button>
-                    <button onclick="filtrarGaleria('nailart', this)" class="filter-btn px-3 py-1.5 rounded-lg bg-dark-850 text-stone-300 border border-champagne/15 hover:border-gold transition">Nail Art & Diseños</button>
+                    <button onclick="filtrarGaleria('todos', this)" class="filter-btn pressable px-3.5 py-2 rounded-xl bg-gold text-dark-950 font-semibold">Todos (13)</button>
+                    <button onclick="filtrarGaleria('rubber', this)" class="filter-btn pressable px-3.5 py-2 rounded-xl bg-dark-850 text-champagne/80 border border-champagne/15 hover:border-gold/50">Rubber & Spa</button>
+                    <button onclick="filtrarGaleria('extensiones', this)" class="filter-btn pressable px-3.5 py-2 rounded-xl bg-dark-850 text-champagne/80 border border-champagne/15 hover:border-gold/50">Polygel</button>
+                    <button onclick="filtrarGaleria('nailart', this)" class="filter-btn pressable px-3.5 py-2 rounded-xl bg-dark-850 text-champagne/80 border border-champagne/15 hover:border-gold/50">Nail Art</button>
                 </div>
             </div>
 
-            <!-- Toast de confirmación al hacer click -->
-            <div id="selectionToast" class="hidden mb-6 p-4 rounded-xl bg-gold/15 border border-gold/40 text-gold text-xs flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="text-base">💅</span>
-                    <span>Diseño seleccionado: <strong id="toastDesignName" class="text-white"></strong>. Te llevamos al formulario...</span>
-                </div>
-                <span class="text-[11px] font-bold underline cursor-pointer" onclick="document.getElementById('selectionToast').classList.add('hidden')">Cerrar</span>
+            <!-- Toast confirmación -->
+            <div id="selectionToast" class="hidden mb-6 p-4 rounded-xl bg-gold/12 border border-gold/35 text-champagne text-xs flex items-center justify-between gap-3">
+                <span>Diseño seleccionado: <strong id="toastDesignName" class="text-ivory"></strong>. Te llevamos al formulario.</span>
+                <button type="button" class="text-gold font-semibold underline shrink-0" onclick="document.getElementById('selectionToast').classList.add('hidden')">Cerrar</button>
             </div>
 
-            <!-- Grid de Fotos con carga ligera -->
-            <div id="galeriaGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"></div>
+            <!-- Grid simétrico: 2 cols móvil, 3 cols desktop (6 fotos iniciales = 2 filas completas) -->
+            <div id="galeriaGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5"></div>
 
-            <!-- Botón de carga progresiva para ahorrar datos en Internet lenta -->
-            <div id="verMasContainer" class="mt-8 text-center hidden">
-                <button id="btnVerMas" onclick="mostrarTodasLasFotos()" class="px-6 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-gold border border-gold/40 text-xs font-bold uppercase tracking-wider shadow transition active:scale-95">
-                    Ver las 16 fotos reales ↓
+            <!-- Carga progresiva para Internet lenta -->
+            <div id="verMasContainer" class="mt-9 text-center hidden">
+                <button id="btnVerMas" onclick="mostrarTodasLasFotos()" class="pressable px-6 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-gold border border-gold/35 text-xs font-semibold tracking-wide">
+                    Ver más modelos
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- SOBRE JENI -->
-    <section id="sobre-jeni" class="lazy-section py-14 sm:py-16 bg-dark-900/75 border-t border-champagne/10 relative z-10">
+    <!-- SOBRE JENI (Ilustración propia en vez de foto de uñas repetida) -->
+    <section id="sobre-jeni" class="lazy-section py-16 sm:py-20 bg-dark-900/70 border-t border-champagne/10 relative z-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-champagne/20 relative overflow-hidden">
+            <div class="editorial-panel rounded-3xl p-6 sm:p-10">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
 
-                    <div class="md:col-span-5 relative">
-                        <div class="rounded-2xl overflow-hidden border border-champagne/25 shadow-xl bg-dark-900">
-                            <img src="https://lh3.googleusercontent.com/d/1oozpKgmkCNvNud0hyYZq4tLm01SmMPrz=w500"
-                                 onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1oozpKgmkCNvNud0hyYZq4tLm01SmMPrz&sz=w500';"
-                                 alt="Jennifer Álvarez Manicurista" width="400" height="320" loading="lazy" decoding="async"
-                                 class="w-full h-72 sm:h-80 object-cover object-center">
+                    <div class="md:col-span-5 flex flex-col items-center text-center">
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-b from-gold/70 via-champagne/30 to-transparent">
+                            <img src="jeni-avatar.svg" alt="Jennifer Álvarez - JeniNails" width="224" height="224" loading="lazy" decoding="async" class="w-full h-full rounded-full object-cover bg-dark-950">
                         </div>
-                        <div class="absolute -bottom-3 -right-2 bg-dark-950 border border-gold/50 px-3 py-1 rounded-xl text-xs font-bold text-gold shadow-lg flex items-center gap-1.5">
-                            <span>🎓</span>
-                            <span>Estudiante de Administración</span>
-                        </div>
+                        <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-gold font-semibold">Estudiante de Administración</p>
+                        <p class="text-xs text-champagne/70 mt-0.5">Barquisimeto Centro</p>
                     </div>
 
                     <div class="md:col-span-7 space-y-4">
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-luxury text-[10px] font-bold uppercase tracking-wider">
-                            <span>✨ Conoce a la manicurista</span>
-                        </div>
-                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Jennifer Álvarez</h2>
-                        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
-                            Soy estudiante universitaria de administración en Barquisimeto y apasionada por el arte de las uñas desde hace años. Decidí abrir mi propio <strong class="text-white">estudio en casa</strong> para brindar un espacio tranquilo, higiénico y agradable donde atenderte de forma personalizada.
+                        <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">Conoce a tu manicurista</p>
+                        <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory">Jennifer Álvarez</h2>
+                        <p class="text-champagne/80 text-sm leading-relaxed">
+                            Soy estudiante universitaria de administración en Barquisimeto y apasionada por el arte de las uñas desde hace años. Abrí mi estudio privado en casa para ofrecer un espacio tranquilo, higiénico y sin el apuro de los salones comerciales.
                         </p>
-                        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
-                            Atiendo los días <strong class="text-gold">Viernes, Sábado y Domingo</strong> para dedicarle el 100% de calma a cada clienta. Aquí no hay apuros: desinfecto y esterilizo cada herramienta antes de cada cita para que tu manicura dure semanas.
+                        <p class="text-champagne/80 text-sm leading-relaxed">
+                            Atiendo los días <strong class="text-gold font-semibold">Viernes, Sábado y Domingo</strong> para dedicarle el 100% de detalle a cada clienta. Esterilizo cada herramienta antes de tu cita para que tus uñas luzcan impecables por semanas.
                         </p>
 
-                        <div class="pt-2 flex flex-wrap gap-2 text-xs">
-                            <span class="px-2.5 py-1 rounded-md bg-dark-850 border border-gold/30 text-gold font-semibold">📅 Viernes, Sábado y Domingo</span>
-                            <span class="px-2.5 py-1 rounded-md bg-dark-850 border border-champagne/15 text-stone-300">✓ Atención privada 1 a 1</span>
-                            <span class="px-2.5 py-1 rounded-md bg-dark-850 border border-champagne/15 text-stone-300">✓ Esterilización rigurosa</span>
-                            <span class="px-2.5 py-1 rounded-md bg-dark-850 border border-champagne/15 text-stone-300">✓ Café o té de cortesía</span>
+                        <div class="pt-3 border-t border-champagne/12 grid grid-cols-2 gap-3 text-xs text-champagne/85">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                                <span>Viernes, Sábado y Domingo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                                <span>Atención privada 1 a 1</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                                <span>Esterilización rigurosa</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                                <span>Café o té de cortesía</span>
+                            </div>
                         </div>
                     </div>
 
@@ -627,62 +588,57 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CÓDIGO QR PERSONALIZADO (Librería cargada bajo demanda) -->
-    <section id="qr-code" class="lazy-section py-14 sm:py-16 bg-dark-900/90 border-t border-champagne/10 text-center relative z-10">
-        <div class="max-w-md mx-auto px-4">
-            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-champagne/25 shadow-2xl relative overflow-hidden">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-luxury text-[10px] font-bold uppercase tracking-wider mb-3">
-                    <span>💅 Código QR Oficial</span>
-                </div>
-                <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-1">Jeni Nails</h2>
-                <p class="text-stone-300 text-xs mb-6">Escanea con tu teléfono para abrir el catálogo, ver los modelos o agendar tu cita.</p>
+    <!-- CÓDIGO QR OFICIAL -->
+    <section id="qr-code" class="lazy-section py-16 sm:py-20 bg-dark-950 border-t border-champagne/10 text-center relative z-10">
+        <div class="max-w-lg mx-auto px-4 sm:px-6">
+            <div class="editorial-panel rounded-3xl p-6 sm:p-9">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Código QR Oficial</p>
+                <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory mb-1.5">JeniNails</h2>
+                <p class="text-champagne/75 text-xs sm:text-sm mb-6 max-w-sm mx-auto">Escanea con tu teléfono para abrir el catálogo, ver los modelos o agendar tu cita.</p>
 
-                <!-- QR Code Box -->
-                <div class="relative inline-block p-4 rounded-2xl bg-[#FAF4ED] shadow-xl border-2 border-gold/40 mx-auto">
-                    <div id="qrcodeCanvas" class="flex items-center justify-center min-w-[190px] min-h-[190px] text-dark-950 text-xs font-semibold">Cargando QR...</div>
+                <div class="relative inline-block p-4 rounded-2xl bg-ivory shadow-xl border border-gold/40 mx-auto">
+                    <div id="qrcodeCanvas" class="flex items-center justify-center min-w-[190px] min-h-[190px] text-dark-950 text-xs font-medium">Cargando QR...</div>
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="w-10 h-10 rounded-full bg-dark-950 border-2 border-gold flex items-center justify-center text-sm shadow-xl text-gold font-bold">
-                            💅
+                        <div class="w-9 h-9 rounded-full bg-dark-950 border border-gold flex items-center justify-center text-[11px] font-display font-bold tracking-wider text-gold shadow-lg">
+                            JN
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <button onclick="descargarQR()" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 text-xs font-bold shadow flex items-center justify-center gap-1.5 transition active:scale-95">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        <span>Descargar QR para Imprimir</span>
+                <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="descargarQR()" class="pressable w-full sm:w-auto whitespace-nowrap py-2.5 px-5 rounded-xl bg-gold hover:bg-gold-light text-dark-950 text-xs font-semibold flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Descargar QR</span>
                     </button>
-                    <button onclick="compartirEnlace()" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-dark-850 hover:bg-dark-800 text-stone-200 border border-champagne/20 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-                        <span>Compartir Web</span>
+                    <button onclick="compartirEnlace()" class="pressable w-full sm:w-auto whitespace-nowrap py-2.5 px-5 rounded-xl bg-dark-850 hover:bg-dark-800 text-ivory border border-champagne/18 text-xs font-medium flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        <span>Compartir enlace</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CALCULADORA INTERACTIVA & AGENDAR CITA DIRECTA POR WHATSAPP -->
-    <section id="agendar" class="lazy-section py-14 sm:py-16 bg-dark-950 border-t border-champagne/10 relative z-10">
+    <!-- FORMULARIO DE RESERVA -->
+    <section id="agendar" class="lazy-section py-16 sm:py-20 bg-dark-900/70 border-t border-champagne/10 relative z-10">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-8">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-luxury text-[10px] font-bold uppercase tracking-wider mb-2">
-                    <span>📅 Solo Viernes, Sábado y Domingo</span>
-                </div>
-                <h2 class="font-display text-3xl font-bold text-white">Aparta tu Cita con Jeni</h2>
-                <p class="text-stone-300 text-xs mt-1">Completa los datos y se enviará directo a mi WhatsApp para coordinar.</p>
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Solo Viernes, Sábado y Domingo</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold text-ivory">Aparta tu Cita con Jeni</h2>
+                <p class="text-champagne/75 text-xs sm:text-sm mt-1.5">Completa tus datos y se enviará tu resumen directo al WhatsApp para confirmar la hora.</p>
             </div>
 
-            <div class="glass-panel rounded-3xl p-5 sm:p-8 border border-champagne/20 shadow-2xl">
+            <div class="editorial-panel rounded-3xl p-5 sm:p-8">
                 <form id="citaForm" onsubmit="event.preventDefault(); enviarWhatsApp();" class="space-y-4">
 
                     <div>
-                        <label for="nombreCliente" class="block text-xs font-semibold text-stone-300 mb-1">Tu Nombre:</label>
-                        <input type="text" id="nombreCliente" placeholder="Ej: María Pérez" required class="w-full bg-dark-850 border border-champagne/20 rounded-xl px-4 py-2.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-gold">
+                        <label for="nombreCliente" class="block text-xs font-medium text-champagne/85 mb-1.5">Tu nombre</label>
+                        <input type="text" id="nombreCliente" placeholder="Ej: María Pérez" required class="w-full bg-dark-850 border border-champagne/18 rounded-xl px-4 py-3 text-xs sm:text-sm text-ivory placeholder-champagne/35 focus:outline-none focus:border-gold">
                     </div>
 
                     <div>
-                        <label for="servicioSelect" class="block text-xs font-semibold text-stone-300 mb-1">Servicio que deseas:</label>
-                        <select id="servicioSelect" onchange="calcularTotal()" class="w-full bg-dark-850 border border-champagne/20 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold">
+                        <label for="servicioSelect" class="block text-xs font-medium text-champagne/85 mb-1.5">Servicio que deseas</label>
+                        <select id="servicioSelect" onchange="calcularTotal()" class="w-full bg-dark-850 border border-champagne/18 rounded-xl px-4 py-3 text-xs sm:text-sm text-ivory focus:outline-none focus:border-gold">
                             <option value="6" data-name="Manicura Semipermanente">Manicura Semipermanente — $6</option>
                             <option value="6" data-name="Pedicura Spa en Cualquier Color">Pedicura Spa en Cualquier Color — $6</option>
                             <option value="8" data-name="Nivelación con Base Rubber" selected>Nivelación con Base Rubber — $8</option>
@@ -693,42 +649,43 @@
                     </div>
 
                     <div>
-                        <label for="disenoIdea" class="block text-xs font-semibold text-stone-300 mb-1">Diseño o idea que tienes en mente:</label>
-                        <input type="text" id="disenoIdea" placeholder="Ej: Francesa fina, color vino, brillo perla, o foto de referencia" class="w-full bg-dark-850 border border-champagne/20 rounded-xl px-4 py-2.5 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-gold">
+                        <label for="disenoIdea" class="block text-xs font-medium text-champagne/85 mb-1.5">Diseño o idea que tienes en mente</label>
+                        <input type="text" id="disenoIdea" placeholder="Ej: Francesa fina, color vino, brillo perla o modelo de la galería" class="w-full bg-dark-850 border border-champagne/18 rounded-xl px-4 py-3 text-xs sm:text-sm text-ivory placeholder-champagne/35 focus:outline-none focus:border-gold">
                     </div>
 
-                    <!-- Extras opcionales -->
+                    <!-- Extras con checkboxes custom oscuros -->
                     <div>
-                        <label class="block text-xs font-semibold text-stone-300 mb-1.5">Extras opcionales (toca para sumar):</label>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
-                            <label class="flex items-center gap-2 p-2 rounded-lg bg-dark-850 border border-champagne/15 cursor-pointer">
-                                <input type="checkbox" id="extraCatEye" value="1" onchange="calcularTotal()" class="rounded accent-gold">
-                                <span class="text-stone-300">Efecto Ojo de Gato (+$1)</span>
+                        <span class="block text-xs font-medium text-champagne/85 mb-2">Extras opcionales (toca para sumar)</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-dark-850 border border-champagne/14 hover:border-gold/40 cursor-pointer transition-colors">
+                                <input type="checkbox" id="extraCatEye" value="1" onchange="calcularTotal()" class="custom-check">
+                                <span class="text-champagne/90">Efecto Ojo de Gato (+$1)</span>
                             </label>
-                            <label class="flex items-center gap-2 p-2 rounded-lg bg-dark-850 border border-champagne/15 cursor-pointer">
-                                <input type="checkbox" id="extraFrancesa" value="1" onchange="calcularTotal()" class="rounded accent-gold">
-                                <span class="text-stone-300">Francesa / Chrome (+$1)</span>
+                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-dark-850 border border-champagne/14 hover:border-gold/40 cursor-pointer transition-colors">
+                                <input type="checkbox" id="extraFrancesa" value="1" onchange="calcularTotal()" class="custom-check">
+                                <span class="text-champagne/90">Francesa / Chrome (+$1)</span>
                             </label>
-                            <label class="flex items-center gap-2 p-2 rounded-lg bg-dark-850 border border-champagne/15 cursor-pointer">
-                                <input type="checkbox" id="extraRetiro" value="2" onchange="calcularTotal()" class="rounded accent-gold">
-                                <span class="text-stone-300">Retiro Previo (+$2)</span>
+                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-dark-850 border border-champagne/14 hover:border-gold/40 cursor-pointer transition-colors">
+                                <input type="checkbox" id="extraRetiro" value="2" onchange="calcularTotal()" class="custom-check">
+                                <span class="text-champagne/90">Retiro Previo (+$2)</span>
                             </label>
-                            <label class="flex items-center gap-2 p-2 rounded-lg bg-dark-850 border border-champagne/15 cursor-pointer">
-                                <input type="checkbox" id="extraCristales" value="1" onchange="calcularTotal()" class="rounded accent-gold">
-                                <span class="text-stone-300">Cristales / Glitter (+$1)</span>
+                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-dark-850 border border-champagne/14 hover:border-gold/40 cursor-pointer transition-colors">
+                                <input type="checkbox" id="extraCristales" value="1" onchange="calcularTotal()" class="custom-check">
+                                <span class="text-champagne/90">Cristales / Glitter (+$1)</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                         <div>
-                            <label for="fechaCita" class="block text-xs font-semibold text-stone-300 mb-1">Día (Solo Vie, Sáb y Dom):</label>
-                            <input type="date" id="fechaCita" required onchange="validarFinDeSemana(this)" class="w-full bg-dark-850 border border-champagne/20 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-gold">
-                            <p id="fechaAviso" class="hidden text-[11px] text-gold mt-1.5 font-medium"></p>
+                            <label for="fechaCita" class="block text-xs font-medium text-champagne/85 mb-1.5">Día (Solo Vie, Sáb y Dom)</label>
+                            <input type="date" id="fechaCita" required onchange="validarFinDeSemana(this)" class="w-full bg-dark-850 border border-champagne/18 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-ivory focus:outline-none focus:border-gold">
+                            <p id="fechaLegible" class="text-[11px] text-champagne/75 mt-1.5"></p>
+                            <p id="fechaAviso" class="hidden text-[11px] text-gold mt-1 font-medium"></p>
                         </div>
                         <div>
-                            <label for="horaCita" class="block text-xs font-semibold text-stone-300 mb-1">Turno deseado:</label>
-                            <select id="horaCita" class="w-full bg-dark-850 border border-champagne/20 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-gold">
+                            <label for="horaCita" class="block text-xs font-medium text-champagne/85 mb-1.5">Turno deseado</label>
+                            <select id="horaCita" class="w-full bg-dark-850 border border-champagne/18 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-ivory focus:outline-none focus:border-gold">
                                 <option value="Mañana (9:00 AM - 1:00 PM)">Mañana (9:00 AM - 1:00 PM)</option>
                                 <option value="Tarde (2:00 PM - 6:00 PM)">Tarde (2:00 PM - 6:00 PM)</option>
                                 <option value="Hora específica por convenir">Hora específica a convenir</option>
@@ -737,20 +694,20 @@
                     </div>
 
                     <!-- Resumen de Total -->
-                    <div class="p-4 rounded-xl bg-dark-900 border border-gold/30 flex items-center justify-between">
+                    <div class="p-4 rounded-2xl bg-dark-950 border border-gold/30 flex items-center justify-between">
                         <div>
-                            <div class="text-[10px] uppercase tracking-wider text-stone-400">Total Estimado:</div>
-                            <div id="totalMonto" class="text-2xl font-display font-bold text-gold">$8.00</div>
+                            <div class="text-[10px] uppercase tracking-[0.18em] text-champagne/65">Total estimado</div>
+                            <div id="totalMonto" class="text-2xl font-display font-semibold text-gold mt-0.5">$8.00</div>
                         </div>
-                        <div class="text-right text-[11px] text-stone-400">
+                        <div class="text-right text-[11px] text-champagne/75">
                             <div>Sin seña obligatoria</div>
-                            <div class="text-emerald-400 font-semibold">Pagas al terminar tu cita</div>
+                            <div class="text-champagne font-medium">Pagas al terminar tu cita</div>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-gold via-champagne to-gold hover:brightness-105 text-dark-950 font-bold text-sm shadow-xl flex items-center justify-center gap-2 transition active:scale-95">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
-                        <span>Confirmar y Enviar al WhatsApp</span>
+                    <button type="submit" class="pressable w-full py-3.5 px-6 rounded-xl bg-gold hover:bg-gold-light text-dark-950 font-semibold text-sm flex items-center justify-center gap-2.5">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+                        <span>Confirmar y enviar al WhatsApp</span>
                     </button>
                 </form>
             </div>
@@ -758,56 +715,46 @@
     </section>
 
     <!-- PREGUNTAS FRECUENTES -->
-    <section id="faq" class="lazy-section py-14 sm:py-16 bg-dark-900/75 border-t border-champagne/10 relative z-10">
+    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-950 border-t border-champagne/10 relative z-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
-                <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Preguntas Frecuentes</h2>
-                <p class="text-stone-400 text-xs mt-1">Todo lo que necesitas saber antes de venir.</p>
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Dudas Frecuentes</p>
+                <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ivory">Preguntas Frecuentes</h2>
             </div>
 
             <div class="space-y-3">
-                <div class="glass-card rounded-xl p-4 border-gold/30">
-                    <h3 class="font-bold text-sm text-white flex items-center justify-between">
-                        <span>🗓 ¿Qué días y horarios atiendes?</span>
-                    </h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">
-                        Atiendo únicamente <strong class="text-gold">Viernes, Sábado y Domingo</strong> (turnos de mañana y tarde, previa cita por WhatsApp), ya que de lunes a jueves me dedico a mis estudios universitarios.
+                <div class="editorial-card rounded-2xl p-5 border-gold/30">
+                    <h3 class="font-medium text-sm text-ivory">¿Qué días y horarios atiendes?</h3>
+                    <p class="text-xs text-champagne/75 mt-2 leading-relaxed">
+                        Atiendo únicamente <strong class="text-gold font-medium">Viernes, Sábado y Domingo</strong> (turnos de mañana y tarde, previa cita por WhatsApp), ya que de lunes a jueves me dedico a mis estudios universitarios.
                     </p>
                 </div>
 
-                <div class="glass-card rounded-xl p-4">
-                    <h3 class="font-bold text-sm text-white flex items-center justify-between">
-                        <span>📍 ¿Dónde estás ubicada exactamente?</span>
-                    </h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">
-                        Atiendo en mi estudio privado en casa en el centro de Barquisimeto (Lara). Una vez confirmada tu cita por WhatsApp, te envío la ubicación exacta por GPS y las referencias para llegar fácil.
+                <div class="editorial-card rounded-2xl p-5">
+                    <h3 class="font-medium text-sm text-ivory">¿Dónde estás ubicada exactamente?</h3>
+                    <p class="text-xs text-champagne/75 mt-2 leading-relaxed">
+                        En mi estudio privado en casa en el centro de Barquisimeto (Lara). Una vez confirmada tu cita por WhatsApp, te envío la ubicación exacta por GPS y las referencias para llegar fácil.
                     </p>
                 </div>
 
-                <div class="glass-card rounded-xl p-4">
-                    <h3 class="font-bold text-sm text-white flex items-center justify-between">
-                        <span>💵 ¿Qué formas de pago aceptas?</span>
-                    </h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">
-                        Acepto dólares en efectivo (billetes en buen estado), Pago Móvil en Bolívares a Tasa Oficial BCV del día, y Binance Pay (USDT).
+                <div class="editorial-card rounded-2xl p-5">
+                    <h3 class="font-medium text-sm text-ivory">¿Qué formas de pago aceptas?</h3>
+                    <p class="text-xs text-champagne/75 mt-2 leading-relaxed">
+                        Dólares en efectivo (billetes en buen estado), Pago Móvil en Bolívares a Tasa Oficial BCV del día y Binance Pay (USDT).
                     </p>
                 </div>
 
-                <div class="glass-card rounded-xl p-4">
-                    <h3 class="font-bold text-sm text-white flex items-center justify-between">
-                        <span>💅 ¿La pedicura puede ser en otro color además de blanco?</span>
-                    </h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">
-                        ¡Sí, claro! Puedes elegir el color que más te guste: blanco lechoso, francesa delicada, rojo clásico, tonos nude, vino tinto o negro. El precio sigue siendo $6.
+                <div class="editorial-card rounded-2xl p-5">
+                    <h3 class="font-medium text-sm text-ivory">¿La pedicura puede ser en otro color además de blanco?</h3>
+                    <p class="text-xs text-champagne/75 mt-2 leading-relaxed">
+                        Sí, puedes elegir el tono que prefieras: blanco lechoso, francesa delicada, rojo clásico, nude, vino tinto o negro. El precio sigue siendo $6.
                     </p>
                 </div>
 
-                <div class="glass-card rounded-xl p-4">
-                    <h3 class="font-bold text-sm text-white flex items-center justify-between">
-                        <span>⏱ ¿Cuánto dura cada cita?</span>
-                    </h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">
-                        Dependiendo del servicio, toma entre 1h 15m (manicura) y 2h (polygel o combo). No me gusta apurar el trabajo porque la cutícula limpia y el sellado duradero requieren paciencia y cuidado.
+                <div class="editorial-card rounded-2xl p-5">
+                    <h3 class="font-medium text-sm text-ivory">¿Cuánto dura cada cita?</h3>
+                    <p class="text-xs text-champagne/75 mt-2 leading-relaxed">
+                        Entre 1h 15m (manicura) y 2h (polygel o combo). Prefiero trabajar sin apuros para lograr una cutícula limpia y un sellado duradero.
                     </p>
                 </div>
             </div>
@@ -815,62 +762,56 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-10 bg-dark-950 border-t border-champagne/10 text-stone-400 text-xs text-center relative z-10">
-        <div class="max-w-5xl mx-auto px-4 space-y-3">
-            <div class="flex items-center justify-center gap-2">
-                <span class="font-display text-lg font-bold text-white">JeniNails</span>
-                <span class="text-gold">✨</span>
-            </div>
-            <p class="text-[11px] text-stone-300">Atención: <strong class="text-gold">Viernes, Sábado y Domingo</strong> • Barquisimeto Centro, Venezuela.</p>
-            <p class="text-[11px] text-stone-400">Jennifer Álvarez • Manicurista y Estudiante de Administración.</p>
-            <p class="text-[10px] text-stone-500">© <span id="currentYear"></span> JeniNails. Todos los derechos reservados.</p>
+    <footer class="py-10 bg-dark-950 border-t border-champagne/10 text-champagne/65 text-xs text-center relative z-10">
+        <div class="max-w-5xl mx-auto px-4 space-y-2.5">
+            <p class="font-display text-lg font-semibold text-ivory">JeniNails</p>
+            <p class="text-champagne/80">Atención: <strong class="text-gold font-medium">Viernes, Sábado y Domingo</strong> · Barquisimeto Centro, Venezuela</p>
+            <p>Jennifer Álvarez · Manicurista y Estudiante de Administración</p>
+            <p class="text-[11px] text-champagne/45 pt-2">© <span id="currentYear"></span> JeniNails. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- BARRA FLOTANTE MÓVIL ERGONÓMICA CON SAFE AREA -->
-    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-dark-950/95 border-t border-champagne/20 px-4 py-3 safe-bottom flex items-center justify-between gap-3 shadow-2xl">
+    <!-- BARRA FLOTANTE MÓVIL -->
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-dark-950 border-t border-champagne/15 px-4 py-3 safe-bottom flex items-center justify-between gap-3">
         <div>
             <div class="flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                <span class="text-[10px] text-stone-300 font-semibold">Solo Vie, Sáb y Dom</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                <span class="text-[10px] uppercase tracking-wider text-champagne/80 font-medium">Solo Vie, Sáb y Dom</span>
             </div>
-            <div class="text-xs font-bold text-gold">Citas desde $6 • Barquisimeto</div>
+            <div class="text-xs font-semibold text-ivory mt-0.5">Citas desde $6 · Barquisimeto</div>
         </div>
-        <a href="#agendar" class="bg-gradient-to-r from-gold via-champagne to-gold text-dark-950 text-xs font-bold py-2.5 px-4 rounded-xl shadow flex items-center gap-1.5 active:scale-95 transition">
-            <span>Pedir Cita WhatsApp</span>
+        <a href="#agendar" class="pressable bg-gold text-dark-950 text-xs font-semibold py-2.5 px-4 rounded-xl">
+            Pedir cita
         </a>
     </div>
 
-    <!-- JAVASCRIPT OPTIMIZADO: GALERÍA PROGRESIVA, VALIDACIÓN VIE-DOM, QR BAJO DEMANDA -->
+    <!-- JAVASCRIPT OPTIMIZADO -->
     <script>
+        // 13 fotos reales verificadas (sin duplicados ni enlaces caídos, títulos 100% alineados a cada imagen)
         const fotosReales = [
             { id: "16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7", title: "Micro-French & Brillo Perla", cat: "rubber", tag: "Nivelación", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1P5ZMeNmExLewJvmbASlAB9GFYzci-ke8", title: "Baby Boomer Milky Suave", cat: "extensiones", tag: "Polygel", precio: "$11", val: "11", serv: "Polygel Esculpido o Tips" },
-            { id: "1IHKec73cHVDag6k9oF1dpi9NbN5D9TWM", title: "Jelly Tip Nude Almendra", cat: "extensiones", tag: "Jelly Tip", precio: "$9", val: "9", serv: "Jelly Tip (Soft Gel)" },
+            { id: "1P5ZMeNmExLewJvmbASlAB9GFYzci-ke8", title: "Francesa con Marco de Oro", cat: "nailart", tag: "Diseño Gold", precio: "$9", val: "9", serv: "Jelly Tip (Soft Gel)" },
+            { id: "1IHKec73cHVDag6k9oF1dpi9NbN5D9TWM", title: "Francés Amarillo & Flor", cat: "nailart", tag: "Clean Look", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
             { id: "1oozpKgmkCNvNud0hyYZq4tLm01SmMPrz", title: "Nivelación Rubber Natural", cat: "rubber", tag: "Nivelación", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1TnaCOzSME_gB--tI-BT6JWeQFt_X_qLL", title: "Terciopelo Ojo de Gato Rosa", cat: "nailart", tag: "Cat Eye", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1Zx-otJUYh_L76IrYc_lc9XREpF9KST5f", title: "Francés Amarillo Neón & Flor", cat: "nailart", tag: "Clean Look", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1lJK2GRViGistev73vYYaTgbi9xN5gYz8", title: "Uñas Vino Cherry & Destellos", cat: "rubber", tag: "Semipermanente", precio: "$6", val: "6", serv: "Manicura Semipermanente" },
-            { id: "1Py-z-G8t4kLOptk6Zx5RCQ6eiBTpynio", title: "Manicura Burbujas Rosas & 3D", cat: "nailart", tag: "Nail Art Pro", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
+            { id: "1TnaCOzSME_gB--tI-BT6JWeQFt_X_qLL", title: "Diseño Animal Print Rojo", cat: "nailart", tag: "Nail Art", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
+            { id: "1lJK2GRViGistev73vYYaTgbi9xN5gYz8", title: "Vino Cherry & Destellos", cat: "rubber", tag: "Semipermanente", precio: "$6", val: "6", serv: "Manicura Semipermanente" },
+            { id: "1Py-z-G8t4kLOptk6Zx5RCQ6eiBTpynio", title: "Burbujas Rosas & Relieve 3D", cat: "nailart", tag: "Nail Art Pro", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
             { id: "1bNc7Q2XnFFIqq8a0DFThRn3IifK_lZmK", title: "Polygel Rosa con Flor 3D", cat: "extensiones", tag: "Polygel", precio: "$11", val: "11", serv: "Polygel Esculpido o Tips" },
-            { id: "1WrINhasN9kwRyE8VePvPnS7UAecQtXba", title: "Francesa con Marco de Oro", cat: "nailart", tag: "Diseño Gold", precio: "$9", val: "9", serv: "Jelly Tip (Soft Gel)" },
-            { id: "19yP9A2L-ujBNswzD6fDce_k9AgrG2VRW", title: "Manicura Rusa Nacarada Glazed", cat: "rubber", tag: "Efecto Glazed", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1Q5vyhKGXhQv8xHmYlVH4tHUg_cNbi5CW", title: "Polygel Cuadrado con Cristales", cat: "extensiones", tag: "Polygel", precio: "$11", val: "11", serv: "Polygel Esculpido o Tips" },
-            { id: "1uCqF1-hE53SDuSPXSoOu2eFN1aSZlw0w", title: "Nivelación Rubber Tono Nude", cat: "rubber", tag: "Rubber Base", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
-            { id: "1babJmUwxpVGhFQYRtdkRLpfbQHmVWxdD", title: "Francesa Blanca Clásica", cat: "rubber", tag: "Semipermanente", precio: "$6", val: "6", serv: "Manicura Semipermanente" },
-            { id: "1T_cEmYvj-Eb6LWPj9MKC5835sL_g1teg", title: "Polygel Nude Reflectivo", cat: "extensiones", tag: "Polygel", precio: "$11", val: "11", serv: "Polygel Esculpido o Tips" },
-            { id: "1TLPPGrkJ1U8VnD3JUXegsO-u6GT4PYY4", title: "Efecto Ojo de Gato Galáctico", cat: "nailart", tag: "Cat Eye", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" }
+            { id: "1WrINhasN9kwRyE8VePvPnS7UAecQtXba", title: "Pedicura Spa con Margaritas", cat: "rubber", tag: "Pedicura Spa", precio: "$6", val: "6", serv: "Pedicura Spa en Cualquier Color" },
+            { id: "19yP9A2L-ujBNswzD6fDce_k9AgrG2VRW", title: "Manicura Rusa Nacarada", cat: "rubber", tag: "Efecto Glazed", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
+            { id: "1Q5vyhKGXhQv8xHmYlVH4tHUg_cNbi5CW", title: "Almendra Rojo Intenso", cat: "extensiones", tag: "Polygel", precio: "$11", val: "11", serv: "Polygel Esculpido o Tips" },
+            { id: "1uCqF1-hE53SDuSPXSoOu2eFN1aSZlw0w", title: "Rubber Base Tono Nude", cat: "rubber", tag: "Rubber Base", precio: "$8", val: "8", serv: "Nivelación con Base Rubber" },
+            { id: "1babJmUwxpVGhFQYRtdkRLpfbQHmVWxdD", title: "Francesa Blanca Clásica", cat: "rubber", tag: "Semipermanente", precio: "$6", val: "6", serv: "Manicura Semipermanente" }
         ];
 
         const FOTOS_INICIALES = 6;
         let mostrarTodo = false;
         let filtroActual = "todos";
 
-        // Tamaño de imagen adaptado a red lenta / móvil para ahorrar datos
         function getImgWidth() {
             const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
             if (conn && (conn.saveData || /2g|3g/.test(conn.effectiveType || ""))) return 320;
-            return window.innerWidth < 640 ? 400 : 520;
+            return window.innerWidth < 640 ? 400 : 540;
         }
 
         function renderizarGaleria(filtro = "todos") {
@@ -888,7 +829,7 @@
             const frag = document.createDocumentFragment();
             visibles.forEach(f => {
                 const card = document.createElement("div");
-                card.className = "glass-card rounded-2xl overflow-hidden group relative flex flex-col cursor-pointer";
+                card.className = "editorial-card pressable rounded-2xl overflow-hidden group relative flex flex-col cursor-pointer";
                 card.onclick = () => seleccionarModelo(f.title, f.serv, f.val);
 
                 card.innerHTML = `
@@ -896,26 +837,26 @@
                         <img src="https://lh3.googleusercontent.com/d/${f.id}=w${imgW}"
                              onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=${f.id}&sz=w${imgW}';"
                              alt="${f.title} por JeniNails"
-                             width="300" height="300"
+                             width="320" height="320"
                              loading="lazy" decoding="async"
                              class="w-full h-full object-cover">
-                        <div class="absolute top-2 left-2 badge-luxury bg-dark-950/85 px-2 py-0.5 rounded-md text-[9px] font-extrabold uppercase">
+                        <div class="absolute top-2.5 left-2.5 bg-dark-950/85 border border-champagne/25 text-champagne px-2.5 py-0.5 rounded-full text-[9px] font-medium uppercase tracking-wider">
                             ${f.tag}
                         </div>
-                        <div class="absolute top-2 right-2 bg-dark-950/90 border border-gold/40 text-gold text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow">
+                        <div class="absolute top-2.5 right-2.5 bg-dark-950/90 border border-gold/40 text-gold text-[11px] font-semibold px-2 py-0.5 rounded-md">
                             ${f.precio}
                         </div>
-                        <div class="hidden sm:flex absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-200 items-end p-3">
-                            <span class="w-full py-2 px-2 bg-gradient-to-r from-gold via-champagne to-gold text-dark-950 text-xs font-bold rounded-xl shadow text-center">
-                                Quiero este diseño →
+                        <div class="hidden md:flex absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 items-end p-3.5">
+                            <span class="w-full py-2 px-3 bg-gold text-dark-950 text-xs font-semibold rounded-xl text-center">
+                                Quiero este diseño
                             </span>
                         </div>
                     </div>
-                    <div class="p-2.5 sm:p-3">
-                        <h4 class="font-display text-xs sm:text-sm font-bold text-white truncate">${f.title}</h4>
-                        <div class="flex items-center justify-between mt-1 text-[10px] text-stone-400">
-                            <span class="truncate pr-1">${f.serv}</span>
-                            <span class="text-gold font-bold shrink-0">${f.precio}</span>
+                    <div class="p-3 sm:p-3.5">
+                        <h4 class="font-display text-sm font-semibold text-ivory leading-snug">${f.title}</h4>
+                        <div class="flex items-center justify-between mt-1.5 text-[11px] text-champagne/65">
+                            <span class="truncate pr-2">${f.serv}</span>
+                            <span class="text-gold font-semibold shrink-0">${f.precio}</span>
                         </div>
                     </div>
                 `;
@@ -928,7 +869,7 @@
             if (verMasWrap && btnVerMas) {
                 const restantes = filtradas.length - visibles.length;
                 if (restantes > 0) {
-                    btnVerMas.innerText = `Ver más modelos (${restantes} fotos restantes) ↓`;
+                    btnVerMas.innerText = `Ver más modelos (${restantes} fotos restantes)`;
                     verMasWrap.classList.remove("hidden");
                 } else {
                     verMasWrap.classList.add("hidden");
@@ -943,10 +884,10 @@
 
         function filtrarGaleria(cat, btnEl) {
             document.querySelectorAll(".filter-btn").forEach(b => {
-                b.className = "filter-btn px-3 py-1.5 rounded-lg bg-dark-850 text-stone-300 border border-champagne/15 hover:border-gold transition";
+                b.className = "filter-btn pressable px-3.5 py-2 rounded-xl bg-dark-850 text-champagne/80 border border-champagne/15 hover:border-gold/50";
             });
             if (btnEl) {
-                btnEl.className = "filter-btn active px-3 py-1.5 rounded-lg bg-gold text-dark-950 font-bold transition";
+                btnEl.className = "filter-btn pressable px-3.5 py-2 rounded-xl bg-gold text-dark-950 font-semibold";
             }
             renderizarGaleria(cat);
         }
@@ -981,6 +922,13 @@
             return `${dias[d.getDay()]} ${String(partes[2]).padStart(2, "0")}/${String(partes[1]).padStart(2, "0")}/${partes[0]}`;
         }
 
+        function actualizarFechaLegible(isoStr) {
+            const el = document.getElementById("fechaLegible");
+            if (el && isoStr) {
+                el.innerText = `Seleccionado: ${nombreDiaFecha(isoStr)}`;
+            }
+        }
+
         function validarFinDeSemana(inputEl) {
             const aviso = document.getElementById("fechaAviso");
             if (!inputEl || !inputEl.value) return true;
@@ -989,12 +937,14 @@
             if (!esDiaLaboral(elegida)) {
                 const sugerida = proximoDiaDisponible(elegida);
                 inputEl.value = formatearISO(sugerida);
+                actualizarFechaLegible(inputEl.value);
                 if (aviso) {
                     aviso.innerText = `Jeni atiende solo Viernes, Sábado y Domingo. Ajustamos al ${nombreDiaFecha(inputEl.value)}.`;
                     aviso.classList.remove("hidden");
                 }
                 return false;
             }
+            actualizarFechaLegible(inputEl.value);
             if (aviso) aviso.classList.add("hidden");
             return true;
         }
@@ -1074,12 +1024,11 @@
             if (document.getElementById("extraCristales").checked) extras.push("Cristales / Glitter (+$1)");
             const extrasTexto = extras.length > 0 ? `\n• *Extras:* ${extras.join(", ")}` : "";
 
-            const mensaje = `¡Hola Jeni! 💅✨\nMi nombre es *${nombre}*.\nQuisiera agendar una cita en tu estudio en Barquisimeto:\n\n• *Servicio:* ${servicioNombre}\n• *Diseño o idea:* ${diseno}${extrasTexto}\n• *Fecha estimada:* ${fechaTexto}\n• *Turno:* ${turno}\n• *Total estimado:* ${total}\n\n¿Tienes disponibilidad para ese día? ¡Muchas gracias! 💕`;
+            const mensaje = `¡Hola Jeni!\nMi nombre es *${nombre}*.\nQuisiera agendar una cita en tu estudio en Barquisimeto:\n\n• *Servicio:* ${servicioNombre}\n• *Diseño o idea:* ${diseno}${extrasTexto}\n• *Fecha estimada:* ${fechaTexto}\n• *Turno:* ${turno}\n• *Total estimado:* ${total}\n\n¿Tienes disponibilidad para ese día? ¡Muchas gracias!`;
             const url = `https://wa.me/584245766425?text=${encodeURIComponent(mensaje)}`;
             window.open(url, "_blank");
         }
 
-        // Carga diferida de qrcode.min.js solo cuando la clienta baja a la sección QR
         let qrCargado = false;
         function cargarYGenerarQR() {
             if (qrCargado) return;
@@ -1107,8 +1056,8 @@
                 text: "https://jeninails.vercel.app/?ref=qr",
                 width: 190,
                 height: 190,
-                colorDark: "#0D0914",
-                colorLight: "#FAF4ED",
+                colorDark: "#07050A",
+                colorLight: "#FAF7F2",
                 correctLevel: QRCode.CorrectLevel.H
             });
         }
@@ -1139,68 +1088,13 @@
             if (navigator.share) {
                 navigator.share({
                     title: "JeniNails | Uñas con Jeni en Barquisimeto Centro",
-                    text: "¡Hola! Mira los modelos y precios de uñas de JeniNails en Barquisimeto Centro (Viernes, Sábado y Domingo) 💅✨",
+                    text: "Mira los modelos y precios de uñas de JeniNails en Barquisimeto Centro (Viernes, Sábado y Domingo).",
                     url: "https://jeninails.vercel.app/?ref=share"
                 }).catch(() => {});
             } else if (navigator.clipboard) {
                 navigator.clipboard.writeText("https://jeninails.vercel.app/?ref=share");
-                alert("¡Enlace copiado al portapapeles listo para compartir!");
+                alert("Enlace copiado al portapapeles.");
             }
-        }
-
-        // Motor Canvas ligero: SOLO en pantallas de escritorio con buena CPU y sin ahorro de datos
-        function initCatEyeGalaxyEngine() {
-            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            const lowPower =
-                window.innerWidth < 1024 ||
-                (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
-                (conn && (conn.saveData || /2g|3g/.test(conn.effectiveType || ""))) ||
-                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-            if (lowPower) return;
-
-            const canvas = document.getElementById("catEyeCanvas");
-            if (!canvas) return;
-            canvas.style.display = "block";
-            const ctx = canvas.getContext("2d");
-            let w, h, time = 0, lastFrame = 0;
-
-            const particles = Array.from({ length: 28 }, () => ({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                radius: Math.random() * 1.6 + 0.5,
-                alpha: Math.random() * 0.6 + 0.25,
-                speedY: Math.random() * 0.3 + 0.1,
-                color: Math.random() > 0.45 ? "#D8B478" : "#FF007F"
-            }));
-
-            function resize() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
-            }
-            window.addEventListener("resize", resize, { passive: true });
-            resize();
-
-            function render(now) {
-                requestAnimationFrame(render);
-                if (document.hidden || now - lastFrame < 33) return; // Máximo 30 FPS y pausa en segundo plano
-                lastFrame = now;
-                time += 0.012;
-                ctx.clearRect(0, 0, w, h);
-
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    p.y -= p.speedY;
-                    if (p.y < -10) p.y = h + 10;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = p.color;
-                    ctx.globalAlpha = p.alpha;
-                    ctx.fill();
-                }
-                ctx.globalAlpha = 1;
-            }
-            requestAnimationFrame(render);
         }
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -1216,9 +1110,9 @@
                 const iso = formatearISO(proximo);
                 fechaInput.min = iso;
                 fechaInput.value = iso;
+                actualizarFechaLegible(iso);
             }
 
-            // Observar sección QR para cargar librería solo si hace falta
             const qrSec = document.getElementById("qr-code");
             if (qrSec && "IntersectionObserver" in window) {
                 const obs = new IntersectionObserver((entries) => {
@@ -1231,8 +1125,6 @@
             } else {
                 cargarYGenerarQR();
             }
-
-            initCatEyeGalaxyEngine();
         });
     </script>
 </body>
