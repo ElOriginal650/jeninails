@@ -114,7 +114,7 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { 950: "#07050A", 900: "#100D16", 850: "#171320", 800: "#211B2E" },
+                        dark: { 950: "#05030A", 900: "#0E0A16", 850: "#151021", 800: "#201830" },
                         ivory: "#FAF6F0",
                         champagne: { light: "#F2E6D6", DEFAULT: "#E2CEB2", dark: "#B79F81" },
                         gold: { DEFAULT: "#D5B173", light: "#E7CA99", dark: "#AA8547" }
@@ -136,93 +136,106 @@
 
         html, body {
             overflow-x: clip;
-            background-color: #07050A;
+            background-color: #040308;
             color: #FAF6F0;
             -webkit-tap-highlight-color: transparent;
         }
 
         /* ==============================================================
-           FONDO HAUTE-COUTURE 2026: SEDA LÍQUIDA & OJO DE GATO CHAMPAGNE
-           Paleta cálida (Obsidiana, Vino Borgoña, Oro Champaña, Perla)
-           100% GPU (cero blur()), grano fino terciopelo, 0 KB descarga
+           MOTOR INMERSIVO 2026: GALAXIA 3D + HAZ OJO DE GATO REACTIVO
+           Paralaje al deslizar + Nebulosa GPU sin blur() + Estrellas 3D
+           0 KB de descarga extra, optimizado para móvil gama baja
            ============================================================== */
-        .silk-bg {
+        .galaxy-stage {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
             overflow: hidden;
             contain: strict;
-            background-color: #07050A;
+            background: radial-gradient(ellipse 100% 80% at 50% 20%, #10081E 0%, #05030A 62%, #030206 100%);
         }
-        .silk-veil {
+        .nebula-layer {
+            position: absolute;
+            inset: -12%;
+            will-change: transform;
+        }
+        .nebula-cloud {
             position: absolute;
             border-radius: 50%;
             will-change: transform;
         }
-        /* Seda 1: Vino Borgoña Ahumado (ritmo asimétrico 19s) */
-        .silk-1 {
-            top: -22%;
-            left: -18%;
-            width: 92vmax;
-            height: 82vmax;
-            background: radial-gradient(ellipse 68% 58% at 50% 50%, rgba(136, 46, 74, 0.36) 0%, rgba(92, 28, 52, 0.16) 44%, transparent 72%);
-            animation: silkDriftA 19s var(--ease-silk) infinite alternate;
-        }
-        /* Seda 2: Oro Champaña Líquido (ritmo asimétrico 25s) */
-        .silk-2 {
-            top: 16%;
-            right: -24%;
+        /* Nebulosa 1: Amatista Cósmica Profunda */
+        .nebula-1 {
+            top: -18%;
+            left: -14%;
             width: 90vmax;
-            height: 84vmax;
-            background: radial-gradient(ellipse 64% 56% at 50% 50%, rgba(224, 188, 126, 0.30) 0%, rgba(182, 138, 76, 0.12) 44%, transparent 72%);
-            animation: silkDriftB 25s var(--ease-silk) infinite alternate;
+            height: 82vmax;
+            background: radial-gradient(ellipse 65% 58% at 50% 50%, rgba(124, 58, 237, 0.38) 0%, rgba(76, 29, 149, 0.18) 42%, transparent 72%);
+            animation: nebulaDrift1 21s var(--ease-silk) infinite alternate;
         }
-        /* Seda 3: Perla Rosada Cálida (ritmo asimétrico 31s) */
-        .silk-3 {
-            bottom: -24%;
-            left: -4%;
-            width: 94vmax;
+        /* Nebulosa 2: Terciopelo Magenta / Vino Estelar */
+        .nebula-2 {
+            top: 24%;
+            right: -20%;
+            width: 88vmax;
             height: 80vmax;
-            background: radial-gradient(ellipse 62% 54% at 50% 50%, rgba(206, 152, 146, 0.24) 0%, rgba(146, 86, 102, 0.10) 44%, transparent 70%);
-            animation: silkDriftC 31s var(--ease-silk) infinite alternate;
+            background: radial-gradient(ellipse 64% 54% at 50% 50%, rgba(198, 48, 126, 0.30) 0%, rgba(126, 28, 78, 0.14) 44%, transparent 72%);
+            animation: nebulaDrift2 26s var(--ease-silk) infinite alternate;
         }
-        /* Haz Specular Ojo de Gato Champagne (reflejo magnético de estudio) */
-        .cateye-silk-sheen {
+        /* Nebulosa 3: Polvo Dorado Champaña */
+        .nebula-3 {
+            bottom: -22%;
+            left: 2%;
+            width: 92vmax;
+            height: 78vmax;
+            background: radial-gradient(ellipse 66% 52% at 50% 50%, rgba(224, 184, 114, 0.30) 0%, rgba(170, 125, 62, 0.12) 44%, transparent 70%);
+            animation: nebulaDrift3 29s var(--ease-silk) infinite alternate;
+        }
+
+        /* Haz Magnético Ojo de Gato: responde al scroll y al dedo en tiempo real */
+        .cateye-magnetic-beam {
             position: absolute;
-            inset: -28%;
-            background: linear-gradient(116deg, transparent 35%, rgba(235, 206, 158, 0.10) 47%, rgba(250, 240, 224, 0.065) 50%, rgba(196, 132, 142, 0.07) 53%, transparent 65%);
+            top: 50%;
+            left: 50%;
+            width: 155vmax;
+            height: 36vmax;
+            margin-left: -77.5vmax;
+            margin-top: -18vmax;
+            background: radial-gradient(ellipse 52% 48% at 50% 50%,
+                rgba(250, 236, 212, 0.19) 0%,
+                rgba(218, 178, 112, 0.17) 26%,
+                rgba(198, 62, 134, 0.12) 52%,
+                rgba(124, 58, 237, 0.07) 72%,
+                transparent 86%);
             will-change: transform;
-            animation: catEyeSheen 17s var(--ease-silk) infinite alternate;
+            transform: translate3d(0, 0, 0) rotate(-22deg);
         }
-        /* Grano fino editorial de terciopelo mate (~280 bytes SVG inline, elimina bandeado) */
+
+        /* Grano fino de terciopelo mate (~280 bytes SVG inline, cero bandeado) */
         .velvet-grain {
             position: absolute;
             inset: 0;
-            opacity: 0.04;
+            opacity: 0.038;
             mix-blend-mode: overlay;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             background-size: 160px 160px;
         }
 
-        @keyframes silkDriftA {
+        @keyframes nebulaDrift1 {
             0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate3d(13vw, 11vh, 0) rotate(12deg) scale(1.1); }
+            100% { transform: translate3d(12vw, 10vh, 0) rotate(10deg) scale(1.1); }
         }
-        @keyframes silkDriftB {
+        @keyframes nebulaDrift2 {
             0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate3d(-14vw, -9vh, 0) rotate(-10deg) scale(1.12); }
+            100% { transform: translate3d(-13vw, -8vh, 0) rotate(-9deg) scale(1.12); }
         }
-        @keyframes silkDriftC {
+        @keyframes nebulaDrift3 {
             0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate3d(11vw, -12vh, 0) rotate(8deg) scale(1.08); }
-        }
-        @keyframes catEyeSheen {
-            0%   { transform: translate3d(-15%, -5%, 0); }
-            100% { transform: translate3d(15%, 5%, 0); }
+            100% { transform: translate3d(10vw, -11vh, 0) rotate(7deg) scale(1.08); }
         }
 
-        /* Capa 2: Polvo de oro champaña y perla flotando suave (~24FPS, cero shadowBlur) */
+        /* Campo Estelar 3D + Destellos Diamante (paralaje al deslizar) */
         #catEyeCanvas {
             position: fixed;
             inset: 0;
@@ -230,21 +243,30 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.85;
+        }
+
+        /* Revelado inmersivo al deslizar (Emil Design Eng: scale 0.96 -> 1, GPU-only) */
+        .reveal-block {
+            opacity: 0;
+            transform: translate3d(0, 18px, 0) scale(0.97);
+            transition: opacity 460ms var(--ease-out), transform 520ms var(--ease-out);
+            will-change: transform, opacity;
+        }
+        .reveal-block.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            will-change: auto;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .silk-1, .silk-2, .silk-3, .cateye-silk-sheen {
-                animation: none;
-            }
-            #catEyeCanvas {
-                display: none;
-            }
+            .nebula-1, .nebula-2, .nebula-3 { animation: none; }
+            #catEyeCanvas { display: none; }
+            .reveal-block { opacity: 1; transform: none; transition: none; }
         }
 
         .editorial-surface {
-            background-color: rgba(14, 11, 20, 0.78);
-            border: 1px solid rgba(226, 206, 178, 0.16);
+            background-color: rgba(13, 9, 22, 0.74);
+            border: 1px solid rgba(226, 206, 178, 0.17);
         }
 
         .pressable {
@@ -288,7 +310,7 @@
             height: 16px;
             border-radius: 5px;
             border: 1px solid rgba(226, 206, 178, 0.35);
-            background-color: #07050A;
+            background-color: #05030A;
             display: inline-grid;
             place-content: center;
             flex-shrink: 0;
@@ -300,7 +322,7 @@
             height: 9px;
             transform: scale(0);
             transition: transform 140ms var(--ease-out);
-            background-color: #07050A;
+            background-color: #05030A;
             clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
         }
         .custom-check:checked {
@@ -325,25 +347,27 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #07050A; }
+        ::-webkit-scrollbar-track { background: #040308; }
         ::-webkit-scrollbar-thumb { background: #261F34; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #D5B173; }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
 
-    <!-- Fondo Haute-Couture 2026: Seda Líquida & Ojo de Gato Champagne + Grano Terciopelo -->
-    <div class="silk-bg" aria-hidden="true">
-        <span class="silk-veil silk-1"></span>
-        <span class="silk-veil silk-2"></span>
-        <span class="silk-veil silk-3"></span>
-        <span class="cateye-silk-sheen"></span>
+    <!-- ESCENARIO GALAXIA 3D + HAZ OJO DE GATO REACTIVO AL SCROLL Y TACTO -->
+    <div class="galaxy-stage" aria-hidden="true">
+        <div id="nebulaParallax" class="nebula-layer">
+            <span class="nebula-cloud nebula-1"></span>
+            <span class="nebula-cloud nebula-2"></span>
+            <span class="nebula-cloud nebula-3"></span>
+        </div>
+        <div id="catEyeBeam" class="cateye-magnetic-beam"></div>
         <span class="velvet-grain"></span>
     </div>
     <canvas id="catEyeCanvas" aria-hidden="true"></canvas>
 
     <!-- Franja de horario discreta -->
-    <div class="relative z-30 bg-dark-950/85 border-b border-champagne/10 text-champagne/80 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide">
+    <div class="relative z-30 bg-dark-950/80 border-b border-champagne/10 text-champagne/80 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide">
         <span class="text-ivory font-medium">Barquisimeto Centro</span>
         <span class="mx-2 text-champagne/30">·</span>
         <span class="text-gold font-semibold">Atención solo Viernes, Sábado y Domingo</span>
@@ -352,7 +376,7 @@
     </div>
 
     <!-- Header editorial semitransparente -->
-    <header class="sticky top-0 z-40 bg-dark-950/85 border-b border-champagne/12">
+    <header class="sticky top-0 z-40 bg-dark-950/80 border-b border-champagne/12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 pressable">
                 <img src="jeni-avatar.svg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/16WZC8QJys4Kt2C_NMGqizk5Dra0Hx_C7=w160';" alt="JeniNails" width="40" height="40" decoding="async" class="w-10 h-10 rounded-full object-cover border border-gold/55 bg-dark-900">
@@ -442,7 +466,7 @@
     </section>
 
     <!-- 2. MENÚ EDITORIAL DE TRATAMIENTOS -->
-    <section id="servicios" class="lazy-section py-16 sm:py-24 bg-dark-950/30 border-t border-champagne/12 relative z-10">
+    <section id="servicios" class="lazy-section reveal-block py-16 sm:py-24 bg-dark-950/25 border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
@@ -617,7 +641,7 @@
     </section>
 
     <!-- 3. PORTAFOLIO REAL (Fotografía 100% limpia sin stickers encima) -->
-    <section id="galeria" class="lazy-section py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
+    <section id="galeria" class="lazy-section reveal-block py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
                 <div>
@@ -651,7 +675,7 @@
     </section>
 
     <!-- 4. RESERVA EN 3 TOQUES DIRECTO AL WHATSAPP (Ultra fácil para cualquiera) -->
-    <section id="agendar" class="lazy-section py-16 sm:py-24 bg-dark-950/30 border-t border-champagne/12 relative z-10">
+    <section id="agendar" class="lazy-section reveal-block py-16 sm:py-24 bg-dark-950/25 border-t border-champagne/12 relative z-10">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
                 <p class="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold mb-2">Tu Cita en 3 Toques</p>
@@ -814,7 +838,7 @@
     </section>
 
     <!-- 5. SOBRE JENI + CÓDIGO QR EN UN SOLO SPREAD EDITORIAL -->
-    <section id="sobre-jeni" class="lazy-section py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
+    <section id="sobre-jeni" class="lazy-section reveal-block py-16 sm:py-24 bg-transparent border-t border-champagne/12 relative z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
@@ -880,7 +904,7 @@
     </section>
 
     <!-- 6. PREGUNTAS FRECUENTES (Acordeón compacto, cero muros de texto) -->
-    <section id="faq" class="lazy-section py-16 sm:py-20 bg-dark-950/30 border-t border-champagne/12 relative z-10">
+    <section id="faq" class="lazy-section reveal-block py-16 sm:py-20 bg-dark-950/25 border-t border-champagne/12 relative z-10">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="mb-8">
                 <p class="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-2">Información Útil</p>
@@ -932,7 +956,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-10 bg-dark-950/60 border-t border-champagne/12 text-champagne/65 text-xs text-center relative z-10">
+    <footer class="py-10 bg-dark-950/55 border-t border-champagne/12 text-champagne/65 text-xs text-center relative z-10">
         <div class="max-w-5xl mx-auto px-4 space-y-2">
             <p class="font-display text-lg font-medium text-ivory">JeniNails</p>
             <p class="text-champagne/80">Viernes, Sábado y Domingo · Barquisimeto Centro, Venezuela</p>
@@ -1266,19 +1290,43 @@
             window.open(url, "_blank");
         }
 
-        // Polvo de oro champaña y perla flotando lento (~24FPS, cero shadowBlur, gama baja friendly)
-        function initChampagneDustEngine() {
-            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        // MOTOR INMERSIVO 2026: Galaxia 3D + Haz Ojo de Gato reactivo al scroll y tacto
+        // Optimizado para gama baja (~30FPS, cero shadowBlur, listeners passive, pausa en background)
+        function initImmersiveCatEyeGalaxy() {
+            const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const reveals = document.querySelectorAll(".reveal-block");
+            if (reduced || !("IntersectionObserver" in window)) {
+                reveals.forEach(el => el.classList.add("is-visible"));
+            } else {
+                const revObs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("is-visible");
+                            revObs.unobserve(e.target);
+                        }
+                    });
+                }, { rootMargin: "0px 0px -60px 0px", threshold: 0.05 });
+                reveals.forEach(el => revObs.observe(el));
+            }
+
+            if (reduced) return;
+
             const canvas = document.getElementById("catEyeCanvas");
+            const beam = document.getElementById("catEyeBeam");
+            const nebula = document.getElementById("nebulaParallax");
             if (!canvas) return;
             const ctx = canvas.getContext("2d", { alpha: true });
             if (!ctx) return;
 
-            let w = 0, h = 0, lastFrame = 0, tick = 0;
+            let w = 0, h = 0, lastFrame = 0, t = 0;
+            let scrollTarget = window.scrollY || 0;
+            let scrollCurrent = scrollTarget;
+            let pointerX = 0, pointerY = 0, targetPX = 0, targetPY = 0;
+
             const isMobile = window.innerWidth < 768;
-            const count = isMobile ? 20 : 34;
-            const palette = ["#E7CA99", "#D5B173", "#FAF6F0", "#E2CEB2", "#C9929A"];
-            const motes = [];
+            const count = isMobile ? 42 : 72;
+            const colors = ["#FAF6F0", "#E7CA99", "#D5B173", "#E9A6C4", "#B794F4"];
+            const stars = [];
 
             function resize() {
                 w = canvas.width = window.innerWidth;
@@ -1286,43 +1334,93 @@
             }
             resize();
             window.addEventListener("resize", resize, { passive: true });
+            window.addEventListener("scroll", () => { scrollTarget = window.scrollY || 0; }, { passive: true });
+            window.addEventListener("mousemove", (e) => {
+                targetPX = (e.clientX / (w || 1) - 0.5) * 2;
+                targetPY = (e.clientY / (h || 1) - 0.5) * 2;
+            }, { passive: true });
+            window.addEventListener("touchmove", (e) => {
+                if (e.touches && e.touches.length) {
+                    targetPX = (e.touches[0].clientX / (w || 1) - 0.5) * 2;
+                    targetPY = (e.touches[0].clientY / (h || 1) - 0.5) * 2;
+                }
+            }, { passive: true });
 
             for (let i = 0; i < count; i++) {
-                motes.push({
+                // 3 planos de profundidad 3D (0.35 lejano, 0.7 medio, 1.25 cercano)
+                const depth = i % 5 === 0 ? 1.25 : (i % 2 === 0 ? 0.7 : 0.35);
+                stars.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    r: Math.random() * 1.45 + 0.55,
-                    vy: Math.random() * 0.28 + 0.10,
-                    vx: (Math.random() - 0.5) * 0.14,
-                    phase: Math.random() * Math.PI * 2,
-                    color: palette[i % palette.length]
+                    r: depth === 1.25 ? (Math.random() * 1.1 + 1.1) : (depth === 0.7 ? 0.95 : 0.65),
+                    depth: depth,
+                    vy: (0.14 + Math.random() * 0.22) * depth,
+                    vx: (Math.random() - 0.5) * 0.12 * depth,
+                    phase: Math.random() * 6.283,
+                    sparkle: depth === 1.25 && i % 10 === 0,
+                    color: colors[i % colors.length]
                 });
             }
 
-            function frame(now) {
-                requestAnimationFrame(frame);
-                if (document.hidden || now - lastFrame < 42) return; // ~24 FPS, pausa en segundo plano
+            function render(now) {
+                requestAnimationFrame(render);
+                if (document.hidden || now - lastFrame < 33) return; // ~30 FPS, pausa en segundo plano
                 lastFrame = now;
-                tick += 0.055;
+                t += 0.018;
+
+                // Interpolación suave tipo spring para scroll y dedo
+                const prevScroll = scrollCurrent;
+                scrollCurrent += (scrollTarget - scrollCurrent) * 0.09;
+                const scrollDelta = scrollCurrent - prevScroll;
+                pointerX += (targetPX - pointerX) * 0.06;
+                pointerY += (targetPY - pointerY) * 0.06;
+
+                // 1. Paralaje en nebulosa + haz magnético Ojo de Gato reactivo al deslizamiento
+                const maxScroll = Math.max(1, document.documentElement.scrollHeight - h);
+                const progress = Math.min(1, Math.max(0, scrollCurrent / maxScroll));
+
+                if (nebula) {
+                    const nebY = -progress * 42 + pointerY * -10;
+                    const nebX = pointerX * -12;
+                    nebula.style.transform = `translate3d(${nebX.toFixed(1)}px, ${nebY.toFixed(1)}px, 0)`;
+                }
+                if (beam) {
+                    const bx = Math.sin(t * 0.75) * 14 + pointerX * 14 + (progress - 0.5) * 26;
+                    const by = Math.cos(t * 0.55) * 10 + pointerY * 12 + (progress - 0.5) * 34;
+                    const rot = -22 + Math.sin(t * 0.45) * 8 + (progress - 0.5) * 18 + pointerX * 6;
+                    beam.style.transform = `translate3d(${bx.toFixed(1)}vw, ${by.toFixed(1)}vh, 0) rotate(${rot.toFixed(1)}deg)`;
+                }
+
+                // 2. Campo estelar 3D con paralaje real al deslizar + destellos diamante
                 ctx.clearRect(0, 0, w, h);
+                for (let i = 0; i < stars.length; i++) {
+                    const s = stars[i];
+                    s.y -= s.vy + scrollDelta * (0.28 * s.depth);
+                    s.x += s.vx + pointerX * 0.18 * s.depth;
 
-                for (let i = 0; i < motes.length; i++) {
-                    const m = motes[i];
-                    m.y -= m.vy;
-                    m.x += m.vx + Math.sin(tick * 0.5 + m.phase) * 0.08;
-                    if (m.y < -6) { m.y = h + 6; m.x = Math.random() * w; }
-                    if (m.x < -6) m.x = w + 6;
-                    if (m.x > w + 6) m.x = -6;
+                    if (s.y < -10) s.y = h + 10;
+                    else if (s.y > h + 10) s.y = -10;
+                    if (s.x < -10) s.x = w + 10;
+                    else if (s.x > w + 10) s.x = -10;
 
-                    ctx.globalAlpha = 0.20 + 0.50 * (0.5 + 0.5 * Math.sin(tick + m.phase));
-                    ctx.fillStyle = m.color;
+                    const twinkle = 0.28 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.2 + s.phase));
+                    ctx.globalAlpha = twinkle;
+                    ctx.fillStyle = s.color;
+
                     ctx.beginPath();
-                    ctx.arc(m.x, m.y, m.r, 0, 6.283);
+                    ctx.arc(s.x, s.y, s.r, 0, 6.283);
                     ctx.fill();
+
+                    // Destello fino de 4 puntas solo en estrellas diamante cercanas
+                    if (s.sparkle && twinkle > 0.62) {
+                        const arm = s.r * 3.4;
+                        ctx.fillRect(s.x - arm, s.y - 0.35, arm * 2, 0.7);
+                        ctx.fillRect(s.x - 0.35, s.y - arm, 0.7, arm * 2);
+                    }
                 }
                 ctx.globalAlpha = 1;
             }
-            requestAnimationFrame(frame);
+            requestAnimationFrame(render);
         }
 
         let qrCargado = false;
@@ -1352,7 +1450,7 @@
                 text: "https://jeninails.vercel.app/?ref=qr",
                 width: 176,
                 height: 176,
-                colorDark: "#07050A",
+                colorDark: "#05030A",
                 colorLight: "#FAF6F0",
                 correctLevel: QRCode.CorrectLevel.H
             });
@@ -1397,7 +1495,7 @@
             renderizarGaleria("todos");
             renderWeekendPills();
             calcularTotal();
-            initChampagneDustEngine();
+            initImmersiveCatEyeGalaxy();
 
             const yearEl = document.getElementById("currentYear");
             if (yearEl) yearEl.innerText = new Date().getFullYear();
