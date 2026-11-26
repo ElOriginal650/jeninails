@@ -140,16 +140,60 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Fondo editorial silencioso y ultraligero (cero blur animado, 60FPS en gama baja) */
+        /* Fondo editorial con movimiento Cat-Eye & Aurora 100% GPU (cero blur(), cero Canvas JS, 60FPS en gama baja) */
         .atelier-bg {
             position: fixed;
             inset: 0;
             z-index: 0;
             pointer-events: none;
+            overflow: hidden;
+            contain: strict;
             background-color: #08060B;
-            background-image:
-                radial-gradient(ellipse 55% 40% at 15% 0%, rgba(132, 82, 118, 0.14) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 40% at 90% 15%, rgba(213, 177, 115, 0.09) 0%, transparent 65%);
+        }
+        .atelier-orb {
+            position: absolute;
+            border-radius: 50%;
+            will-change: transform;
+        }
+        .atelier-orb-1 {
+            top: -18%;
+            left: -15%;
+            width: 78vmax;
+            height: 78vmax;
+            background: radial-gradient(circle, rgba(164, 96, 144, 0.22) 0%, rgba(132, 82, 118, 0.08) 42%, transparent 70%);
+            animation: orbFloatA 18s ease-in-out infinite alternate;
+        }
+        .atelier-orb-2 {
+            bottom: -22%;
+            right: -18%;
+            width: 74vmax;
+            height: 74vmax;
+            background: radial-gradient(circle, rgba(213, 177, 115, 0.17) 0%, rgba(196, 134, 152, 0.06) 45%, transparent 70%);
+            animation: orbFloatB 22s ease-in-out infinite alternate;
+        }
+        .atelier-cateye-beam {
+            position: absolute;
+            inset: -25%;
+            background: linear-gradient(118deg, transparent 36%, rgba(231, 202, 153, 0.065) 48%, rgba(201, 141, 147, 0.05) 52%, transparent 64%);
+            will-change: transform;
+            animation: catEyeSweep 16s ease-in-out infinite alternate;
+        }
+        @keyframes orbFloatA {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(12vw, 9vh, 0) scale(1.08); }
+        }
+        @keyframes orbFloatB {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(-11vw, -8vh, 0) scale(1.06); }
+        }
+        @keyframes catEyeSweep {
+            0%   { transform: translate3d(-12%, -4%, 0); }
+            100% { transform: translate3d(12%, 4%, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .atelier-orb-1, .atelier-orb-2, .atelier-cateye-beam {
+                animation: none;
+            }
         }
 
         .editorial-surface {
@@ -242,7 +286,11 @@
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-950 min-h-screen pb-24 md:pb-0 relative">
 
-    <div class="atelier-bg" aria-hidden="true"></div>
+    <div class="atelier-bg" aria-hidden="true">
+        <span class="atelier-orb atelier-orb-1"></span>
+        <span class="atelier-orb atelier-orb-2"></span>
+        <span class="atelier-cateye-beam"></span>
+    </div>
 
     <!-- Franja de horario discreta -->
     <div class="relative z-30 bg-dark-950 border-b border-champagne/10 text-champagne/80 text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide">
