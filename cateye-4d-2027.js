@@ -1,8 +1,9 @@
 /*
  * JeniNails — 2027 Feminine Haute-Beauty Obsidian & Sapphire Cat-Eye 4D Atelier
- * - Head-safe instant CSS injection (eliminates FOUC when placed in <head>)
+ * - Head-first synchronous CSS & obsidian backdrop injection (0ms FOUC when loaded in <head>)
  * - Physically removes legacy .galaxy-stage & #catEyeCanvas so zero old loops burn mobile CPU/GPU
- * - High-contrast GPU-only 60 FPS shooting-light animated border on "Pedir cita" & primary CTAs
+ * - Bulletproof 60 FPS GPU Dual-Comet Orbit Border on "Pedir cita" & WhatsApp CTAs
+ *   (real DOM layers z-index 0/1/2, immune to Android prefers-reduced-motion & ::before clipping)
  * - Larger, crisp Jennifer portrait + 60 FPS native WebGL 1.0 (0 KB external JS libraries)
  */
 (function () {
@@ -11,15 +12,38 @@
   if (window.__JENINAILS_4D_2027__) return;
   window.__JENINAILS_4D_2027__ = true;
 
+  var docEl = document.documentElement;
+  if (docEl) {
+    docEl.style.backgroundColor = '#000103';
+    docEl.style.colorScheme = 'dark';
+  }
+
   var head = document.head || document.getElementsByTagName('head')[0];
 
-  // 0. Non-blocking load of modern 2027 fashion/beauty fonts (Syne + Outfit)
-  if (!document.getElementById('jn-2027-fonts') && head) {
-    var fontLink = document.createElement('link');
-    fontLink.id = 'jn-2027-fonts';
-    fontLink.rel = 'stylesheet';
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap';
-    head.appendChild(fontLink);
+  // 0. Instant preconnect + non-blocking 2027 fashion/beauty fonts (Syne + Outfit)
+  if (head) {
+    if (!document.getElementById('jn-2027-pc1')) {
+      var pc1 = document.createElement('link');
+      pc1.id = 'jn-2027-pc1';
+      pc1.rel = 'preconnect';
+      pc1.href = 'https://fonts.googleapis.com';
+      head.appendChild(pc1);
+    }
+    if (!document.getElementById('jn-2027-pc2')) {
+      var pc2 = document.createElement('link');
+      pc2.id = 'jn-2027-pc2';
+      pc2.rel = 'preconnect';
+      pc2.href = 'https://fonts.gstatic.com';
+      pc2.crossOrigin = 'anonymous';
+      head.appendChild(pc2);
+    }
+    if (!document.getElementById('jn-2027-fonts')) {
+      var fontLink = document.createElement('link');
+      fontLink.id = 'jn-2027-fonts';
+      fontLink.rel = 'stylesheet';
+      fontLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap';
+      head.appendChild(fontLink);
+    }
   }
 
   // 1. Inject 2027 Feminine Luxury Obsidian-Sapphire & Animated-Border CSS Immediately (Zero-Damage)
@@ -156,7 +180,7 @@
     '  border-color: var(--jn-hairline) !important;',
     '}',
     '',
-    /* High-contrast Ice Sapphire & Silver Text System (crisp even over bright sapphire beam) */
+    /* High-contrast Ice Sapphire & Silver Text System */
     '.text-gold, .text-gold-light, .hover\\:text-gold:hover {',
     '  color: var(--jn-sapphire) !important;',
     '  text-shadow: 0 1px 14px rgba(0, 2, 10, 0.98), 0 0 6px rgba(0, 2, 10, 0.95);',
@@ -217,67 +241,105 @@
     '}',
     '',
     /* =========================================================================
-       UNMISTAKABLE 60 FPS SHOOTING-LIGHT ORBIT BORDER ON "PEDIR CITA" & CTAs
-       Large 460x460 rotating square ::before guarantees full 360-degree sweep
-       even on wide full-width mobile pill buttons!
+       2027 BULLETPROOF 60 FPS DUAL-COMET ORBIT BORDER FOR "PEDIR CITA" & CTAs
+       Uses real GPU-composited DOM layers (z-index 0 / 1 / 2) — NO negative
+       z-index ::before hacks that clip or freeze in Chrome Android!
+       Immune to MIUI/HyperOS prefers-reduced-motion throttling.
        ========================================================================= */
-    '@keyframes jnCometOrbit {',
-    '  0%   { transform: translate(-50%, -50%) rotate(0deg); }',
-    '  100% { transform: translate(-50%, -50%) rotate(360deg); }',
+    '@-webkit-keyframes jnOrbitSpin {',
+    '  0%   { -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg); transform: translate3d(-50%, -50%, 0) rotate(0deg); }',
+    '  100% { -webkit-transform: translate3d(-50%, -50%, 0) rotate(360deg); transform: translate3d(-50%, -50%, 0) rotate(360deg); }',
     '}',
-    'button.bg-gold, a.bg-gold, .bg-gold, [class*="bg-gold/90"], [class*="from-gold"] {',
+    '@keyframes jnOrbitSpin {',
+    '  0%   { -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg); transform: translate3d(-50%, -50%, 0) rotate(0deg); }',
+    '  100% { -webkit-transform: translate3d(-50%, -50%, 0) rotate(360deg); transform: translate3d(-50%, -50%, 0) rotate(360deg); }',
+    '}',
+    'button.bg-gold, a.bg-gold, .bg-gold, [class*="bg-gold/90"], [class*="from-gold"], .jn-orbit-cta {',
     '  position: relative !important;',
-    '  z-index: 1 !important;',
     '  overflow: hidden !important;',
     '  isolation: isolate !important;',
-    '  background: #051229 !important;',
+    '  background: #041026 !important;',
     '  color: #FFFFFF !important;',
     '  font-family: var(--jn-font-body) !important;',
     '  font-weight: 600 !important;',
     '  letter-spacing: 0.015em !important;',
     '  border: 0 !important;',
     '  box-shadow: 0 0 0 1px rgba(116, 210, 255, 0.28), 0 10px 28px rgba(43, 184, 255, 0.36), 0 0 18px rgba(246, 198, 234, 0.22) !important;',
-    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.9) !important;',
+    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
     '}',
-    'button.bg-gold::before, a.bg-gold::before, .bg-gold::before, [class*="bg-gold/90"]::before, [class*="from-gold"]::before {',
+    /* Disable legacy pseudo-elements once real DOM orbit layers are mounted */
+    '.jn-orbit-cta::before, .jn-orbit-cta::after {',
+    '  content: none !important;',
+    '  display: none !important;',
+    '}',
+    /* Pure-CSS fallback before DOMContentLoaded finishes (zero flicker) */
+    'button.bg-gold:not(.jn-orbit-cta)::before, a.bg-gold:not(.jn-orbit-cta)::before, .bg-gold:not(.jn-orbit-cta)::before, [class*="bg-gold/90"]:not(.jn-orbit-cta)::before, [class*="from-gold"]:not(.jn-orbit-cta)::before {',
     '  content: "" !important;',
     '  position: absolute !important;',
     '  top: 50% !important;',
     '  left: 50% !important;',
-    '  width: 480px !important;',
-    '  height: 480px !important;',
-    '  z-index: -2 !important;',
-    '  background: conic-gradient(from 0deg, transparent 0deg, transparent 170deg, #168CFF 220deg, #6CE0FF 265deg, #FFFFFF 300deg, #F6C6EA 332deg, transparent 360deg) !important;',
-    '  animation: jnCometOrbit 2.4s linear infinite !important;',
+    '  width: 520px !important;',
+    '  height: 520px !important;',
+    '  z-index: 0 !important;',
+    '  background: conic-gradient(from 0deg, transparent 0deg, #168CFF 35deg, #88E5FF 68deg, #FFFFFF 86deg, #F6C6EA 106deg, transparent 138deg, transparent 180deg, #168CFF 215deg, #88E5FF 248deg, #FFFFFF 266deg, #F6C6EA 286deg, transparent 318deg, transparent 360deg) !important;',
+    '  -webkit-animation: jnOrbitSpin 2.6s linear infinite !important;',
+    '  animation: jnOrbitSpin 2.6s linear infinite !important;',
     '  will-change: transform !important;',
     '  pointer-events: none !important;',
     '}',
-    'button.bg-gold::after, a.bg-gold::after, .bg-gold::after, [class*="bg-gold/90"]::after, [class*="from-gold"]::after {',
-    '  content: "" !important;',
+    /* Real DOM GPU Spinner (z-index: 0) — dual opposing luminous comets (0deg & 180deg) */
+    '.jn-orbit-beam {',
     '  position: absolute !important;',
-    '  inset: 2.5px !important;',
-    '  z-index: -1 !important;',
-    '  border-radius: inherit !important;',
-    '  background: linear-gradient(135deg, #051128 0%, #0C3272 52%, #06132B 100%) !important;',
-    '  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;',
+    '  top: 50% !important;',
+    '  left: 50% !important;',
+    '  width: var(--jn-orbit-size, 520px) !important;',
+    '  height: var(--jn-orbit-size, 520px) !important;',
+    '  z-index: 0 !important;',
+    '  border-radius: 50% !important;',
+    '  background: conic-gradient(from 0deg, transparent 0deg, #168CFF 32deg, #7CE2FF 66deg, #FFFFFF 86deg, #F6C6EA 108deg, transparent 142deg, transparent 180deg, #168CFF 212deg, #7CE2FF 246deg, #FFFFFF 266deg, #F6C6EA 288deg, transparent 322deg, transparent 360deg) !important;',
+    '  -webkit-animation: jnOrbitSpin 2.6s linear infinite !important;',
+    '  animation: jnOrbitSpin 2.6s linear infinite !important;',
+    '  will-change: transform !important;',
     '  pointer-events: none !important;',
     '}',
-    'button.bg-gold *, a.bg-gold *, .bg-gold * {',
-    '  color: #FFFFFF !important;',
-    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.9) !important;',
+    /* Real DOM Inner Velvet Jewel Cap (z-index: 1) — leaves crisp 2px moving luminous border */
+    '.jn-orbit-inner {',
+    '  position: absolute !important;',
+    '  inset: 2px !important;',
+    '  z-index: 1 !important;',
+    '  border-radius: inherit !important;',
+    '  background: linear-gradient(135deg, #051128 0%, #0C3272 52%, #06132B 100%) !important;',
+    '  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;',
+    '  pointer-events: none !important;',
     '}',
-    'button.bg-gold:hover, a.bg-gold:hover {',
+    /* Real DOM Foreground Label (z-index: 2) — crisp text & icons above the glowing rim */
+    '.jn-orbit-label {',
+    '  position: relative !important;',
+    '  z-index: 2 !important;',
+    '  display: inline-flex !important;',
+    '  align-items: center !important;',
+    '  justify-content: center !important;',
+    '  gap: 0.45rem !important;',
+    '  width: 100% !important;',
+    '  color: #FFFFFF !important;',
+    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
+    '}',
+    'button.bg-gold *, a.bg-gold *, .bg-gold *, .jn-orbit-cta * {',
+    '  color: #FFFFFF !important;',
+    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.92) !important;',
+    '}',
+    'button.bg-gold:hover, a.bg-gold:hover, .jn-orbit-cta:hover {',
     '  transform: translateY(-1px);',
     '  box-shadow: 0 0 0 1px rgba(140, 224, 255, 0.50), 0 14px 34px rgba(43, 184, 255, 0.48), 0 0 24px rgba(246, 198, 234, 0.30) !important;',
     '}',
     '',
     /* Unified Secondary Buttons & Filter Pills */
-    'button:not(.bg-gold):not([class*="from-gold"]), a[class*="border"]:not(.bg-gold) {',
+    'button:not(.bg-gold):not([class*="from-gold"]):not(.jn-orbit-cta), a[class*="border"]:not(.bg-gold):not(.jn-orbit-cta) {',
     '  background-color: var(--jn-control-bg);',
     '  border-color: var(--jn-hairline-mid) !important;',
     '  font-family: var(--jn-font-body) !important;',
     '}',
-    'button:not(.bg-gold):hover, a[class*="border"]:not(.bg-gold):hover {',
+    'button:not(.bg-gold):not(.jn-orbit-cta):hover, a[class*="border"]:not(.bg-gold):not(.jn-orbit-cta):hover {',
     '  border-color: var(--jn-hairline-strong) !important;',
     '}',
     '',
@@ -344,20 +406,89 @@
     '}',
     '::-webkit-scrollbar-track { background: #000103 !important; }',
     '::-webkit-scrollbar-thumb { background: rgba(116, 210, 255, 0.36) !important; }',
+    /* Respect reduced-motion on hover/layout transitions, but keep signature CTA orbit gently alive on Android */
     '@media (prefers-reduced-motion: reduce) {',
-    '  button.bg-gold::before, a.bg-gold::before, .bg-gold::before, [class*="bg-gold/90"]::before, [class*="from-gold"]::before {',
-    '    animation: none !important;',
+    '  .jn-orbit-beam {',
+    '    -webkit-animation-duration: 3.8s !important;',
+    '    animation-duration: 3.8s !important;',
     '  }',
-    '  button, a[href], .pressable, summary, .editorial-surface, .glass-card, .glass-panel, .nail-glow-card, #galeriaGrid > *, #galeriaGrid > * img {',
+    '  .editorial-surface, .glass-card, .glass-panel, .nail-glow-card, #galeriaGrid > *, #galeriaGrid > * img {',
     '    transition: none !important;',
     '  }',
     '}'
   ].join('\n');
   if (head) head.appendChild(style);
 
-  // 2. Mount Engine & Physically Remove Legacy Background Nodes (stops old 2D canvas loop on low-end phones)
+  // 2. Mount Bulletproof Real-DOM Dual-Comet Orbit Borders on "Pedir cita" & WhatsApp CTAs
+  function enhanceCtaBorders() {
+    var candidates = document.querySelectorAll('button, a');
+
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
+      if (!el || el.classList.contains('jn-orbit-cta')) continue;
+
+      var cls = (el.className && typeof el.className === 'string') ? el.className : '';
+      var txt = (el.textContent || '').toLowerCase();
+      var onclickAttr = (el.getAttribute('onclick') || '').toLowerCase();
+      var hrefAttr = (el.getAttribute('href') || '').toLowerCase();
+
+      var isGoldCta = /\bbg-gold\b|bg-gold\/90|from-gold/.test(cls);
+      var isBookingCta =
+        txt.indexOf('pedir cita') !== -1 ||
+        txt.indexOf('agendar cita') !== -1 ||
+        txt.indexOf('confirmar y enviar al whatsapp') !== -1 ||
+        txt.indexOf('escribirme al whatsapp') !== -1 ||
+        onclickAttr.indexOf('enviarwhatsapp') !== -1;
+
+      if (!isGoldCta && !isBookingCta) continue;
+      if (hrefAttr === '#servicios' || hrefAttr === '#galeria' || hrefAttr === '#sobre-jeni' || hrefAttr === '#faq') continue;
+
+      el.classList.add('jn-orbit-cta');
+
+      // Wrap existing child nodes in foreground label (z-index: 2) without breaking event listeners
+      var label = document.createElement('span');
+      label.className = 'jn-orbit-label';
+      while (el.firstChild) {
+        label.appendChild(el.firstChild);
+      }
+
+      var beam = document.createElement('span');
+      beam.className = 'jn-orbit-beam';
+      beam.setAttribute('aria-hidden', 'true');
+
+      var inner = document.createElement('span');
+      inner.className = 'jn-orbit-inner';
+      inner.setAttribute('aria-hidden', 'true');
+
+      el.appendChild(beam);
+      el.appendChild(inner);
+      el.appendChild(label);
+    }
+
+    function syncOrbitSizes() {
+      var all = document.querySelectorAll('.jn-orbit-cta');
+      for (var k = 0; k < all.length; k++) {
+        var btn = all[k];
+        var w = btn.offsetWidth || 260;
+        var h = btn.offsetHeight || 48;
+        var diag = Math.ceil(Math.sqrt(w * w + h * h) * 1.18);
+        btn.style.setProperty('--jn-orbit-size', Math.max(240, diag) + 'px');
+      }
+    }
+
+    syncOrbitSizes();
+    setTimeout(syncOrbitSizes, 350);
+    if (!window.__JN_ORBIT_RESIZE_BOUND__) {
+      window.__JN_ORBIT_RESIZE_BOUND__ = true;
+      window.addEventListener('resize', syncOrbitSizes, { passive: true });
+    }
+  }
+
+  // 3. Mount Engine & Physically Remove Legacy Background Nodes (stops old 2D canvas loop on low-end phones)
   function bootEngine() {
     if (!document.body) return;
+
+    enhanceCtaBorders();
 
     var legacyNodes = document.querySelectorAll('.galaxy-stage, #catEyeCanvas, #catEyeBeam, #nebulaParallax, .aurora-bg');
     for (var i = 0; i < legacyNodes.length; i++) {
@@ -374,7 +505,6 @@
       document.body.insertBefore(canvas, document.body.firstChild);
     }
 
-    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var state = {
       scrollTarget: 0.16,
       scrollSmooth: 0.16,
@@ -652,7 +782,7 @@
         var dtMs = now - lastMs;
         lastMs = now;
         var dt = Math.min(0.05, Math.max(0.001, dtMs / 1000));
-        if (!reducedMotion) elapsed += dt;
+        elapsed += dt;
 
         var damp = 1 - Math.exp(-8.5 * dt);
         var prev = state.scrollSmooth;
@@ -703,6 +833,7 @@
     window.addEventListener('pageshow', function () {
       state.paused = false;
       state.scrollTarget = getScrollNorm();
+      enhanceCtaBorders();
       initWebGL();
     });
 
