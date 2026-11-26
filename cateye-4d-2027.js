@@ -1,8 +1,9 @@
 /*
- * JeniNails — 2027 Gen-Z Chrome & Obsidian Sapphire Cat-Eye 4D Atelier
- * Zero heavy JS libraries (0 KB WebGL engine), 60 FPS adaptive mobile GPU scaling,
- * Syne + Outfit modern 2027 editorial typography, metallic chrome-sapphire photo frames,
- * and Emil Design Engineering tactile micro-interactions.
+ * JeniNails — 2027 Feminine Haute-Beauty Obsidian & Sapphire Cat-Eye 4D Atelier
+ * - Zero white-flash guarantee: instant obsidian CSS backdrop + synchronous Frame 1 + WebGL context-lost/pageshow recovery
+ * - Larger, ultra-crisp circular portrait of Jennifer in header
+ * - GPU-only animated moving sapphire-pearl border around "Pedir cita" & primary CTAs
+ * - 60 FPS native WebGL 1.0 (0 KB external JS libraries) with adaptive low-end Android scaling
  */
 (function () {
   'use strict';
@@ -10,7 +11,7 @@
   if (window.__JENINAILS_4D_2027__) return;
   window.__JENINAILS_4D_2027__ = true;
 
-  // 0. Non-blocking load of modern 2027 fashion/beauty display fonts (Syne + Outfit)
+  // 0. Non-blocking load of modern 2027 fashion/beauty fonts (Syne + Outfit)
   if (!document.getElementById('jn-2027-fonts')) {
     var fontLink = document.createElement('link');
     fontLink.id = 'jn-2027-fonts';
@@ -19,7 +20,7 @@
     document.head.appendChild(fontLink);
   }
 
-  // 1. Inject 2027 Chrome-Sapphire Luxury Atelier Design System (Zero-Damage)
+  // 1. Inject 2027 Feminine Luxury Obsidian-Sapphire & Animated-Border CSS (Zero-Damage)
   var style = document.createElement('style');
   style.id = 'jeninails-2027-obsidian-theme';
   style.textContent = [
@@ -27,21 +28,19 @@
     '  --jn-obsidian: #000103;',
     '  --jn-header-solid: #02050E;',
     '  --jn-topbar-solid: #010308;',
-    '  --jn-pearl: #F7FAFF;',
-    '  --jn-silver: rgba(224, 238, 255, 0.88);',
-    '  --jn-silver-muted: rgba(188, 212, 242, 0.76);',
-    '  --jn-sapphire: #6BD0FF;',
-    '  --jn-sapphire-core: #2CB8FF;',
-    '  --jn-chrome-text: linear-gradient(180deg, #FFFFFF 18%, #C4E8FF 100%);',
-    '  --jn-chrome-frame: linear-gradient(145deg, rgba(210, 238, 255, 0.42) 0%, rgba(28, 124, 224, 0.22) 48%, rgba(124, 214, 255, 0.48) 100%);',
-    '  --jn-platinum-grad: linear-gradient(180deg, #FFFFFF 0%, #D9ECFF 100%);',
-    '  --jn-hairline: rgba(155, 208, 255, 0.16);',
-    '  --jn-hairline-mid: rgba(155, 208, 255, 0.30);',
-    '  --jn-hairline-strong: rgba(122, 212, 255, 0.72);',
-    '  --jn-glass: rgba(3, 8, 20, 0.72);',
-    '  --jn-glass-hover: rgba(5, 14, 34, 0.86);',
-    '  --jn-control-bg: rgba(5, 12, 28, 0.84);',
-    '  --jn-active-bg: rgba(34, 146, 245, 0.26);',
+    '  --jn-pearl: #F9FCFF;',
+    '  --jn-silver: rgba(226, 238, 255, 0.90);',
+    '  --jn-silver-muted: rgba(190, 214, 245, 0.78);',
+    '  --jn-sapphire: #74D2FF;',
+    '  --jn-sapphire-core: #2BB8FF;',
+    '  --jn-rose-pearl: #F4C8E8;',
+    '  --jn-hairline: rgba(162, 212, 255, 0.18);',
+    '  --jn-hairline-mid: rgba(162, 212, 255, 0.34);',
+    '  --jn-hairline-strong: rgba(132, 216, 255, 0.78);',
+    '  --jn-glass: rgba(3, 8, 20, 0.74);',
+    '  --jn-glass-hover: rgba(5, 14, 34, 0.88);',
+    '  --jn-control-bg: rgba(5, 12, 28, 0.86);',
+    '  --jn-active-bg: rgba(34, 146, 245, 0.28);',
     '  --jn-font-display: "Syne", "Outfit", system-ui, sans-serif;',
     '  --jn-font-body: "Outfit", system-ui, -apple-system, sans-serif;',
     '  --jn-ease-out: cubic-bezier(0.23, 1, 0.32, 1);',
@@ -62,6 +61,7 @@
     '  pointer-events: none !important;',
     '}',
     '',
+    /* Zero-White-Flash Canvas: instant obsidian-sapphire CSS backdrop underneath WebGL */
     '#jeninails-obsidian-4d {',
     '  position: fixed;',
     '  inset: 0;',
@@ -70,9 +70,11 @@
     '  z-index: 0;',
     '  display: block;',
     '  pointer-events: none;',
+    '  background-color: #000103 !important;',
+    '  background-image: radial-gradient(ellipse 85% 55% at 50% 42%, #072A6B 0%, #02091B 52%, #000103 100%) !important;',
     '}',
     '',
-    /* Modern 2027 Young-Luxury Editorial Typography (replaces old-fashioned serif) */
+    /* Crisp, Luminous Feminine 2027 Typography (no muddy grey drop-shadow!) */
     '.font-display, h1, h2, h3, h4 {',
     '  font-family: var(--jn-font-display) !important;',
     '  font-style: normal !important;',
@@ -80,18 +82,16 @@
     '}',
     'h1, h2 {',
     '  font-weight: 700 !important;',
-    '  background: var(--jn-chrome-text);',
-    '  -webkit-background-clip: text;',
-    '  background-clip: text;',
-    '  color: transparent !important;',
-    '  -webkit-text-fill-color: transparent;',
-    '  filter: drop-shadow(0 4px 18px rgba(0, 4, 16, 0.9));',
+    '  color: var(--jn-pearl) !important;',
+    '  background: none !important;',
+    '  -webkit-text-fill-color: var(--jn-pearl) !important;',
+    '  filter: none !important;',
+    '  text-shadow: 0 2px 22px rgba(43, 184, 255, 0.28), 0 1px 6px rgba(0, 2, 10, 0.95) !important;',
     '}',
     'h3, h4, .text-ivory {',
     '  color: var(--jn-pearl) !important;',
-    '  text-shadow: 0 2px 14px rgba(0, 2, 10, 0.92);',
+    '  text-shadow: 0 1px 10px rgba(0, 2, 10, 0.90);',
     '}',
-    '/* Clean modern numerals on 01, 02, 03 instead of old italic gold */',
     '#servicios .italic, .font-display.italic {',
     '  font-style: normal !important;',
     '  font-family: var(--jn-font-body) !important;',
@@ -100,7 +100,7 @@
     '  color: var(--jn-sapphire) !important;',
     '}',
     '',
-    /* 100% Solid Obsidian Header & Top Bar (zero bleed-through on scroll) */
+    /* 100% Solid Obsidian Header + LARGER, ULTRA-CRISP JENNIFER PORTRAIT */
     'body > div.z-30, body > div[class*="bg-dark-950"] {',
     '  background-color: var(--jn-topbar-solid) !important;',
     '  border-bottom: 1px solid var(--jn-hairline) !important;',
@@ -108,11 +108,34 @@
     'header {',
     '  background-color: var(--jn-header-solid) !important;',
     '  border-bottom: 1px solid var(--jn-hairline-mid) !important;',
-    '  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.82) !important;',
+    '  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.84) !important;',
+    '}',
+    'header > div {',
+    '  min-height: 74px !important;',
+    '  height: auto !important;',
+    '  padding-top: 8px !important;',
+    '  padding-bottom: 8px !important;',
     '}',
     'header img {',
-    '  border: 2px solid var(--jn-sapphire) !important;',
-    '  box-shadow: 0 0 16px rgba(44, 184, 255, 0.42) !important;',
+    '  width: 54px !important;',
+    '  height: 54px !important;',
+    '  min-width: 54px !important;',
+    '  min-height: 54px !important;',
+    '  border-radius: 9999px !important;',
+    '  object-fit: cover !important;',
+    '  object-position: center 18% !important;',
+    '  border: 2px solid #8AD8FF !important;',
+    '  box-shadow: 0 0 0 3px #02050E, 0 0 0 4.5px rgba(244, 200, 232, 0.45), 0 0 20px rgba(43, 184, 255, 0.55) !important;',
+    '  filter: contrast(1.06) brightness(1.05) saturate(1.06);',
+    '  image-rendering: -webkit-optimize-contrast;',
+    '}',
+    '@media (min-width: 640px) {',
+    '  header img {',
+    '    width: 60px !important;',
+    '    height: 60px !important;',
+    '    min-width: 60px !important;',
+    '    min-height: 60px !important;',
+    '  }',
     '}',
     '',
     /* Continuous 4D Flow between sections */
@@ -122,7 +145,7 @@
     '  border-color: transparent !important;',
     '}',
     'footer {',
-    '  background-color: rgba(1, 3, 10, 0.90) !important;',
+    '  background-color: rgba(1, 3, 10, 0.92) !important;',
     '  border-top: 1px solid var(--jn-hairline) !important;',
     '}',
     '',
@@ -134,27 +157,27 @@
     /* High-contrast Ice Sapphire & Silver Text System */
     '.text-gold, .text-gold-light, .hover\\:text-gold:hover {',
     '  color: var(--jn-sapphire) !important;',
-    '  text-shadow: 0 2px 14px rgba(0, 2, 10, 0.95);',
+    '  text-shadow: 0 1px 12px rgba(0, 2, 10, 0.95);',
     '}',
     '.text-champagne, [class*="text-champagne/"] {',
     '  color: var(--jn-silver) !important;',
-    '  text-shadow: 0 1px 12px rgba(0, 2, 10, 0.92);',
+    '  text-shadow: 0 1px 10px rgba(0, 2, 10, 0.92);',
     '}',
     'footer p, footer span, .text-champagne\\/65, .text-champagne\\/60, .text-champagne\\/50 {',
     '  color: var(--jn-silver-muted) !important;',
     '}',
     '',
-    /* PREMIUM CHROME-SAPPHIRE GLASS FRAMES FOR ALL NAIL PHOTOS (Hero + Portfolio Gallery) */
+    /* PREMIUM CHROME-SAPPHIRE & ROSE-PEARL GLASS FRAMES FOR ALL NAIL PHOTOS */
     '.editorial-surface, .glass-panel, .glass-card, .nail-glow-card {',
-    '  background: linear-gradient(160deg, rgba(8, 18, 42, 0.78) 0%, rgba(2, 6, 16, 0.86) 100%) !important;',
+    '  background: linear-gradient(160deg, rgba(8, 18, 42, 0.80) 0%, rgba(2, 6, 16, 0.88) 100%) !important;',
     '  border: 1px solid var(--jn-hairline-mid) !important;',
     '  border-radius: 22px !important;',
-    '  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.72), 0 0 26px rgba(44, 184, 255, 0.12), inset 0 1px 0 rgba(220, 242, 255, 0.20) !important;',
+    '  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.74), 0 0 26px rgba(43, 184, 255, 0.14), inset 0 1px 0 rgba(244, 200, 232, 0.22) !important;',
     '  transition: transform 200ms var(--jn-ease-out), border-color 180ms ease, box-shadow 200ms ease !important;',
     '}',
     '.editorial-surface:hover, .glass-card:hover, .nail-glow-card:hover {',
     '  border-color: var(--jn-hairline-strong) !important;',
-    '  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.78), 0 0 34px rgba(56, 190, 255, 0.22), inset 0 1px 0 rgba(240, 248, 255, 0.30) !important;',
+    '  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.80), 0 0 34px rgba(56, 190, 255, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;',
     '}',
     '',
     /* Luxury Chrome-Bezel Photo Cards in #galeriaGrid */
@@ -162,22 +185,22 @@
     '  position: relative;',
     '  padding: 8px !important;',
     '  border-radius: 22px !important;',
-    '  background: linear-gradient(155deg, rgba(16, 36, 74, 0.68) 0%, rgba(3, 8, 20, 0.90) 60%, rgba(12, 32, 68, 0.74) 100%) !important;',
-    '  border: 1px solid rgba(145, 214, 255, 0.34) !important;',
-    '  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.76), 0 0 22px rgba(44, 184, 255, 0.15), inset 0 1px 0 rgba(235, 248, 255, 0.28) !important;',
+    '  background: linear-gradient(155deg, rgba(16, 36, 74, 0.72) 0%, rgba(3, 8, 20, 0.92) 58%, rgba(28, 20, 52, 0.76) 100%) !important;',
+    '  border: 1px solid rgba(162, 218, 255, 0.36) !important;',
+    '  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.78), 0 0 24px rgba(43, 184, 255, 0.16), inset 0 1px 0 rgba(244, 200, 232, 0.30) !important;',
     '  transition: transform 220ms var(--jn-ease-out), border-color 180ms ease, box-shadow 220ms ease !important;',
     '  overflow: hidden;',
     '}',
     '#galeriaGrid > *:hover {',
     '  transform: translateY(-4px);',
-    '  border-color: rgba(140, 224, 255, 0.80) !important;',
-    '  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.85), 0 0 32px rgba(56, 190, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.42) !important;',
+    '  border-color: rgba(140, 224, 255, 0.84) !important;',
+    '  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.86), 0 0 34px rgba(56, 190, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.44) !important;',
     '}',
     '#galeriaGrid > * img, section:first-of-type img:not(header img) {',
     '  border-radius: 15px !important;',
-    '  border: 1px solid rgba(200, 234, 255, 0.26) !important;',
-    '  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55) !important;',
-    '  filter: contrast(1.05) saturate(1.06) brightness(1.03);',
+    '  border: 1px solid rgba(210, 236, 255, 0.28) !important;',
+    '  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.56) !important;',
+    '  filter: contrast(1.05) saturate(1.07) brightness(1.03);',
     '  transition: transform 320ms var(--jn-ease-out) !important;',
     '}',
     '#galeriaGrid > *:hover img {',
@@ -187,28 +210,66 @@
     '  padding: 10px 6px 4px !important;',
     '}',
     '',
-    /* Clean spacing in Combos so Dúo Rubber and Dúo Jelly Tip never collide */
     '#servicios .editorial-surface > div > button, #servicios .editorial-surface .space-y-3 > *, #servicios .editorial-surface .divide-y > * {',
     '  margin-bottom: 8px;',
     '}',
     '',
-    /* Primary CTA Buttons -> Liquid Platinum Chrome */
+    /* =========================================================================
+       2027 ANIMATED MOVING LUXURY BORDER FOR "PEDIR CITA" & PRIMARY CTA BUTTONS
+       Pure GPU transform: rotate(360deg) — 60 FPS even on low-end Android
+       ========================================================================= */
+    '@keyframes jnBorderOrbit {',
+    '  0%   { transform: translate(-50%, -50%) rotate(0deg); }',
+    '  100% { transform: translate(-50%, -50%) rotate(360deg); }',
+    '}',
     'button.bg-gold, a.bg-gold, .bg-gold, [class*="bg-gold/90"], [class*="from-gold"] {',
-    '  background: var(--jn-platinum-grad) !important;',
-    '  color: #02050D !important;',
+    '  position: relative !important;',
+    '  z-index: 1 !important;',
+    '  overflow: hidden !important;',
+    '  isolation: isolate !important;',
+    '  background: linear-gradient(135deg, #061530 0%, #0C2F6B 50%, #071630 100%) !important;',
+    '  color: #FFFFFF !important;',
     '  font-family: var(--jn-font-body) !important;',
-    '  font-weight: 700 !important;',
-    '  border: 1px solid rgba(255, 255, 255, 0.85) !important;',
-    '  box-shadow: 0 10px 28px rgba(56, 190, 255, 0.28), inset 0 1px 0 #FFFFFF !important;',
-    '  text-shadow: none !important;',
+    '  font-weight: 600 !important;',
+    '  letter-spacing: 0.01em !important;',
+    '  border: 1px solid transparent !important;',
+    '  box-shadow: 0 10px 28px rgba(43, 184, 255, 0.34), 0 0 18px rgba(244, 200, 232, 0.16) !important;',
+    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.8) !important;',
+    '}',
+    /* Rotating luminous sapphire + pearl-rose orbit border */
+    'button.bg-gold::before, a.bg-gold::before, .bg-gold::before, [class*="bg-gold/90"]::before, [class*="from-gold"]::before {',
+    '  content: "";',
+    '  position: absolute;',
+    '  top: 50%;',
+    '  left: 50%;',
+    '  width: 260%;',
+    '  height: 260%;',
+    '  min-width: 220px;',
+    '  min-height: 220px;',
+    '  z-index: -2;',
+    '  background: conic-gradient(from 0deg, transparent 0deg, #2BB8FF 55deg, #FFFFFF 95deg, #F4C8E8 135deg, transparent 190deg, #38BEFF 260deg, #FFFFFF 300deg, transparent 360deg);',
+    '  animation: jnBorderOrbit 3.4s linear infinite;',
+    '  will-change: transform;',
+    '  pointer-events: none;',
+    '}',
+    /* Inner velvet sapphire-obsidian jewel cap (leaves crisp 2px animated moving border) */
+    'button.bg-gold::after, a.bg-gold::after, .bg-gold::after, [class*="bg-gold/90"]::after, [class*="from-gold"]::after {',
+    '  content: "";',
+    '  position: absolute;',
+    '  inset: 2px;',
+    '  z-index: -1;',
+    '  border-radius: inherit;',
+    '  background: linear-gradient(135deg, #06142C 0%, #0D3474 48%, #07142C 100%);',
+    '  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);',
+    '  pointer-events: none;',
     '}',
     'button.bg-gold *, a.bg-gold *, .bg-gold * {',
-    '  color: #02050D !important;',
-    '  text-shadow: none !important;',
+    '  color: #FFFFFF !important;',
+    '  text-shadow: 0 1px 6px rgba(0, 4, 16, 0.8) !important;',
     '}',
     'button.bg-gold:hover, a.bg-gold:hover {',
-    '  opacity: 0.95;',
     '  transform: translateY(-1px);',
+    '  box-shadow: 0 14px 34px rgba(43, 184, 255, 0.46), 0 0 22px rgba(244, 200, 232, 0.26) !important;',
     '}',
     '',
     /* Unified Secondary Buttons & Filter Pills */
@@ -233,14 +294,14 @@
     '}',
     'input:focus, select:focus, textarea:focus {',
     '  border-color: var(--jn-sapphire-core) !important;',
-    '  box-shadow: 0 0 0 2px rgba(56, 190, 255, 0.25) !important;',
+    '  box-shadow: 0 0 0 2px rgba(43, 184, 255, 0.28) !important;',
     '}',
     '',
     /* Unified Active Selection State in #agendar */
     '#agendar [class*="border-gold"], #agendar [class*="bg-gold/"] {',
     '  background-color: var(--jn-active-bg) !important;',
     '  border-color: var(--jn-hairline-strong) !important;',
-    '  box-shadow: 0 0 0 1px rgba(122, 212, 255, 0.35), 0 10px 24px rgba(8, 82, 188, 0.32) !important;',
+    '  box-shadow: 0 0 0 1px rgba(132, 216, 255, 0.38), 0 10px 24px rgba(8, 82, 188, 0.34) !important;',
     '}',
     '#agendar [class*="bg-gold/"] *, #agendar [class*="border-gold"] .text-gold {',
     '  color: var(--jn-pearl) !important;',
@@ -252,7 +313,7 @@
     '  font-weight: 700 !important;',
     '  color: var(--jn-sapphire) !important;',
     '  font-variant-numeric: tabular-nums !important;',
-    '  text-shadow: 0 2px 20px rgba(56, 190, 255, 0.42) !important;',
+    '  text-shadow: 0 2px 20px rgba(43, 184, 255, 0.45) !important;',
     '}',
     '',
     /* Custom Checkboxes -> Ice Sapphire */
@@ -283,8 +344,11 @@
     '  outline-offset: 2px !important;',
     '}',
     '::-webkit-scrollbar-track { background: #000103 !important; }',
-    '::-webkit-scrollbar-thumb { background: rgba(122, 212, 255, 0.34) !important; }',
+    '::-webkit-scrollbar-thumb { background: rgba(116, 210, 255, 0.36) !important; }',
     '@media (prefers-reduced-motion: reduce) {',
+    '  button.bg-gold::before, a.bg-gold::before, .bg-gold::before, [class*="bg-gold/90"]::before, [class*="from-gold"]::before {',
+    '    animation: none !important;',
+    '  }',
     '  button, a[href], .pressable, summary, .editorial-surface, .glass-card, .glass-panel, .nail-glow-card, #galeriaGrid > *, #galeriaGrid > * img {',
     '    transition: none !important;',
     '  }',
@@ -292,7 +356,7 @@
   ].join('\n');
   document.head.appendChild(style);
 
-  // 2. Mount Full-Bleed Native WebGL 1.0 Canvas (60 FPS Adaptive Governor)
+  // 2. Mount Full-Bleed Native WebGL 1.0 Canvas with Zero-White-Flash & bfcache Recovery
   var canvas = document.createElement('canvas');
   canvas.id = 'jeninails-obsidian-4d';
   canvas.setAttribute('aria-hidden', 'true');
@@ -300,14 +364,15 @@
 
   var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var state = {
-    scrollTarget: 0.14,
-    scrollSmooth: 0.14,
+    scrollTarget: 0.16,
+    scrollSmooth: 0.16,
     scrollVel: 0,
     ptrX: 0,
     ptrY: 0,
     ptrSmoothX: 0,
     ptrSmoothY: 0,
-    paused: false
+    paused: false,
+    rafId: 0
   };
 
   function getScrollNorm() {
@@ -340,13 +405,13 @@
     var ctx = canvas.getContext('2d');
     if (!ctx) return;
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = Math.max(1, window.innerWidth);
+      canvas.height = Math.max(1, window.innerHeight);
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
     function draw() {
-      requestAnimationFrame(draw);
+      state.rafId = requestAnimationFrame(draw);
       if (state.paused) return;
       var s = getScrollNorm();
       var w = canvas.width, h = canvas.height;
@@ -364,18 +429,27 @@
   }
 
   function initWebGL() {
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    }
+
     var gl = canvas.getContext('webgl', {
       alpha: false,
       antialias: false,
       depth: false,
       stencil: false,
-      preserveDrawingBuffer: false,
+      preserveDrawingBuffer: true,
       powerPreference: 'high-performance'
     });
     if (!gl) {
       init2DFallback();
       return;
     }
+
+    // Immediate obsidian clear so Android Chrome NEVER flashes white before shader compile
+    gl.clearColor(0.001, 0.002, 0.006, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
     var vertSrc = [
       'attribute vec2 aPos;',
@@ -482,7 +556,7 @@
       '  float specArc = (p.x * 0.82 - p.y * 0.46) - (0.36 - s * 0.70 + uPtr.x * 0.16);',
       '  float studioStrip = exp(-pow(specArc * 28.0, 2.0)) * exp(-pow((p.y + 0.04 - s * 0.24) * 1.65, 2.0));',
       '  float fresnelRim = pow(1.0 - domeZ, 4.6) * 0.16;',
-      '  col += vec3(0.82, 0.94, 1.0) * (studioStrip * 0.22 + fresnelRim * (0.20 + 0.80 * magField));',
+      '  col += vec3(0.84, 0.93, 1.0) * (studioStrip * 0.22 + fresnelRim * (0.20 + 0.80 * magField));',
       '',
       '  float vig = smoothstep(1.32, 0.22, length(p * vec2(0.84, 0.96)));',
       '  col *= (0.14 + 0.90 * vig);',
@@ -541,6 +615,18 @@
     applySize();
     window.addEventListener('resize', applySize, { passive: true });
 
+    // Synchronous Frame 1 paint (eliminates white flash on first mobile entry!)
+    function drawNow(elapsedSec) {
+      if (gl.isContextLost && gl.isContextLost()) return;
+      gl.uniform2f(uRes, canvas.width, canvas.height);
+      gl.uniform1f(uTime, elapsedSec);
+      gl.uniform1f(uScroll, state.scrollSmooth);
+      gl.uniform1f(uVel, state.scrollVel);
+      gl.uniform2f(uPtr, state.ptrSmoothX, state.ptrSmoothY);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    drawNow(0);
+
     var lastMs = performance.now();
     var elapsed = 0;
     var frames = 0;
@@ -548,7 +634,7 @@
     var slowStreak = 0;
 
     function loop(now) {
-      requestAnimationFrame(loop);
+      state.rafId = requestAnimationFrame(loop);
       if (state.paused) {
         lastMs = now;
         return;
@@ -568,12 +654,7 @@
       state.ptrSmoothX += (state.ptrX - state.ptrSmoothX) * pDamp;
       state.ptrSmoothY += (state.ptrY - state.ptrSmoothY) * pDamp;
 
-      gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, elapsed);
-      gl.uniform1f(uScroll, state.scrollSmooth);
-      gl.uniform1f(uVel, state.scrollVel);
-      gl.uniform2f(uPtr, state.ptrSmoothX, state.ptrSmoothY);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      drawNow(elapsed);
 
       frames++;
       var span = now - fpsWin;
@@ -594,8 +675,27 @@
       }
     }
 
-    requestAnimationFrame(loop);
+    state.rafId = requestAnimationFrame(loop);
   }
+
+  // Recover seamlessly if Android Chrome pauses/drops WebGL or restores from bfcache
+  canvas.addEventListener('webglcontextlost', function (e) {
+    e.preventDefault();
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    }
+  }, false);
+
+  canvas.addEventListener('webglcontextrestored', function () {
+    initWebGL();
+  }, false);
+
+  window.addEventListener('pageshow', function () {
+    state.paused = false;
+    state.scrollTarget = getScrollNorm();
+    initWebGL();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWebGL);
